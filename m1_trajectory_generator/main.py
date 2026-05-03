@@ -8,9 +8,10 @@ from .trajectory_generator import TrajectoryGenerator
 from .knowledge_base import KnowledgeBase
 from .parser import IntentParser
 from .models import MissionType
+from .config import Config
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=getattr(logging, Config.LOG_LEVEL),
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
@@ -41,9 +42,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
 示例用法:
-  python -m m1_trajectory_generator -i "0001 民航客机 于 2026-04-20 09:20:30 从 北京大兴国际机场 起飞，降落 上海虹桥国际机场 12:40:00。"
-  python -m m1_trajectory_generator -i "0002 歼-20 于 2026-04-20 10:00:00 从 北京大兴国际机场 起飞，执行低空突防任务，降落 上海虹桥国际机场 12:00:00。"
+  python -m m1_trajectory_generator -i "0001 民航客机 客运航班 于 2026-04-20 09:20:30 从 北京大兴国际机场 起飞，降落 上海虹桥国际机场。"
+  python -m m1_trajectory_generator -i "0002 歼-20 低空突防 于 2026-04-20 10:00:00 从 华北基地 起飞，降落 东南沿海。"
+  python -m m1_trajectory_generator -i "0003 民航客机 客运航班 于 2026-04-20 09:00:00 从 北京大兴国际机场 起飞，途径 青岛胶东国际机场，降落 上海虹桥国际机场。"
   python -m m1_trajectory_generator -f intent.txt -o output/trajectory.json
+  python -m m1_trajectory_generator -i "..." --use-local-route  # 使用本地预设航路，不调用大模型
         '''
     )
     
@@ -83,8 +86,28 @@ def main():
         action='store_true',
         help='列出所有可用飞行任务类型'
     )
+    parser.add_argument(
+        '--use-local-route',
+        action='store_true',
+        help='强制使用本地预设航路，不调用大模型'
+    )
+    parser.add_argument(
+        '--llm-api-key',
+        type=str,
+        default=None,
+        help='大模型API密钥（覆盖配置文件）'
+    )
     
     args = parser.parse_args()
+    
+    # 处理大模型相关参数
+    if args.use_local_route:
+        Config.LLM_ENABLED = False
+        logger.info("已禁用大模型，将使用本地预设航路")
+    
+    if args.llm_api_key:
+        Config.LLM_API_KEY = args.llm_api_key
+        logger.info("使用命令行指定的API密钥")
     
     kb = KnowledgeBase()
     

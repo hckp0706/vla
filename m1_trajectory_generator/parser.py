@@ -5,18 +5,26 @@ M1模块飞行简令解析器
 
 简令格式示例：
     标准格式（带途径点）：
-    "0001 民航客机 于 2026-04-20 09:20:30 从 北京大兴国际机场 起飞，途径 西安咸阳国际机场 10:20:00，降落 上海虹桥国际机场 12:40:00。"
+    "0001 民航客机 客运航班 于 2026-04-20 09:20:30 从 北京大兴国际机场 起飞，途径 西安咸阳国际机场，降落 上海虹桥国际机场。"
     
     简化格式（不带途径点）：
-    "0002 歼-20 于 2026-04-20 10:00:00 从 北京大兴国际机场 起飞，执行低空突防任务，降落 上海虹桥国际机场 12:00:00。"
+    "0002 歼-20 低空突防 于 2026-04-20 10:00:00 从 北京大兴国际机场 起飞，降落 上海虹桥国际机场。"
 
 解析方式：使用正则表达式进行模式匹配，提取各要素
+
+关键规则：
+    - 仅起飞时间为必填项
+    - 途径点时间和降落时间由系统自动计算
+    - 任务类型作为第三参数（机型之后）
 """
 
 import re
+import logging
 from datetime import datetime
 from typing import Optional
 from .models import FlightIntent, MissionType
+
+logger = logging.getLogger(__name__)
 
 
 class IntentParser:
@@ -26,20 +34,51 @@ class IntentParser:
     使用正则表达式解析飞行简令文本，提取以下要素：
         - target_id: 目标批号
         - platform_type: 机型
+        - mission_type: 飞行任务类型（可选，第三参数）
         - takeoff_time: 起飞时间
         - loc_start: 起飞地点
-        - mission_type: 飞行任务类型（可选）
         - action_mid: 途径动作（可选）
         - loc_mid: 途径地点（可选）
-        - time_mid: 途径时间（可选）
         - action_end: 降落动作
         - loc_end: 降落地点
-        - time_end: 降落时间
     """
     
-    # 带途径点的简令正则表达式
-    # 格式：[批号] [机型] 于 [起飞时间] 从 [起飞地点] 起飞，[途径动作] [途径地点] [途径时间]，[降落动作] [降落地点] [降落时间]
-    INTENT_PATTERN_WITH_WAYPOINT = re.compile(
+    # 带途径点的简令正则表达式（新格式）
+    # 格式：[批号] [机型] [任务类型] 于 [起飞时间] 从 [起飞地点] 起飞，[途径动作] [途径地点]，[降落动作] [降落地点]
+    INTENT_PATTERN_WITH_WAYPOINT_NEW = re.compile(
+        r"(?P<target_id>\d+)\s+"                                    # 批号：数字序列
+        r"(?P<platform_type>[\u4e00-\u9fa5a-zA-Z0-9\-]+)\s+"        # 机型：中文、英文、数字、连字符
+        r"(?P<mission_type>[\u4e00-\u9fa5]+)?\s*"                   # 任务类型（可选，第三参数）：中文
+        r"于\s+"
+        r"(?P<takeoff_time>\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})\s+"  # 起飞时间：YYYY-MM-DD HH:MM:SS
+        r"从\s+"
+        r"(?P<loc_start>[\u4e00-\u9fa5a-zA-Z0-9]+)\s+"              # 起飞地点：中文、英文、数字
+        r"起飞"
+        r"，?\s*(?P<action_mid>[\u4e00-\u9fa5]+)\s+"                 # 途径动作：中文（如"途径"、"经停"）
+        r"(?P<loc_mid>[\u4e00-\u9fa5a-zA-Z0-9]+)"                   # 途径地点
+        r"，?\s*(?P<action_end>[\u4e00-\u9fa5]+)\s+"                # 降落动作：中文（如"降落"、"抵达"）
+        r"(?P<loc_end>[\u4e00-\u9fa5a-zA-Z0-9]+)"                   # 降落地点
+        r"。?"
+    )
+
+    # 简化格式简令正则表达式（新格式，不带途径点）
+    # 格式：[批号] [机型] [任务类型] 于 [起飞时间] 从 [起飞地点] 起飞，[降落动作] [降落地点]
+    INTENT_PATTERN_SIMPLE_NEW = re.compile(
+        r"(?P<target_id>\d+)\s+"                                    # 批号：数字序列
+        r"(?P<platform_type>[\u4e00-\u9fa5a-zA-Z0-9\-]+)\s+"        # 机型：中文、英文、数字、连字符
+        r"(?P<mission_type>[\u4e00-\u9fa5]+)?\s*"                   # 任务类型（可选，第三参数）：中文
+        r"于\s+"
+        r"(?P<takeoff_time>\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})\s+"  # 起飞时间：YYYY-MM-DD HH:MM:SS
+        r"从\s+"
+        r"(?P<loc_start>[\u4e00-\u9fa5a-zA-Z0-9]+)\s+"              # 起飞地点：中文、英文、数字
+        r"起飞"
+        r"，?\s*(?P<action_end>[\u4e00-\u9fa5]+)\s+"                 # 降落动作：中文
+        r"(?P<loc_end>[\u4e00-\u9fa5a-zA-Z0-9]+)"                   # 降落地点
+        r"。?"
+    )
+    
+    # 旧格式正则表达式（兼容旧版本）
+    INTENT_PATTERN_WITH_WAYPOINT_OLD = re.compile(
         r"(?P<target_id>\d+)\s+"                                    # 批号：数字序列
         r"(?P<platform_type>[\u4e00-\u9fa5a-zA-Z0-9\-]+)\s+"        # 机型：中文、英文、数字、连字符
         r"于\s+"
@@ -57,9 +96,7 @@ class IntentParser:
         r"。?"
     )
 
-    # 简化格式简令正则表达式（不带途径点）
-    # 格式：[批号] [机型] 于 [起飞时间] 从 [起飞地点] 起飞，[降落动作] [降落地点] [降落时间]
-    INTENT_PATTERN_SIMPLE = re.compile(
+    INTENT_PATTERN_SIMPLE_OLD = re.compile(
         r"(?P<target_id>\d+)\s+"                                    # 批号：数字序列
         r"(?P<platform_type>[\u4e00-\u9fa5a-zA-Z0-9\-]+)\s+"        # 机型：中文、英文、数字、连字符
         r"于\s+"
@@ -134,6 +171,8 @@ class IntentParser:
         """
         解析飞行简令文本
         
+        优先尝试新格式，再尝试旧格式以保持兼容性
+        
         参数：
             intent_text: 飞行简令文本
         
@@ -142,14 +181,28 @@ class IntentParser:
         """
         intent_text = intent_text.strip()
         
-        # 尝试匹配带途径点的格式
-        match = self.INTENT_PATTERN_WITH_WAYPOINT.match(intent_text)
+        # 尝试匹配新格式（带途径点）
+        match = self.INTENT_PATTERN_WITH_WAYPOINT_NEW.match(intent_text)
         if match:
+            logger.debug("匹配新格式（带途径点）")
             return self._build_intent(match, has_waypoint=True)
         
-        # 尝试匹配简化格式
-        match = self.INTENT_PATTERN_SIMPLE.match(intent_text)
+        # 尝试匹配新格式（简化）
+        match = self.INTENT_PATTERN_SIMPLE_NEW.match(intent_text)
         if match:
+            logger.debug("匹配新格式（简化）")
+            return self._build_intent(match, has_waypoint=False)
+        
+        # 尝试匹配旧格式（带途径点）
+        match = self.INTENT_PATTERN_WITH_WAYPOINT_OLD.match(intent_text)
+        if match:
+            logger.debug("匹配旧格式（带途径点）")
+            return self._build_intent(match, has_waypoint=True)
+        
+        # 尝试匹配旧格式（简化）
+        match = self.INTENT_PATTERN_SIMPLE_OLD.match(intent_text)
+        if match:
+            logger.debug("匹配旧格式（简化）")
             return self._build_intent(match, has_waypoint=False)
         
         return None

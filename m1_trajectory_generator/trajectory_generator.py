@@ -4,11 +4,12 @@ M1模块轨迹生成器
 本模块是M1的核心计算引擎，负责将飞行简令转换为1Hz频率的轨迹数据。
 
 主要功能：
-1. 航路展开：将起降两点展开为完整的航路点序列
+1. 航路展开：将起降两点展开为完整的航路点序列（支持大模型生成）
 2. 大圆航线计算：使用地球椭球模型计算最短路径
 3. 平滑转弯算法：消除航向突变，实现圆弧平滑过渡
 4. 高度剖面计算：模拟起飞→爬升→巡航→下降→降落全过程
 5. 动态RCS估算：根据飞行状态计算雷达散射截面积
+6. 时间计算：根据机型性能和航路距离自动计算途经点和降落时间
 
 输出格式：1Hz频率的轨迹点序列，每个点包含时间、位置、速度、高度、航向、RCS等信息
 """
@@ -25,6 +26,10 @@ from .models import (
 )
 from .knowledge_base import KnowledgeBase
 from .parser import IntentParser
+from .llm_client import LLMClient
+from .waypoint_validator import WaypointValidator
+from .config import Config
+from .eaip_loader import EAIPLoader
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +45,7 @@ class TrajectoryGenerator:
         - 平滑转弯：基于标准转弯率（3度/秒）计算圆弧过渡
         - 高度剖面：根据爬升/下降率计算高度变化
         - RCS估算：根据飞行姿态和任务类型计算雷达散射截面积
+        - 大模型航路点生成：调用GLM-5.1生成更真实的航路点
     """
     
     # 标准转弯率：3度/秒（民航标准）
@@ -59,6 +65,15 @@ class TrajectoryGenerator:
         self.parser = IntentParser()
         # 使用WGS84椭球模型进行地理计算
         self.geod = Geodesic.WGS84
+        # 初始化大模型客户端
+        self.llm_client = LLMClient()
+        # 初始化EAIP数据加载器
+        self.eaip_loader = EAIPLoader()
+        logger.info(f"EAIP数据加载完成：{len(self.eaip_loader.airports)}个机场, {len(self.eaip_loader.waypoints)}个航路点")
+        
+        # 加载航路网络
+        self.route_network = self._load_route_network()
+        logger.info(f"航路网络加载完成：{len(self.route_network)}个节点")
     
     def generate(self, intent_text: str) -> Optional[TrajectoryOutput]:
         """
@@ -195,18 +210,32 @@ class TrajectoryGenerator:
         """
         获取航路点名称列表
         
+        降级策略：EAIP数据 → 大模型 → 本地预设航路
+        
         参数：
             intent: 飞行意图对象
         
         返回：
             航路点名称列表
         """
+        # 优先使用EAIP数据规划航线
+        eaip_route = self._generate_route_with_eaip(intent)
+        if eaip_route:
+            logger.info(f"使用EAIP数据生成的航路点，共{len(eaip_route)}个")
+            return eaip_route
+        
+        # EAIP数据不可用时，使用大模型生成航路点
+        llm_waypoints = self._generate_route_with_llm(intent)
+        if llm_waypoints:
+            logger.info(f"使用大模型生成的航路点，共{len(llm_waypoints)}个")
+            return llm_waypoints
+        
+        # 降级到本地预设航路
+        logger.info("EAIP和大模型均失败，使用本地预设航路")
         if intent.loc_end and intent.loc_mid:
-            # 处理带途径点的情况：先获取起点到途径点的航路，再获取途径点到终点的航路
             route1 = self.kb.get_route(intent.loc_start, intent.loc_mid, intent.platform_type)
             route2 = self.kb.get_route(intent.loc_mid, intent.loc_end, intent.platform_type)
             if route1 and route2:
-                # 合并两条航路，去除重复的途径点
                 return route1 + route2[1:]
             return [intent.loc_start, intent.loc_mid, intent.loc_end]
         elif intent.loc_end:
@@ -219,24 +248,609 @@ class TrajectoryGenerator:
         else:
             return None
     
+    def _generate_route_with_eaip(self, intent: FlightIntent) -> Optional[List[str]]:
+        """
+        使用EAIP数据生成航路点
+        
+        参数：
+            intent: 飞行意图对象
+        
+        返回：
+            航路点名称列表，失败返回None
+        """
+        if not self.eaip_loader.has_airport_data():
+            logger.info("EAIP机场数据不可用")
+            return None
+        
+        start_airport = self.eaip_loader.search_airport(intent.loc_start)
+        end_airport = self.eaip_loader.search_airport(intent.loc_end) if intent.loc_end else None
+        
+        if not start_airport:
+            logger.info(f"EAIP中未找到起点: {intent.loc_start}")
+            return None
+        
+        if end_airport:
+            logger.info(f"EAIP匹配到航线: {start_airport.name_cn} -> {end_airport.name_cn}")
+            return self._plan_route_with_eaip_waypoints(start_airport, end_airport)
+        
+        logger.info(f"EAIP中未找到终点: {intent.loc_end}")
+        return None
+    
+    def _plan_route_with_eaip_waypoints(self, start: 'EAIPAirport', end: 'EAIPAirport') -> List[str]:
+        """
+        使用EAIP航路点规划航线
+        
+        参数：
+            start: 起点机场
+            end: 终点机场
+        
+        返回：
+            航路点名称列表（包含起终点）
+        """
+        route = [start.name_cn]
+        
+        if self.eaip_loader.has_waypoint_data():
+            waypoints = self._select_waypoints_between(start, end)
+            logger.info(f"选择的EAIP航路点: {waypoints}")
+            route.extend(waypoints)
+        
+        route.append(end.name_cn)
+        return route
+    
+    def _find_nearest_waypoints(self, airport: 'EAIPAirport', count: int = 3) -> List[str]:
+        """
+        找到离机场最近的航路点
+        
+        参数：
+            airport: 机场对象
+            count: 返回数量
+        
+        返回：
+            航路点名称列表
+        """
+        if not self.eaip_loader.has_waypoint_data():
+            return []
+        
+        distances = []
+        for name, wp in self.eaip_loader.waypoints.items():
+            dist = self._haversine_distance(airport.latitude, airport.longitude, wp.latitude, wp.longitude)
+            distances.append((name, dist))
+        
+        distances.sort(key=lambda x: x[1])
+        return [name for name, _ in distances[:count]]
+    
+    def _find_best_network_route(self, start_candidates: List[str], end_candidates: List[str]) -> Optional[List[str]]:
+        """
+        在航路网络中找到最优路径
+        
+        参数：
+            start_candidates: 起点候选航路点
+            end_candidates: 终点候选航路点
+        
+        返回：
+            最优航路点列表
+        """
+        best_route = None
+        min_length = float('inf')
+        
+        for start_wp in start_candidates:
+            for end_wp in end_candidates:
+                if start_wp == end_wp:
+                    continue
+                
+                route = self._find_route_in_network(start_wp, end_wp)
+                if route:
+                    full_route = self._fill_missing_waypoints(route)
+                    if full_route and len(full_route) < min_length:
+                        best_route = full_route
+                        min_length = len(full_route)
+        
+        return best_route
+    
+    def _fill_missing_waypoints(self, route: List[str]) -> List[str]:
+        """
+        填充航路上缺失的中间航路点
+        
+        参数：
+            route: 航路点列表
+        
+        返回：
+            完整的航路点列表
+        """
+        if len(route) < 2:
+            return route
+        
+        full_route = [route[0]]
+        
+        for i in range(len(route) - 1):
+            current = route[i]
+            next_wp = route[i + 1]
+            
+            connecting_route = self._find_common_route(current, next_wp)
+            if connecting_route:
+                full_route.extend(connecting_route[1:])
+            else:
+                full_route.append(next_wp)
+        
+        return full_route
+    
+    def _find_common_route(self, wp1: str, wp2: str) -> Optional[List[str]]:
+        """
+        找到两个航路点之间的公共航路
+        
+        参数：
+            wp1: 航路点1
+            wp2: 航路点2
+        
+        返回：
+            公共航路上的航路点列表
+        """
+        if wp1 not in self.route_network or wp2 not in self.route_network:
+            return None
+        
+        routes1 = set(self.route_network[wp1].get('routes', []))
+        routes2 = set(self.route_network[wp2].get('routes', []))
+        common_routes = routes1.intersection(routes2)
+        
+        if not common_routes:
+            return None
+        
+        for route_id in common_routes:
+            path = self._get_route_path(route_id, wp1, wp2)
+            if path:
+                return path
+        
+        return None
+    
+    def _get_route_path(self, route_id: str, start_wp: str, end_wp: str) -> Optional[List[str]]:
+        """
+        获取指定航路上两个航路点之间的路径
+        
+        参数：
+            route_id: 航路编号
+            start_wp: 起点航路点
+            end_wp: 终点航路点
+        
+        返回：
+            航路点列表
+        """
+        route_waypoints = []
+        
+        for wp_name, wp_data in self.route_network.items():
+            if route_id in wp_data.get('routes', []):
+                route_waypoints.append((wp_name, wp_data['latitude'], wp_data['longitude']))
+        
+        if not route_waypoints:
+            return None
+        
+        start_lat = self.route_network[start_wp]['latitude']
+        start_lon = self.route_network[start_wp]['longitude']
+        end_lat = self.route_network[end_wp]['latitude']
+        end_lon = self.route_network[end_wp]['longitude']
+        
+        route_waypoints.sort(key=lambda x: self._haversine_distance(start_lat, start_lon, x[1], x[2]))
+        
+        result = []
+        found_start = False
+        
+        for wp_name, lat, lon in route_waypoints:
+            if wp_name == start_wp:
+                found_start = True
+            if found_start:
+                result.append(wp_name)
+                if wp_name == end_wp:
+                    break
+        
+        return result if found_start and end_wp in result else None
+    
+    def _load_route_network(self) -> dict:
+        """
+        加载航路网络
+        
+        返回：
+            航路网络字典
+        """
+        import json
+        import os
+        
+        network_path = os.path.join(os.path.dirname(__file__), 'data', 'route_network.json')
+        
+        if os.path.exists(network_path):
+            try:
+                with open(network_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except Exception as e:
+                logger.error(f"加载航路网络失败: {e}")
+        
+        return {}
+    
+    def _find_route_in_network(self, start_wp: str, end_wp: str) -> Optional[List[str]]:
+        """
+        在航路网络中查找最优路径
+        
+        参数：
+            start_wp: 起点航路点名称
+            end_wp: 终点航路点名称
+        
+        返回：
+            航路点名称列表，失败返回None
+        """
+        if not self.route_network:
+            return None
+        
+        if start_wp not in self.route_network or end_wp not in self.route_network:
+            return None
+        
+        from collections import deque
+        
+        queue = deque()
+        queue.append((start_wp, [start_wp]))
+        visited = {start_wp: 0}
+        
+        start_lat = self.route_network[start_wp]['latitude']
+        start_lon = self.route_network[start_wp]['longitude']
+        end_lat = self.route_network[end_wp]['latitude']
+        end_lon = self.route_network[end_wp]['longitude']
+        total_distance = self._haversine_distance(start_lat, start_lon, end_lat, end_lon)
+        
+        while queue:
+            current, path = queue.popleft()
+            
+            if current == end_wp:
+                return path
+            
+            if len(path) >= 20:
+                continue
+            
+            current_lat = self.route_network[current]['latitude']
+            current_lon = self.route_network[current]['longitude']
+            
+            for neighbor in self.route_network[current].get('connections', []):
+                if neighbor in visited and visited[neighbor] <= len(path):
+                    continue
+                
+                neighbor_lat = self.route_network[neighbor]['latitude']
+                neighbor_lon = self.route_network[neighbor]['longitude']
+                
+                dist_to_neighbor = self._haversine_distance(current_lat, current_lon, neighbor_lat, neighbor_lon)
+                dist_to_end = self._haversine_distance(neighbor_lat, neighbor_lon, end_lat, end_lon)
+                dist_from_start = self._haversine_distance(start_lat, start_lon, neighbor_lat, neighbor_lon)
+                
+                if dist_to_neighbor > 10.0:
+                    continue
+                
+                if dist_from_start > total_distance + 5.0:
+                    continue
+                
+                visited[neighbor] = len(path)
+                queue.append((neighbor, path + [neighbor]))
+        
+        return None
+    
+    def _select_waypoints_between(self, start: 'EAIPAirport', end: 'EAIPAirport') -> List[str]:
+        """
+        选择起终点之间的航路点，确保航线平滑且方向正确
+        
+        参数：
+            start: 起点机场
+            end: 终点机场
+        
+        返回：
+            航路点名称列表
+        """
+        candidates = []
+        
+        for name, wp in self.eaip_loader.waypoints.items():
+            if self._is_point_near_great_circle(start, end, wp):
+                distance = self._distance_to_great_circle(start, end, wp)
+                progress = self._calculate_progress(start, end, wp)
+                
+                if self._is_correct_direction(start, end, wp, progress):
+                    candidates.append((name, progress, distance))
+        
+        candidates.sort(key=lambda x: (x[1], x[2]))
+        
+        selected = []
+        last_progress = -1
+        last_lat = start.latitude
+        last_lon = start.longitude
+        
+        for name, progress, distance in candidates:
+            if progress - last_progress > 0.05:
+                wp = self.eaip_loader.waypoints[name]
+                
+                if wp.latitude > last_lat + 1.0:
+                    continue
+                
+                lon_diff = wp.longitude - last_lon
+                
+                if lon_diff > 0.5:
+                    continue
+                
+                if abs(wp.longitude - last_lon) > 2.0:
+                    continue
+                
+                selected.append(name)
+                last_progress = progress
+                last_lat = wp.latitude
+                last_lon = wp.longitude
+                
+                if len(selected) >= 6:
+                    break
+        
+        return selected
+    
+    def _is_correct_direction(self, start: 'EAIPAirport', end: 'EAIPAirport', point, progress: float) -> bool:
+        """
+        判断航路点是否在正确的方向上
+        
+        参数：
+            start: 起点
+            end: 终点
+            point: 待判断点
+            progress: 进度值
+        
+        返回：
+            是否在正确方向上
+        """
+        expected_lat = start.latitude - (start.latitude - end.latitude) * progress
+        expected_lon = start.longitude + (end.longitude - start.longitude) * progress
+        
+        lat_diff = abs(point.latitude - expected_lat)
+        lon_diff = abs(point.longitude - expected_lon)
+        
+        return lat_diff < 1.5 and lon_diff < 1.5
+    
+    def _is_point_near_great_circle(self, start: 'EAIPAirport', end: 'EAIPAirport', point) -> bool:
+        """
+        判断点是否靠近大圆航线
+        
+        参数：
+            start: 起点
+            end: 终点
+            point: 待判断的点
+        
+        返回：
+            是否靠近大圆航线
+        """
+        distance = self._distance_to_great_circle(start, end, point)
+        return distance < 1.5
+    
+    def _distance_to_great_circle(self, start: 'EAIPAirport', end: 'EAIPAirport', point) -> float:
+        """
+        计算点到大圆航线的距离（度）
+        
+        参数：
+            start: 起点
+            end: 终点
+            point: 待计算点
+        
+        返回：
+            距离（度）
+        """
+        lat1, lon1 = start.latitude, start.longitude
+        lat2, lon2 = end.latitude, end.longitude
+        lat3, lon3 = point.latitude, point.longitude
+        
+        d13 = self._haversine_distance(lat1, lon1, lat3, lon3)
+        d12 = self._haversine_distance(lat1, lon1, lat2, lon2)
+        d23 = self._haversine_distance(lat2, lon2, lat3, lon3)
+        
+        if d12 < 0.0001:
+            return d13
+        
+        s = (d13 + d12 + d23) / 2.0
+        area_sq = s * (s - d13) * (s - d12) * (s - d23)
+        
+        if area_sq < 0:
+            return min(d13, d23)
+        
+        height = 2.0 * math.sqrt(max(0, area_sq)) / d12
+        return height
+    
+    def _haversine_distance(self, lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+        """
+        使用haversine公式计算两点间距离（度）
+        
+        参数：
+            lat1, lon1: 点1坐标
+            lat2, lon2: 点2坐标
+        
+        返回：
+            距离（度）
+        """
+        dlat = math.radians(lat2 - lat1)
+        dlon = math.radians(lon2 - lon1)
+        
+        a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+        
+        return math.degrees(c)
+    
+    def _calculate_progress(self, start: 'EAIPAirport', end: 'EAIPAirport', point) -> float:
+        """
+        计算点在航线上的进度（0=起点，1=终点）
+        
+        参数：
+            start: 起点
+            end: 终点
+            point: 待计算点
+        
+        返回：
+            进度值（0-1）
+        """
+        d13 = self._haversine_distance(start.latitude, start.longitude, point.latitude, point.longitude)
+        d12 = self._haversine_distance(start.latitude, start.longitude, end.latitude, end.longitude)
+        
+        if d12 < 0.0001:
+            return 0.0
+        
+        return min(1.0, max(0.0, d13 / d12))
+    
+    def _generate_route_with_llm(self, intent: FlightIntent) -> Optional[List[str]]:
+        """
+        使用大模型生成航路点
+        
+        参数：
+            intent: 飞行意图对象
+        
+        返回：
+            航路点名称列表，失败返回None
+        """
+        if not Config.LLM_ENABLED:
+            logger.info("大模型功能已禁用")
+            return None
+        
+        try:
+            # 构建意图字典
+            intent_dict = {
+                "platform_type": intent.platform_type,
+                "mission_type": intent.mission_type.value if intent.mission_type else "",
+                "loc_start": intent.loc_start,
+                "loc_mid": intent.loc_mid or "",
+                "loc_end": intent.loc_end or ""
+            }
+            
+            # 生成提示词
+            prompt = self.llm_client.generate_prompt(intent_dict)
+            logger.info("生成大模型提示词完成")
+            
+            # 调用大模型
+            result = self.llm_client.generate_route(prompt)
+            if not result:
+                logger.warning("大模型返回空结果")
+                return None
+            
+            # 验证航路点数据
+            is_valid, errors = WaypointValidator.validate(result)
+            if not is_valid:
+                logger.warning(f"航路点验证失败: {', '.join(errors)}")
+                return None
+            
+            # 提取航路点名称
+            waypoints = result.get("waypoints", [])
+            if not waypoints:
+                logger.warning("大模型返回的航路点列表为空")
+                return None
+            
+            # 构建航路点名称列表（包含起终点）
+            route_names = []
+            
+            # 添加起点
+            if intent.loc_start:
+                route_names.append(intent.loc_start)
+            
+            # 添加大模型生成的中间航路点
+            for wp in waypoints:
+                name = wp.get("name")
+                if name:
+                    route_names.append(name)
+            
+            # 添加终点
+            if intent.loc_end:
+                route_names.append(intent.loc_end)
+            
+            # 去重（保持顺序）
+            route_names = self._remove_duplicates_preserve_order(route_names)
+            
+            # 验证数量
+            if len(route_names) < Config.MIN_WAYPOINTS:
+                logger.warning(f"航路点数量不足，最少需要{Config.MIN_WAYPOINTS}个")
+                return None
+            
+            # 将大模型生成的航路点添加到知识库（临时）
+            self._add_llm_waypoints_to_kb(waypoints)
+            
+            logger.info(f"大模型航路点生成成功，共{len(route_names)}个航路点")
+            return route_names
+            
+        except Exception as e:
+            logger.error(f"大模型航路点生成异常: {str(e)}")
+            return None
+    
+    def _remove_duplicates_preserve_order(self, lst: List[str]) -> List[str]:
+        """
+        移除列表中的重复项，保持顺序
+        
+        参数：
+            lst: 输入列表
+        
+        返回：
+            去重后的列表
+        """
+        seen = set()
+        result = []
+        for item in lst:
+            if item not in seen:
+                seen.add(item)
+                result.append(item)
+        return result
+    
+    def _add_llm_waypoints_to_kb(self, waypoints: List[dict]) -> None:
+        """
+        将大模型生成的航路点添加到知识库（临时存储）
+        
+        参数：
+            waypoints: 大模型返回的航路点列表
+        """
+        for wp in waypoints:
+            name = wp.get("name")
+            lon = wp.get("lon")
+            lat = wp.get("lat")
+            alt_m = wp.get("alt_m", 0)
+            
+            if name and lon is not None and lat is not None:
+                # 创建临时航路点对象
+                temp_wp = Waypoint(
+                    name=name,
+                    lon=lon,
+                    lat=lat,
+                    alt_m=alt_m,
+                    description=wp.get("description", "")
+                )
+                # 添加到知识库（临时覆盖）
+                self.kb.waypoints[name] = temp_wp
+                logger.debug(f"添加临时航路点: {name} ({lon:.4f}, {lat:.4f})")
+    
     def _resolve_waypoints(self, route: List[str]) -> Optional[List[Waypoint]]:
         """
         将航路点名称列表转换为Waypoint对象列表
-        
+
         参数：
             route: 航路点名称列表
-        
+
         返回：
             Waypoint对象列表
         """
         waypoints = []
         for name in route:
-            wp = self.kb.get_waypoint(name)
+            wp = self._get_waypoint_from_eaip_or_kb(name)
             if wp:
                 waypoints.append(wp)
             else:
                 logger.warning(f"无法解析航路点: {name}")
         return waypoints if waypoints else None
+    
+    def _get_waypoint_from_eaip_or_kb(self, name: str) -> Optional[Waypoint]:
+        """
+        从EAIP或知识库获取航路点
+
+        参数：
+            name: 航路点名称
+
+        返回：
+            Waypoint对象，失败返回None
+        """
+        eaip_wp = self.eaip_loader.get_waypoint(name)
+        if eaip_wp:
+            return Waypoint(
+                name=eaip_wp.name,
+                lon=eaip_wp.longitude,
+                lat=eaip_wp.latitude,
+                alt_m=0.0
+            )
+        
+        return self.kb.get_waypoint(name)
     
     def _calculate_total_distance(self, waypoints: List[Waypoint]) -> float:
         """
