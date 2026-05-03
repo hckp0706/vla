@@ -1,0 +1,79 @@
+{
+  "radars": [
+    {
+      "radar_id": "RADAR_01",
+      "name": "青岛雷达",
+      "location": [120.38, 36.07],
+      "height": 100,
+      "max_range": 500,
+      "beam_width": 4.5,
+      "scan_period": 10,
+      "tactical_role": "远程对空警戒",
+      "frequency_band": "L",
+      "transmit_power_kw": 500,
+      "antenna_gain_db": 35,
+      "noise_figure_db": 3,
+      "system_loss_db": 10
+    },
+    {
+      "radar_id": "RADAR_02",
+      "name": "上海雷达",
+      "location": [121.47, 31.23],
+      "height": 50,
+      "max_range": 400,
+      "beam_width": 2.0,
+      "scan_period": 6,
+      "tactical_role": "精密引导测高三坐标雷达",
+      "frequency_band": "S",
+      "transmit_power_kw": 200,
+      "antenna_gain_db": 38,
+      "noise_figure_db": 2,
+      "system_loss_db": 8
+    },
+    {
+      "radar_id": "RADAR_03",
+      "name": "宁波雷达",
+      "location": [121.54, 29.86],
+      "height": 30,
+      "max_range": 350,
+      "beam_width": 1.5,
+      "scan_period": 4,
+      "tactical_role": "近海低空补盲快扫雷达",
+      "frequency_band": "C",
+      "transmit_power_kw": 100,
+      "antenna_gain_db": 40,
+      "noise_figure_db": 2,
+      "system_loss_db": 6
+    },
+    {
+      "radar_id": "RADAR_04",
+      "name": "南京雷达",
+      "location": [118.78, 32.06],
+      "height": 80,
+      "max_range": 450,
+      "beam_width": 3.0,
+      "scan_period": 8,
+      "tactical_role": "内陆纵深节点",
+      "frequency_band": "L",
+      "transmit_power_kw": 400,
+      "antenna_gain_db": 36,
+      "noise_figure_db": 3,
+      "system_loss_db": 9
+    },
+    {
+      "radar_id": "RADAR_05",
+      "name": "合肥雷达",
+      "location": [117.27, 31.86],
+      "height": 50,
+      "max_range": 400,
+      "beam_width": 2.0,
+      "scan_period": 6,
+      "tactical_role": "二线拦截引导雷达",
+      "frequency_band": "S",
+      "transmit_power_kw": 250,
+      "antenna_gain_db": 37,
+      "noise_figure_db": 2.5,
+      "system_loss_db": 8
+    }
+  ]
+}

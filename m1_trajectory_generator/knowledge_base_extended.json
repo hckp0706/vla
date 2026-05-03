@@ -1,0 +1,343 @@
+{
+  "aircraft_types": {
+    "civilian": [
+      {
+        "id": "BOEING_737",
+        "name": "波音737",
+        "type": "民航客机",
+        "max_speed_ms": 250,
+        "cruise_speed_ms": 230,
+        "max_altitude_m": 12500,
+        "cruise_altitude_m": 10000,
+        "rcs_dbsm": 13,
+        "missions": ["民航运输", "货物运输", "包机飞行"]
+      },
+      {
+        "id": "BOEING_747",
+        "name": "波音747",
+        "type": "民航客机",
+        "max_speed_ms": 280,
+        "cruise_speed_ms": 250,
+        "max_altitude_m": 13000,
+        "cruise_altitude_m": 11000,
+        "rcs_dbsm": 20,
+        "missions": ["民航运输", "货物运输"]
+      },
+      {
+        "id": "AIRBUS_A320",
+        "name": "空客A320",
+        "type": "民航客机",
+        "max_speed_ms": 240,
+        "cruise_speed_ms": 220,
+        "max_altitude_m": 12000,
+        "cruise_altitude_m": 10000,
+        "rcs_dbsm": 12,
+        "missions": ["民航运输", "货物运输", "包机飞行"]
+      },
+      {
+        "id": "AIRBUS_A350",
+        "name": "空客A350",
+        "type": "民航客机",
+        "max_speed_ms": 270,
+        "cruise_speed_ms": 240,
+        "max_altitude_m": 13000,
+        "cruise_altitude_m": 11000,
+        "rcs_dbsm": 18,
+        "missions": ["民航运输", "国际航班"]
+      },
+      {
+        "id": "CARGO_GENERIC",
+        "name": "货机",
+        "type": "货机",
+        "max_speed_ms": 250,
+        "cruise_speed_ms": 220,
+        "max_altitude_m": 12000,
+        "cruise_altitude_m": 10000,
+        "rcs_dbsm": 15,
+        "missions": ["货物运输", "快递运输"]
+      }
+    ],
+    "military": [
+      {
+        "id": "FIGHTER_JET",
+        "name": "战斗机",
+        "type": "军机",
+        "max_speed_ms": 700,
+        "cruise_speed_ms": 300,
+        "max_altitude_m": 18000,
+        "cruise_altitude_m": 10000,
+        "rcs_dbsm": 0,
+        "missions": ["侦察", "训练", "演习", "巡逻", "拦截"]
+      },
+      {
+        "id": "BOMBER",
+        "name": "轰炸机",
+        "type": "军机",
+        "max_speed_ms": 350,
+        "cruise_speed_ms": 280,
+        "max_altitude_m": 15000,
+        "cruise_altitude_m": 12000,
+        "rcs_dbsm": 15,
+        "missions": ["训练", "演习", "巡逻"]
+      },
+      {
+        "id": "RECONNAISSANCE",
+        "name": "侦察机",
+        "type": "军机",
+        "max_speed_ms": 300,
+        "cruise_speed_ms": 250,
+        "max_altitude_m": 20000,
+        "cruise_altitude_m": 15000,
+        "rcs_dbsm": 5,
+        "missions": ["侦察", "巡逻", "监视"]
+      },
+      {
+        "id": "TRANSPORT_MILITARY",
+        "name": "军用运输机",
+        "type": "军机",
+        "max_speed_ms": 280,
+        "cruise_speed_ms": 240,
+        "max_altitude_m": 12000,
+        "cruise_altitude_m": 10000,
+        "rcs_dbsm": 18,
+        "missions": ["训练", "演习", "物资运输"]
+      },
+      {
+        "id": "HELICOPTER",
+        "name": "直升机",
+        "type": "军机",
+        "max_speed_ms": 100,
+        "cruise_speed_ms": 80,
+        "max_altitude_m": 6000,
+        "cruise_altitude_m": 3000,
+        "rcs_dbsm": 8,
+        "missions": ["训练", "演习", "巡逻", "搜救"]
+      }
+    ]
+  },
+  "airports": [
+    {
+      "id": "ZBAA",
+      "name": "北京首都国际机场",
+      "city": "北京",
+      "lon": 116.585,
+      "lat": 40.072,
+      "alt_m": 35,
+      "type": "民用"
+    },
+    {
+      "id": "ZBAD",
+      "name": "北京大兴国际机场",
+      "city": "北京",
+      "lon": 116.594,
+      "lat": 39.509,
+      "alt_m": 25,
+      "type": "民用"
+    },
+    {
+      "id": "ZSPD",
+      "name": "上海浦东国际机场",
+      "city": "上海",
+      "lon": 121.81,
+      "lat": 31.14,
+      "alt_m": 4,
+      "type": "民用"
+    },
+    {
+      "id": "ZSSS",
+      "name": "上海虹桥国际机场",
+      "city": "上海",
+      "lon": 121.34,
+      "lat": 31.20,
+      "alt_m": 3,
+      "type": "民用"
+    },
+    {
+      "id": "ZSNJ",
+      "name": "南京禄口国际机场",
+      "city": "南京",
+      "lon": 118.87,
+      "lat": 31.74,
+      "alt_m": 15,
+      "type": "民用"
+    },
+    {
+      "id": "ZSNB",
+      "name": "宁波栎社国际机场",
+      "city": "宁波",
+      "lon": 121.46,
+      "lat": 29.83,
+      "alt_m": 4,
+      "type": "民用"
+    },
+    {
+      "id": "ZSFZ",
+      "name": "福州长乐国际机场",
+      "city": "福州",
+      "lon": 119.66,
+      "lat": 25.93,
+      "alt_m": 12,
+      "type": "民用"
+    },
+    {
+      "id": "ZSHC",
+      "name": "杭州萧山国际机场",
+      "city": "杭州",
+      "lon": 120.43,
+      "lat": 30.23,
+      "alt_m": 7,
+      "type": "民用"
+    },
+    {
+      "id": "ZSQD",
+      "name": "青岛流亭国际机场",
+      "city": "青岛",
+      "lon": 120.37,
+      "lat": 36.27,
+      "alt_m": 12,
+      "type": "民用"
+    },
+    {
+      "id": "ZSJN",
+      "name": "济南遥墙国际机场",
+      "city": "济南",
+      "lon": 117.22,
+      "lat": 36.86,
+      "alt_m": 23,
+      "type": "民用"
+    },
+    {
+      "id": "ZBTJ",
+      "name": "天津滨海国际机场",
+      "city": "天津",
+      "lon": 117.35,
+      "lat": 39.12,
+      "alt_m": 3,
+      "type": "民用"
+    },
+    {
+      "id": "ZSSS_MILITARY",
+      "name": "上海虹桥军用机场",
+      "city": "上海",
+      "lon": 121.34,
+      "lat": 31.20,
+      "alt_m": 3,
+      "type": "军用"
+    }
+  ],
+  "waypoints": [
+    {
+      "id": "NIXUL",
+      "name": "NIXUL导航点",
+      "lon": 121.50,
+      "lat": 31.00,
+      "type": "导航点"
+    },
+    {
+      "id": "DUMET",
+      "name": "DUMET导航点",
+      "lon": 122.00,
+      "lat": 30.50,
+      "type": "导航点"
+    },
+    {
+      "id": "PIKAS",
+      "name": "PIKAS导航点",
+      "lon": 120.50,
+      "lat": 32.00,
+      "type": "导航点"
+    },
+    {
+      "id": "TOLIM",
+      "name": "TOLIM导航点",
+      "lon": 119.50,
+      "lat": 33.00,
+      "type": "导航点"
+    },
+    {
+      "id": "ADIZ_ENTRY_1",
+      "name": "东海防空识别区入口1",
+      "lon": 125.00,
+      "lat": 32.00,
+      "type": "防空识别区边界点"
+    },
+    {
+      "id": "ADIZ_ENTRY_2",
+      "name": "东海防空识别区入口2",
+      "lon": 126.00,
+      "lat": 30.00,
+      "type": "防空识别区边界点"
+    }
+  ],
+  "mission_types": {
+    "civilian": [
+      {
+        "id": "CIVIL_TRANSPORT",
+        "name": "民航运输",
+        "description": "常规民航客运航班"
+      },
+      {
+        "id": "CARGO_TRANSPORT",
+        "name": "货物运输",
+        "description": "货运航班"
+      },
+      {
+        "id": "CHARTER_FLIGHT",
+        "name": "包机飞行",
+        "description": "包机服务"
+      },
+      {
+        "id": "INTERNATIONAL_FLIGHT",
+        "name": "国际航班",
+        "description": "国际航线航班"
+      },
+      {
+        "id": "EXPRESS_DELIVERY",
+        "name": "快递运输",
+        "description": "快递货运航班"
+      }
+    ],
+    "military": [
+      {
+        "id": "RECONNAISSANCE",
+        "name": "侦察",
+        "description": "侦察任务"
+      },
+      {
+        "id": "TRAINING",
+        "name": "训练",
+        "description": "日常训练飞行"
+      },
+      {
+        "id": "EXERCISE",
+        "name": "演习",
+        "description": "军事演习"
+      },
+      {
+        "id": "PATROL",
+        "name": "巡逻",
+        "description": "巡逻任务"
+      },
+      {
+        "id": "INTERCEPT",
+        "name": "拦截",
+        "description": "拦截任务"
+      },
+      {
+        "id": "SURVEILLANCE",
+        "name": "监视",
+        "description": "监视任务"
+      },
+      {
+        "id": "SEARCH_RESCUE",
+        "name": "搜救",
+        "description": "搜索救援任务"
+      },
+      {
+        "id": "MILITARY_TRANSPORT",
+        "name": "物资运输",
+        "description": "军用物资运输"
+      }
+    ]
+  }
+}

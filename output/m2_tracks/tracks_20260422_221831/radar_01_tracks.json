@@ -1,0 +1,5225 @@
+{
+  "frame_time": "2026-04-22T22:18:31.199148Z",
+  "network_tracks": [
+    {
+      "time": "2026-04-22T22:19:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.83530965456913,
+      "obs_lat": 38.05617922882799,
+      "obs_alt_m": 9999.993197769572,
+      "obs_speed_ms": 239.9987052920259,
+      "obs_heading_deg": 112.43855439730818,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.79005156838423
+    },
+    {
+      "time": "2026-04-22T22:19:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.86042994060186,
+      "obs_lat": 38.04761579781711,
+      "obs_alt_m": 10000.025311416557,
+      "obs_speed_ms": 240.0066274837876,
+      "obs_heading_deg": 112.44926818233623,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.90193885592174
+    },
+    {
+      "time": "2026-04-22T22:19:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.88553671029999,
+      "obs_lat": 38.03907761626999,
+      "obs_alt_m": 9999.928562618881,
+      "obs_speed_ms": 240.00137449761274,
+      "obs_heading_deg": 112.36669956673956,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.0145138464866
+    },
+    {
+      "time": "2026-04-22T22:19:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.91064612618166,
+      "obs_lat": 38.03051155611942,
+      "obs_alt_m": 10000.08674061792,
+      "obs_speed_ms": 239.99674982675032,
+      "obs_heading_deg": 112.35489906159546,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.12778867757626
+    },
+    {
+      "time": "2026-04-22T22:19:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.93575859709259,
+      "obs_lat": 38.02195407224702,
+      "obs_alt_m": 10000.066499034385,
+      "obs_speed_ms": 240.00591664317545,
+      "obs_heading_deg": 112.38024186995219,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.24177023392502
+    },
+    {
+      "time": "2026-04-22T22:19:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.9608374492229,
+      "obs_lat": 38.013385516781405,
+      "obs_alt_m": 10000.01225445788,
+      "obs_speed_ms": 239.9868000704906,
+      "obs_heading_deg": 112.49019589184708,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.05646119363058
+    },
+    {
+      "time": "2026-04-22T22:20:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.98592795435978,
+      "obs_lat": 38.00481892499775,
+      "obs_alt_m": 10000.096780271644,
+      "obs_speed_ms": 239.99911672161278,
+      "obs_heading_deg": 112.31763074092888,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.37188020342612
+    },
+    {
+      "time": "2026-04-22T22:20:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.98886446995814,
+      "obs_lat": 37.996488317581914,
+      "obs_alt_m": 10000.040626405676,
+      "obs_speed_ms": 239.9966512194104,
+      "obs_heading_deg": 248.23267906829628,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.50149188086712
+    },
+    {
+      "time": "2026-04-22T22:20:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.96350361713039,
+      "obs_lat": 37.98844813632806,
+      "obs_alt_m": 9999.911168359595,
+      "obs_speed_ms": 239.99006286164442,
+      "obs_heading_deg": 248.2620545068423,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.52071275436325
+    },
+    {
+      "time": "2026-04-22T22:20:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.93813347605777,
+      "obs_lat": 37.98041071769363,
+      "obs_alt_m": 10000.001284264092,
+      "obs_speed_ms": 240.00355041870222,
+      "obs_heading_deg": 248.1123002582087,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.33991991647588
+    },
+    {
+      "time": "2026-04-22T22:20:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.91278912669134,
+      "obs_lat": 37.9723802908102,
+      "obs_alt_m": 9999.957887681898,
+      "obs_speed_ms": 240.00529059916758,
+      "obs_heading_deg": 248.15710918455008,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.25911292634407
+    },
+    {
+      "time": "2026-04-22T22:20:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.88741708049545,
+      "obs_lat": 37.96432556269183,
+      "obs_alt_m": 10000.133428529049,
+      "obs_speed_ms": 240.00630745475794,
+      "obs_heading_deg": 248.21335177200615,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.17830560649324
+    },
+    {
+      "time": "2026-04-22T22:21:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.8620614532738,
+      "obs_lat": 37.956270340103536,
+      "obs_alt_m": 9999.956147685247,
+      "obs_speed_ms": 239.9974818928013,
+      "obs_heading_deg": 248.29090194905612,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.09750663265265
+    },
+    {
+      "time": "2026-04-22T22:21:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.83673025658868,
+      "obs_lat": 37.94821631454075,
+      "obs_alt_m": 10000.039449199154,
+      "obs_speed_ms": 240.00379322720613,
+      "obs_heading_deg": 248.15794317359797,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.01671770692502
+    },
+    {
+      "time": "2026-04-22T22:21:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.81140946710714,
+      "obs_lat": 37.94015516878425,
+      "obs_alt_m": 10000.056148979844,
+      "obs_speed_ms": 240.00861217911392,
+      "obs_heading_deg": 248.21807344894864,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.93594726037443
+    },
+    {
+      "time": "2026-04-22T22:21:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.78607359525799,
+      "obs_lat": 37.93208012412842,
+      "obs_alt_m": 9999.952982805427,
+      "obs_speed_ms": 239.9968302576827,
+      "obs_heading_deg": 248.0313418129228,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.85520794764693
+    },
+    {
+      "time": "2026-04-22T22:21:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.76075206768911,
+      "obs_lat": 37.92400753363636,
+      "obs_alt_m": 9999.842795362792,
+      "obs_speed_ms": 239.99618619341226,
+      "obs_heading_deg": 248.30394109489828,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.77449647606707
+    },
+    {
+      "time": "2026-04-22T22:55:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.38990013152632,
+      "obs_lat": 36.734752139180905,
+      "obs_alt_m": 10000.040073239372,
+      "obs_speed_ms": 239.99427800340672,
+      "obs_heading_deg": 97.11215787024192,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.8570338892352
+    },
+    {
+      "time": "2026-04-22T22:55:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.41644701373315,
+      "obs_lat": 36.731512584786145,
+      "obs_alt_m": 10000.034353392897,
+      "obs_speed_ms": 240.00533065597244,
+      "obs_heading_deg": 97.01109466934287,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.9721881765368
+    },
+    {
+      "time": "2026-04-22T22:55:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.44302772699162,
+      "obs_lat": 36.72828090420984,
+      "obs_alt_m": 10000.070169935423,
+      "obs_speed_ms": 239.99428968837023,
+      "obs_heading_deg": 97.192211717608,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.08810040591953
+    },
+    {
+      "time": "2026-04-22T22:55:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.46958548809057,
+      "obs_lat": 36.72504761216093,
+      "obs_alt_m": 10000.090498047115,
+      "obs_speed_ms": 239.99565696912907,
+      "obs_heading_deg": 97.14060268093905,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.20478859632783
+    },
+    {
+      "time": "2026-04-22T22:55:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.49615216479782,
+      "obs_lat": 36.72180350923879,
+      "obs_alt_m": 10000.144446668559,
+      "obs_speed_ms": 240.00080030932952,
+      "obs_heading_deg": 97.10874430075467,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.32225595930086
+    },
+    {
+      "time": "2026-04-22T22:55:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.52270689162395,
+      "obs_lat": 36.71853963002863,
+      "obs_alt_m": 9999.938380952228,
+      "obs_speed_ms": 239.9940160423768,
+      "obs_heading_deg": 97.07871440356645,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.44051594040764
+    },
+    {
+      "time": "2026-04-22T22:56:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.54927065061713,
+      "obs_lat": 36.71527480175344,
+      "obs_alt_m": 10000.081894475103,
+      "obs_speed_ms": 239.99507367349128,
+      "obs_heading_deg": 97.06121425446963,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.5595764052576
+    },
+    {
+      "time": "2026-04-22T22:56:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.5758213497145,
+      "obs_lat": 36.712017002563634,
+      "obs_alt_m": 9999.987409642717,
+      "obs_speed_ms": 239.99924020775575,
+      "obs_heading_deg": 97.06364930444313,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.67945570803013
+    },
+    {
+      "time": "2026-04-22T22:56:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.6023777791203,
+      "obs_lat": 36.708748567971554,
+      "obs_alt_m": 9999.90998580605,
+      "obs_speed_ms": 240.0019395885411,
+      "obs_heading_deg": 97.14609507634991,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.80015700012999
+    },
+    {
+      "time": "2026-04-22T22:56:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.62892761888149,
+      "obs_lat": 36.70547453531123,
+      "obs_alt_m": 10000.000367619428,
+      "obs_speed_ms": 240.00042303352961,
+      "obs_heading_deg": 97.01965789467405,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.92169619002212
+    },
+    {
+      "time": "2026-04-22T22:56:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.6554823224075,
+      "obs_lat": 36.70218423332644,
+      "obs_alt_m": 10000.089098227918,
+      "obs_speed_ms": 239.9939532296118,
+      "obs_heading_deg": 97.26225582970093,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.0440804876602
+    },
+    {
+      "time": "2026-04-22T22:56:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.68202053575958,
+      "obs_lat": 36.698903028533465,
+      "obs_alt_m": 10000.004501481739,
+      "obs_speed_ms": 239.9980854269249,
+      "obs_heading_deg": 97.0483591137474,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.1673309144022
+    },
+    {
+      "time": "2026-04-22T22:57:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.70856261468607,
+      "obs_lat": 36.695598900689546,
+      "obs_alt_m": 9999.94467070223,
+      "obs_speed_ms": 240.00778517495786,
+      "obs_heading_deg": 97.19792312312792,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.2914506188472
+    },
+    {
+      "time": "2026-04-22T22:57:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.73509295451696,
+      "obs_lat": 36.69230989022316,
+      "obs_alt_m": 9999.955428397005,
+      "obs_speed_ms": 240.00286871941225,
+      "obs_heading_deg": 97.20938889350919,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.41645663883105
+    },
+    {
+      "time": "2026-04-22T22:57:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.76163727154177,
+      "obs_lat": 36.68899375138647,
+      "obs_alt_m": 9999.944840568278,
+      "obs_speed_ms": 239.9916829773769,
+      "obs_heading_deg": 97.07386195666328,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.5423617503901
+    },
+    {
+      "time": "2026-04-22T22:57:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.78817399256485,
+      "obs_lat": 36.685679789731616,
+      "obs_alt_m": 9999.97266763661,
+      "obs_speed_ms": 239.99392044340954,
+      "obs_heading_deg": 97.13513558077713,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.66917351053388
+    },
+    {
+      "time": "2026-04-22T22:57:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.81471124547747,
+      "obs_lat": 36.68236073413808,
+      "obs_alt_m": 9999.857269870894,
+      "obs_speed_ms": 239.9975421722337,
+      "obs_heading_deg": 97.08614479844776,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.79691147991338
+    },
+    {
+      "time": "2026-04-22T22:57:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.8412332840769,
+      "obs_lat": 36.679047285885666,
+      "obs_alt_m": 10000.098853209078,
+      "obs_speed_ms": 240.01153082160488,
+      "obs_heading_deg": 97.21679487229481,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.9255884979059
+    },
+    {
+      "time": "2026-04-22T22:58:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.86777536028751,
+      "obs_lat": 36.675709871946275,
+      "obs_alt_m": 9999.997420527925,
+      "obs_speed_ms": 240.00150954493188,
+      "obs_heading_deg": 97.07851634785271,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.05521287560487
+    },
+    {
+      "time": "2026-04-22T22:58:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.89429608230014,
+      "obs_lat": 36.67237065119319,
+      "obs_alt_m": 9999.933166750594,
+      "obs_speed_ms": 239.98935706140162,
+      "obs_heading_deg": 97.10391501656196,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.18580439698584
+    },
+    {
+      "time": "2026-04-22T22:58:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.9208308898238,
+      "obs_lat": 36.66903435102155,
+      "obs_alt_m": 9999.985622545857,
+      "obs_speed_ms": 240.00081468955406,
+      "obs_heading_deg": 97.09405187754693,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.31737762863662
+    },
+    {
+      "time": "2026-04-22T22:58:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.94735041115491,
+      "obs_lat": 36.66567500015323,
+      "obs_alt_m": 9999.946836395113,
+      "obs_speed_ms": 239.99709625413698,
+      "obs_heading_deg": 97.07217031039146,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.44994831535362
+    },
+    {
+      "time": "2026-04-22T22:58:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 116.9738646032343,
+      "obs_lat": 36.66232903026622,
+      "obs_alt_m": 9999.98398482436,
+      "obs_speed_ms": 240.00989272859852,
+      "obs_heading_deg": 97.0452186867664,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.58352506158667
+    },
+    {
+      "time": "2026-04-22T22:58:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.00039090609376,
+      "obs_lat": 36.658972192316284,
+      "obs_alt_m": 9999.843999140588,
+      "obs_speed_ms": 239.99123721111724,
+      "obs_heading_deg": 97.07976082980969,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.7181291682776
+    },
+    {
+      "time": "2026-04-22T22:59:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.02689508429833,
+      "obs_lat": 36.65560633075531,
+      "obs_alt_m": 9999.920657000423,
+      "obs_speed_ms": 240.00512237032234,
+      "obs_heading_deg": 97.0758445074953,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.85377571369364
+    },
+    {
+      "time": "2026-04-22T22:59:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.05339638657492,
+      "obs_lat": 36.6522368963742,
+      "obs_alt_m": 9999.911858081265,
+      "obs_speed_ms": 239.99397751926156,
+      "obs_heading_deg": 97.07696445611816,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.99047769439136
+    },
+    {
+      "time": "2026-04-22T22:59:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.07991945728392,
+      "obs_lat": 36.648858100159806,
+      "obs_alt_m": 10000.04459136092,
+      "obs_speed_ms": 240.00255551831142,
+      "obs_heading_deg": 97.01166119001422,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.12825594057705
+    },
+    {
+      "time": "2026-04-22T22:59:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.10642492028424,
+      "obs_lat": 36.64547493753469,
+      "obs_alt_m": 9999.846201994991,
+      "obs_speed_ms": 240.0104252386199,
+      "obs_heading_deg": 97.11354707288498,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.26712665858355
+    },
+    {
+      "time": "2026-04-22T22:59:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.13292191057987,
+      "obs_lat": 36.642083685413056,
+      "obs_alt_m": 9999.976823887579,
+      "obs_speed_ms": 239.99999730648048,
+      "obs_heading_deg": 97.19027381929376,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.4071091534385
+    },
+    {
+      "time": "2026-04-22T22:59:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.15944315946537,
+      "obs_lat": 36.63867958471105,
+      "obs_alt_m": 10000.024957057984,
+      "obs_speed_ms": 240.00129952024417,
+      "obs_heading_deg": 97.1575662952166,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.5482143283844
+    },
+    {
+      "time": "2026-04-22T23:00:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.18593995575114,
+      "obs_lat": 36.63528675836362,
+      "obs_alt_m": 10000.04812636246,
+      "obs_speed_ms": 239.9897261107695,
+      "obs_heading_deg": 97.07466916019314,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.6904613307417
+    },
+    {
+      "time": "2026-04-22T23:00:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.21243664048502,
+      "obs_lat": 36.631868365999686,
+      "obs_alt_m": 9999.912021009211,
+      "obs_speed_ms": 239.9988258850788,
+      "obs_heading_deg": 97.132497303269,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.83388042074753
+    },
+    {
+      "time": "2026-04-22T23:00:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.23893661550713,
+      "obs_lat": 36.628468997507,
+      "obs_alt_m": 9999.795553665886,
+      "obs_speed_ms": 240.00173436975945,
+      "obs_heading_deg": 97.02038692018652,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.97847843961802
+    },
+    {
+      "time": "2026-04-22T23:00:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.26543130010461,
+      "obs_lat": 36.62504540408308,
+      "obs_alt_m": 10000.014818601125,
+      "obs_speed_ms": 239.99752485152518,
+      "obs_heading_deg": 97.14648688176631,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.1242803991126
+    },
+    {
+      "time": "2026-04-22T23:00:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.29192193991932,
+      "obs_lat": 36.62162384130279,
+      "obs_alt_m": 10000.12259416991,
+      "obs_speed_ms": 239.99283449276172,
+      "obs_heading_deg": 97.16762763905412,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.2713030242067
+    },
+    {
+      "time": "2026-04-22T23:00:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.31842032745114,
+      "obs_lat": 36.61818574953802,
+      "obs_alt_m": 9999.951991682188,
+      "obs_speed_ms": 239.9956064753928,
+      "obs_heading_deg": 97.1688784344401,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.41957150682464
+    },
+    {
+      "time": "2026-04-22T23:01:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.34491105530273,
+      "obs_lat": 36.614748281596576,
+      "obs_alt_m": 9999.97667494453,
+      "obs_speed_ms": 240.0087376092161,
+      "obs_heading_deg": 97.06336866614662,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.56910716026064
+    },
+    {
+      "time": "2026-04-22T23:01:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.37138899108612,
+      "obs_lat": 36.611311746497236,
+      "obs_alt_m": 10000.03185781122,
+      "obs_speed_ms": 239.99957116470517,
+      "obs_heading_deg": 97.08301180592426,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.719925259096
+    },
+    {
+      "time": "2026-04-22T23:01:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.39787335589014,
+      "obs_lat": 36.60787310418133,
+      "obs_alt_m": 10000.142443180619,
+      "obs_speed_ms": 239.9916941812107,
+      "obs_heading_deg": 97.09952942020176,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.87205571682836
+    },
+    {
+      "time": "2026-04-22T23:01:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.4243578407102,
+      "obs_lat": 36.604406117049145,
+      "obs_alt_m": 9999.984976857939,
+      "obs_speed_ms": 239.9962500201374,
+      "obs_heading_deg": 97.03009298728188,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.025519542042
+    },
+    {
+      "time": "2026-04-22T23:01:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.45083393851442,
+      "obs_lat": 36.60095494917048,
+      "obs_alt_m": 9999.945087643451,
+      "obs_speed_ms": 239.9903366285024,
+      "obs_heading_deg": 97.04724031315723,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.18033562595198
+    },
+    {
+      "time": "2026-04-22T23:01:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.47731061211805,
+      "obs_lat": 36.59747229100944,
+      "obs_alt_m": 10000.09599075193,
+      "obs_speed_ms": 239.99579670383088,
+      "obs_heading_deg": 97.02470945357449,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.336533864786
+    },
+    {
+      "time": "2026-04-22T23:02:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.50377926261847,
+      "obs_lat": 36.59400303551213,
+      "obs_alt_m": 10000.050605831453,
+      "obs_speed_ms": 240.0112431952482,
+      "obs_heading_deg": 97.1353280458486,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.49413917112457
+    },
+    {
+      "time": "2026-04-22T23:02:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.53024508450548,
+      "obs_lat": 36.590524455490936,
+      "obs_alt_m": 9999.933373127806,
+      "obs_speed_ms": 239.99412688993698,
+      "obs_heading_deg": 97.0144421120286,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.6531712408995
+    },
+    {
+      "time": "2026-04-22T23:02:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.55672563038468,
+      "obs_lat": 36.58705271781849,
+      "obs_alt_m": 9999.950731615014,
+      "obs_speed_ms": 239.99699073107527,
+      "obs_heading_deg": 97.1561275077186,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.81366107051187
+    },
+    {
+      "time": "2026-04-22T23:02:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.58318411947909,
+      "obs_lat": 36.58356405913598,
+      "obs_alt_m": 10000.070202678815,
+      "obs_speed_ms": 240.0014405220314,
+      "obs_heading_deg": 97.16944301227568,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.9756318283931
+    },
+    {
+      "time": "2026-04-22T23:02:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.60966329719446,
+      "obs_lat": 36.580065993089484,
+      "obs_alt_m": 9999.961498310951,
+      "obs_speed_ms": 239.98433725394912,
+      "obs_heading_deg": 97.08676945154525,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.13911500077182
+    },
+    {
+      "time": "2026-04-22T23:02:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.6361115694766,
+      "obs_lat": 36.576566738998395,
+      "obs_alt_m": 9999.976081922832,
+      "obs_speed_ms": 239.99943244104458,
+      "obs_heading_deg": 97.2049378477349,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.30414134821604
+    },
+    {
+      "time": "2026-04-22T23:03:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.66256532101805,
+      "obs_lat": 36.573045805854676,
+      "obs_alt_m": 10000.047191460668,
+      "obs_speed_ms": 239.98525829346278,
+      "obs_heading_deg": 97.0629996840218,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.4707318311705
+    },
+    {
+      "time": "2026-04-22T23:03:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.68903771363617,
+      "obs_lat": 36.56955354325783,
+      "obs_alt_m": 10000.140981586495,
+      "obs_speed_ms": 239.99973873172405,
+      "obs_heading_deg": 97.06534765997338,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.63892382851807
+    },
+    {
+      "time": "2026-04-22T23:03:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.71548629553499,
+      "obs_lat": 36.56602122957519,
+      "obs_alt_m": 10000.005420036943,
+      "obs_speed_ms": 240.0046513876323,
+      "obs_heading_deg": 97.11025874751044,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.80874842682726
+    },
+    {
+      "time": "2026-04-22T23:03:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.74192723618076,
+      "obs_lat": 36.56250125894137,
+      "obs_alt_m": 10000.091828550125,
+      "obs_speed_ms": 239.9963028023597,
+      "obs_heading_deg": 97.0916049809496,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.98023126650003
+    },
+    {
+      "time": "2026-04-22T23:03:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.76837567380156,
+      "obs_lat": 36.558969859242055,
+      "obs_alt_m": 10000.102218438951,
+      "obs_speed_ms": 239.9953906523129,
+      "obs_heading_deg": 97.18528722725935,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.1534103289926
+    },
+    {
+      "time": "2026-04-22T23:03:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.79484090376184,
+      "obs_lat": 36.55543178810189,
+      "obs_alt_m": 9999.949961468594,
+      "obs_speed_ms": 239.998562204023,
+      "obs_heading_deg": 97.16335784872162,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.32831543068693
+    },
+    {
+      "time": "2026-04-22T23:04:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.82128019255136,
+      "obs_lat": 36.55188969623818,
+      "obs_alt_m": 9999.971101563453,
+      "obs_speed_ms": 239.99775555969333,
+      "obs_heading_deg": 97.1167473037246,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.50498546913076
+    },
+    {
+      "time": "2026-04-22T23:04:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.84770548753185,
+      "obs_lat": 36.54833754452113,
+      "obs_alt_m": 10000.075133439024,
+      "obs_speed_ms": 240.00211008132152,
+      "obs_heading_deg": 96.97565085008898,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.68345227624553
+    },
+    {
+      "time": "2026-04-22T23:04:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.87415642325783,
+      "obs_lat": 36.54477745184475,
+      "obs_alt_m": 9999.91629700502,
+      "obs_speed_ms": 239.99938723700376,
+      "obs_heading_deg": 97.08111544197882,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.86375698411453
+    },
+    {
+      "time": "2026-04-22T23:04:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.90059758795407,
+      "obs_lat": 36.541229295642154,
+      "obs_alt_m": 9999.972529791856,
+      "obs_speed_ms": 239.99199489643186,
+      "obs_heading_deg": 97.10130566312459,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.04593909047563
+    },
+    {
+      "time": "2026-04-22T23:04:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.92703068903968,
+      "obs_lat": 36.53765455291157,
+      "obs_alt_m": 10000.018763780528,
+      "obs_speed_ms": 240.00036178706785,
+      "obs_heading_deg": 97.07687678256593,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.23003124341082
+    },
+    {
+      "time": "2026-04-22T23:04:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.95346492029734,
+      "obs_lat": 36.534088578863745,
+      "obs_alt_m": 9999.952338681705,
+      "obs_speed_ms": 240.00537094429237,
+      "obs_heading_deg": 97.05249768280306,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.41608085224803
+    },
+    {
+      "time": "2026-04-22T23:05:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 117.97989059896403,
+      "obs_lat": 36.53050527848216,
+      "obs_alt_m": 9999.948973015937,
+      "obs_speed_ms": 239.9973960768973,
+      "obs_heading_deg": 97.04933290672322,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.60412164475122
+    },
+    {
+      "time": "2026-04-22T23:05:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.00633796976993,
+      "obs_lat": 36.5269354052393,
+      "obs_alt_m": 9999.965953841318,
+      "obs_speed_ms": 240.00280747164533,
+      "obs_heading_deg": 97.05702145193062,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.7942064788803
+    },
+    {
+      "time": "2026-04-22T23:05:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.03274424265015,
+      "obs_lat": 36.523335514474994,
+      "obs_alt_m": 10000.019805212576,
+      "obs_speed_ms": 240.0104546843741,
+      "obs_heading_deg": 97.01717536466937,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.98637036077412
+    },
+    {
+      "time": "2026-04-22T23:05:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.05916235176132,
+      "obs_lat": 36.519742146543415,
+      "obs_alt_m": 9999.93661739974,
+      "obs_speed_ms": 239.99935753196772,
+      "obs_heading_deg": 97.21638062861753,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.18066788558554
+    },
+    {
+      "time": "2026-04-22T23:05:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.0855919802588,
+      "obs_lat": 36.51614013156849,
+      "obs_alt_m": 10000.02949699778,
+      "obs_speed_ms": 239.99493103911388,
+      "obs_heading_deg": 97.15390952978973,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.37714689645935
+    },
+    {
+      "time": "2026-04-22T23:05:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.11200483430235,
+      "obs_lat": 36.512532358100444,
+      "obs_alt_m": 9999.948024530939,
+      "obs_speed_ms": 240.02615346464685,
+      "obs_heading_deg": 97.15372910579353,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.57584948847952
+    },
+    {
+      "time": "2026-04-22T23:06:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.13844517804905,
+      "obs_lat": 36.50892087362747,
+      "obs_alt_m": 9999.857471535723,
+      "obs_speed_ms": 240.0085971723749,
+      "obs_heading_deg": 97.07032553890382,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.77683402092612
+    },
+    {
+      "time": "2026-04-22T23:06:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.16484202460688,
+      "obs_lat": 36.50530228702277,
+      "obs_alt_m": 10000.053897476988,
+      "obs_speed_ms": 239.9978745179217,
+      "obs_heading_deg": 97.05041710105202,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.98014440644633
+    },
+    {
+      "time": "2026-04-22T23:06:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.19124148777533,
+      "obs_lat": 36.50168412976733,
+      "obs_alt_m": 10000.050452002322,
+      "obs_speed_ms": 239.99852011662523,
+      "obs_heading_deg": 96.96310439329055,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.18583808473042
+    },
+    {
+      "time": "2026-04-22T23:06:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.2176548732902,
+      "obs_lat": 36.49806140744879,
+      "obs_alt_m": 9999.980036582196,
+      "obs_speed_ms": 240.00334640095693,
+      "obs_heading_deg": 97.12301781061183,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.39398397094763
+    },
+    {
+      "time": "2026-04-22T23:06:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.24405947716083,
+      "obs_lat": 36.49441403323139,
+      "obs_alt_m": 9999.958380683363,
+      "obs_speed_ms": 240.00245144822398,
+      "obs_heading_deg": 97.09644033246677,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.60461912308972
+    },
+    {
+      "time": "2026-04-22T23:06:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.2704623584282,
+      "obs_lat": 36.490775490504845,
+      "obs_alt_m": 10000.056229239774,
+      "obs_speed_ms": 240.0042841369301,
+      "obs_heading_deg": 97.06665533540371,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.81782757807204
+    },
+    {
+      "time": "2026-04-22T23:07:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.29687316840715,
+      "obs_lat": 36.487119267069545,
+      "obs_alt_m": 9999.9959699745,
+      "obs_speed_ms": 240.00682116746353,
+      "obs_heading_deg": 97.04065177968202,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.03365672409691
+    },
+    {
+      "time": "2026-04-22T23:07:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.32326766497212,
+      "obs_lat": 36.483460995684695,
+      "obs_alt_m": 9999.995185768972,
+      "obs_speed_ms": 239.99807679055297,
+      "obs_heading_deg": 97.11430353189753,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.2521717220501
+    },
+    {
+      "time": "2026-04-22T23:07:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.34967019701708,
+      "obs_lat": 36.47980209569035,
+      "obs_alt_m": 10000.04082465563,
+      "obs_speed_ms": 239.99415866227235,
+      "obs_heading_deg": 97.10318347551181,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.47344674268763
+    },
+    {
+      "time": "2026-04-22T23:07:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.37604680058378,
+      "obs_lat": 36.47615277700867,
+      "obs_alt_m": 10000.064916998372,
+      "obs_speed_ms": 240.00148899499754,
+      "obs_heading_deg": 97.11866754146436,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.6975455624601
+    },
+    {
+      "time": "2026-04-22T23:07:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.40244573313062,
+      "obs_lat": 36.472457311382385,
+      "obs_alt_m": 10000.049660453376,
+      "obs_speed_ms": 240.0065867890365,
+      "obs_heading_deg": 97.167529916742,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.9245511988073
+    },
+    {
+      "time": "2026-04-22T23:07:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.42884782081872,
+      "obs_lat": 36.468803990532194,
+      "obs_alt_m": 9999.913304472757,
+      "obs_speed_ms": 240.00126032692782,
+      "obs_heading_deg": 96.99807520074891,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.15453634277793
+    },
+    {
+      "time": "2026-04-22T23:08:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.4552202664061,
+      "obs_lat": 36.46512163639349,
+      "obs_alt_m": 9999.964926245615,
+      "obs_speed_ms": 239.99992687768534,
+      "obs_heading_deg": 97.12740755329251,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.38757134107226
+    },
+    {
+      "time": "2026-04-22T23:08:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.48160725618764,
+      "obs_lat": 36.4614342017315,
+      "obs_alt_m": 9999.976824221061,
+      "obs_speed_ms": 239.99905174914682,
+      "obs_heading_deg": 97.1507255551107,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.6237415934204
+    },
+    {
+      "time": "2026-04-22T23:08:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.50798724100186,
+      "obs_lat": 36.45773359303088,
+      "obs_alt_m": 9999.927102012933,
+      "obs_speed_ms": 239.9949111702583,
+      "obs_heading_deg": 97.10728718495903,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.8631394732132
+    },
+    {
+      "time": "2026-04-22T23:08:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.53435951497259,
+      "obs_lat": 36.45403312130948,
+      "obs_alt_m": 9999.894871885523,
+      "obs_speed_ms": 239.99849743948624,
+      "obs_heading_deg": 97.06957803204894,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.1058432137039
+    },
+    {
+      "time": "2026-04-22T23:08:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.56073610121727,
+      "obs_lat": 36.45033119285842,
+      "obs_alt_m": 10000.012698743642,
+      "obs_speed_ms": 240.00130059979224,
+      "obs_heading_deg": 97.11962690906613,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.35195617741815
+    },
+    {
+      "time": "2026-04-22T23:08:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.58711436328093,
+      "obs_lat": 36.44661746700182,
+      "obs_alt_m": 9999.973630188535,
+      "obs_speed_ms": 239.99875933643384,
+      "obs_heading_deg": 97.10562602887471,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.60157509634865
+    },
+    {
+      "time": "2026-04-22T23:09:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.61348087845654,
+      "obs_lat": 36.44290391836753,
+      "obs_alt_m": 9999.973377892738,
+      "obs_speed_ms": 240.00070698634337,
+      "obs_heading_deg": 97.03709489325186,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.8547914585664
+    },
+    {
+      "time": "2026-04-22T23:09:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.63985307778009,
+      "obs_lat": 36.4391688524576,
+      "obs_alt_m": 9999.980360922065,
+      "obs_speed_ms": 240.0060375993431,
+      "obs_heading_deg": 97.14844091744706,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.11171012256622
+    },
+    {
+      "time": "2026-04-22T23:09:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.66621710560986,
+      "obs_lat": 36.43545129453007,
+      "obs_alt_m": 10000.025394772614,
+      "obs_speed_ms": 239.99473373521013,
+      "obs_heading_deg": 97.18008333865339,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.37244819067246
+    },
+    {
+      "time": "2026-04-22T23:09:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.69258989352839,
+      "obs_lat": 36.43170790381656,
+      "obs_alt_m": 10000.070847258386,
+      "obs_speed_ms": 239.98759568703383,
+      "obs_heading_deg": 97.07959198052973,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.6371147164646
+    },
+    {
+      "time": "2026-04-22T23:09:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.71894250397567,
+      "obs_lat": 36.4279710726845,
+      "obs_alt_m": 9999.879140871692,
+      "obs_speed_ms": 239.99141715170896,
+      "obs_heading_deg": 97.06338586890361,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.90583510032116
+    },
+    {
+      "time": "2026-04-22T23:09:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.74530787897656,
+      "obs_lat": 36.424222211587384,
+      "obs_alt_m": 9999.984060085982,
+      "obs_speed_ms": 239.98574060396447,
+      "obs_heading_deg": 97.14012898960476,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.1787268126576
+    },
+    {
+      "time": "2026-04-22T23:10:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.77165683736582,
+      "obs_lat": 36.420471897577784,
+      "obs_alt_m": 9999.846724568251,
+      "obs_speed_ms": 239.9966002141085,
+      "obs_heading_deg": 97.11839967464816,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.45592884973004
+    },
+    {
+      "time": "2026-04-22T23:10:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.79800632094178,
+      "obs_lat": 36.4167014580108,
+      "obs_alt_m": 10000.009244710729,
+      "obs_speed_ms": 239.9894261292595,
+      "obs_heading_deg": 97.12130810025543,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.73757281955537
+    },
+    {
+      "time": "2026-04-22T23:10:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.8243580316973,
+      "obs_lat": 36.41294673346612,
+      "obs_alt_m": 9999.921527482806,
+      "obs_speed_ms": 239.9992167158501,
+      "obs_heading_deg": 97.13886613151901,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.02380861425763
+    },
+    {
+      "time": "2026-04-22T23:10:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.85071748803236,
+      "obs_lat": 36.409172955543106,
+      "obs_alt_m": 9999.958638412563,
+      "obs_speed_ms": 239.99226679848857,
+      "obs_heading_deg": 97.0864595545536,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.31478139023054
+    },
+    {
+      "time": "2026-04-22T23:10:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.87705511544185,
+      "obs_lat": 36.40539671458784,
+      "obs_alt_m": 10000.042427663237,
+      "obs_speed_ms": 239.98987170228858,
+      "obs_heading_deg": 97.07743251452321,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.61065575384615
+    },
+    {
+      "time": "2026-04-22T23:10:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.90339786454543,
+      "obs_lat": 36.40161146063406,
+      "obs_alt_m": 9999.9553772807,
+      "obs_speed_ms": 239.99519388677768,
+      "obs_heading_deg": 97.146790188327,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.91158977216344
+    },
+    {
+      "time": "2026-04-22T23:11:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.92974145727293,
+      "obs_lat": 36.39782089174436,
+      "obs_alt_m": 9999.98545730809,
+      "obs_speed_ms": 240.00018939783138,
+      "obs_heading_deg": 97.14664780062499,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.21775580051502
+    },
+    {
+      "time": "2026-04-22T23:11:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.95607338751662,
+      "obs_lat": 36.394026049311364,
+      "obs_alt_m": 10000.015703211888,
+      "obs_speed_ms": 240.01473334772578,
+      "obs_heading_deg": 97.04306727454032,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.52935448917688
+    },
+    {
+      "time": "2026-04-22T23:11:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 118.98240252937289,
+      "obs_lat": 36.39023484648639,
+      "obs_alt_m": 10000.006123546797,
+      "obs_speed_ms": 240.00361960094426,
+      "obs_heading_deg": 97.10285265011616,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.84656334905736
+    },
+    {
+      "time": "2026-04-22T23:11:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.0087407830789,
+      "obs_lat": 36.38643861538958,
+      "obs_alt_m": 9999.928413762875,
+      "obs_speed_ms": 239.9944580167893,
+      "obs_heading_deg": 97.06088812977598,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.16960123641206
+    },
+    {
+      "time": "2026-04-22T23:11:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.0350680524772,
+      "obs_lat": 36.38261581766546,
+      "obs_alt_m": 9999.92504343289,
+      "obs_speed_ms": 240.00170784534777,
+      "obs_heading_deg": 97.18983597151006,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.49867217395504
+    },
+    {
+      "time": "2026-04-22T23:11:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.06141159679201,
+      "obs_lat": 36.378796312549134,
+      "obs_alt_m": 10000.044954155093,
+      "obs_speed_ms": 240.003828873385,
+      "obs_heading_deg": 97.13375155354397,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.83401625394185
+    },
+    {
+      "time": "2026-04-22T23:12:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.0877279959815,
+      "obs_lat": 36.3749805438389,
+      "obs_alt_m": 10000.073924614755,
+      "obs_speed_ms": 239.99303481631344,
+      "obs_heading_deg": 97.17048913897273,
+      "track_quality": "LOW",
+      "snr_avg_db": 159.17585917304984
+    },
+    {
+      "time": "2026-04-22T23:12:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.11404861391038,
+      "obs_lat": 36.37115031886481,
+      "obs_alt_m": 9999.933939746734,
+      "obs_speed_ms": 239.99754586983116,
+      "obs_heading_deg": 97.00574435706432,
+      "track_quality": "LOW",
+      "snr_avg_db": 159.52446142583563
+    },
+    {
+      "time": "2026-04-22T23:12:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.14036587761055,
+      "obs_lat": 36.36731940301138,
+      "obs_alt_m": 10000.033468105654,
+      "obs_speed_ms": 239.99770656279355,
+      "obs_heading_deg": 97.08488966671165,
+      "track_quality": "LOW",
+      "snr_avg_db": 159.8800998460147
+    },
+    {
+      "time": "2026-04-22T23:12:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.16668763787926,
+      "obs_lat": 36.363478607252375,
+      "obs_alt_m": 10000.002738443107,
+      "obs_speed_ms": 239.99946834825232,
+      "obs_heading_deg": 97.02082884918134,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.24306414432817
+    },
+    {
+      "time": "2026-04-22T23:12:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.19299659830583,
+      "obs_lat": 36.3596387150426,
+      "obs_alt_m": 10000.093480346593,
+      "obs_speed_ms": 239.99596372862757,
+      "obs_heading_deg": 97.2179427388844,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.6136311967485
+    },
+    {
+      "time": "2026-04-22T23:12:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.21930880294201,
+      "obs_lat": 36.35578671585423,
+      "obs_alt_m": 9999.996511440511,
+      "obs_speed_ms": 239.99859784583717,
+      "obs_heading_deg": 97.05832000002935,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.99214732472387
+    },
+    {
+      "time": "2026-04-22T23:13:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.24562180906747,
+      "obs_lat": 36.351917394348455,
+      "obs_alt_m": 10000.012030337155,
+      "obs_speed_ms": 239.9997857339776,
+      "obs_heading_deg": 97.05877750988843,
+      "track_quality": "LOW",
+      "snr_avg_db": 161.37895979997217
+    },
+    {
+      "time": "2026-04-22T23:13:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.27193013118496,
+      "obs_lat": 36.3480645235349,
+      "obs_alt_m": 9999.933778331742,
+      "obs_speed_ms": 240.01693770885765,
+      "obs_heading_deg": 97.11640172459325,
+      "track_quality": "LOW",
+      "snr_avg_db": 161.7744240928979
+    },
+    {
+      "time": "2026-04-22T23:13:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.29823246165596,
+      "obs_lat": 36.344187420659225,
+      "obs_alt_m": 9999.968665418335,
+      "obs_speed_ms": 240.00076323124134,
+      "obs_heading_deg": 97.11517563811664,
+      "track_quality": "LOW",
+      "snr_avg_db": 162.17891909953204
+    },
+    {
+      "time": "2026-04-22T23:13:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.32452687762482,
+      "obs_lat": 36.34031115559595,
+      "obs_alt_m": 10000.157025621485,
+      "obs_speed_ms": 240.0075641592134,
+      "obs_heading_deg": 97.20851169930683,
+      "track_quality": "LOW",
+      "snr_avg_db": 162.5928874956074
+    },
+    {
+      "time": "2026-04-22T23:13:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.35083251437474,
+      "obs_lat": 36.33643812896811,
+      "obs_alt_m": 10000.00120137253,
+      "obs_speed_ms": 240.0007371861814,
+      "obs_heading_deg": 97.01675365362033,
+      "track_quality": "LOW",
+      "snr_avg_db": 163.01675623334137
+    },
+    {
+      "time": "2026-04-22T23:13:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.37712508941429,
+      "obs_lat": 36.332552763039274,
+      "obs_alt_m": 10000.017951069947,
+      "obs_speed_ms": 239.99570348111064,
+      "obs_heading_deg": 97.06504825455575,
+      "track_quality": "LOW",
+      "snr_avg_db": 163.45101405015959
+    },
+    {
+      "time": "2026-04-22T23:14:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.40342664329887,
+      "obs_lat": 36.328659899009295,
+      "obs_alt_m": 10000.072427375091,
+      "obs_speed_ms": 240.00099541885157,
+      "obs_heading_deg": 97.17304519925362,
+      "track_quality": "LOW",
+      "snr_avg_db": 163.89616089367206
+    },
+    {
+      "time": "2026-04-22T23:14:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.42971986658571,
+      "obs_lat": 36.32475964857813,
+      "obs_alt_m": 9999.989034079465,
+      "obs_speed_ms": 239.9998535307045,
+      "obs_heading_deg": 97.17904749035891,
+      "track_quality": "LOW",
+      "snr_avg_db": 164.35274601313503
+    },
+    {
+      "time": "2026-04-22T23:14:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.45600633887629,
+      "obs_lat": 36.32085170722091,
+      "obs_alt_m": 9999.964384150808,
+      "obs_speed_ms": 240.00123044115867,
+      "obs_heading_deg": 97.07777419944178,
+      "track_quality": "LOW",
+      "snr_avg_db": 164.82137292266407
+    },
+    {
+      "time": "2026-04-22T23:14:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.48229373732715,
+      "obs_lat": 36.31695050100553,
+      "obs_alt_m": 9999.995732301231,
+      "obs_speed_ms": 240.00300887637846,
+      "obs_heading_deg": 97.0934008722566,
+      "track_quality": "LOW",
+      "snr_avg_db": 165.30267097306972
+    },
+    {
+      "time": "2026-04-22T23:14:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.50857761249326,
+      "obs_lat": 36.31303319249703,
+      "obs_alt_m": 9999.970459421022,
+      "obs_speed_ms": 240.0027270649224,
+      "obs_heading_deg": 97.06656594121621,
+      "track_quality": "LOW",
+      "snr_avg_db": 165.79731769930552
+    },
+    {
+      "time": "2026-04-22T23:14:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.5348630030124,
+      "obs_lat": 36.30910872615819,
+      "obs_alt_m": 10000.029315184858,
+      "obs_speed_ms": 239.99679732592776,
+      "obs_heading_deg": 97.10074952738374,
+      "track_quality": "LOW",
+      "snr_avg_db": 166.30607946602794
+    },
+    {
+      "time": "2026-04-22T23:15:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.56113590010823,
+      "obs_lat": 36.30517666423307,
+      "obs_alt_m": 10000.019907262913,
+      "obs_speed_ms": 240.00116756547374,
+      "obs_heading_deg": 97.11306150077321,
+      "track_quality": "LOW",
+      "snr_avg_db": 166.8297430583924
+    },
+    {
+      "time": "2026-04-22T23:15:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.58741168020777,
+      "obs_lat": 36.30125264514766,
+      "obs_alt_m": 10000.046225856408,
+      "obs_speed_ms": 239.9982442013251,
+      "obs_heading_deg": 97.14648756013014,
+      "track_quality": "LOW",
+      "snr_avg_db": 167.36917575042764
+    },
+    {
+      "time": "2026-04-22T23:15:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.61368497541444,
+      "obs_lat": 36.29730492470005,
+      "obs_alt_m": 9999.901276464072,
+      "obs_speed_ms": 240.00640096231106,
+      "obs_heading_deg": 97.11827681452597,
+      "track_quality": "LOW",
+      "snr_avg_db": 167.9253585886472
+    },
+    {
+      "time": "2026-04-22T23:15:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.63995039571142,
+      "obs_lat": 36.29335985288806,
+      "obs_alt_m": 9999.990777027082,
+      "obs_speed_ms": 239.98999291983003,
+      "obs_heading_deg": 97.13246924888362,
+      "track_quality": "LOW",
+      "snr_avg_db": 168.4993154823784
+    },
+    {
+      "time": "2026-04-22T23:15:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.6662246164269,
+      "obs_lat": 36.28941592119296,
+      "obs_alt_m": 10000.051975548256,
+      "obs_speed_ms": 239.99529839447732,
+      "obs_heading_deg": 97.18169343206658,
+      "track_quality": "LOW",
+      "snr_avg_db": 169.0921388825355
+    },
+    {
+      "time": "2026-04-22T23:15:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.69248799406274,
+      "obs_lat": 36.2854545073079,
+      "obs_alt_m": 9999.928419947482,
+      "obs_speed_ms": 240.00350329312442,
+      "obs_heading_deg": 97.12374891453786,
+      "track_quality": "LOW",
+      "snr_avg_db": 169.70509914000576
+    },
+    {
+      "time": "2026-04-22T23:16:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.71876212583695,
+      "obs_lat": 36.28149315190647,
+      "obs_alt_m": 9999.994756379301,
+      "obs_speed_ms": 240.0109501028867,
+      "obs_heading_deg": 97.08014787161461,
+      "track_quality": "LOW",
+      "snr_avg_db": 170.3395414245169
+    },
+    {
+      "time": "2026-04-22T23:16:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.74500769835956,
+      "obs_lat": 36.27752927817086,
+      "obs_alt_m": 10000.072005499482,
+      "obs_speed_ms": 239.99747588103875,
+      "obs_heading_deg": 97.0702996234879,
+      "track_quality": "LOW",
+      "snr_avg_db": 170.9969609354182
+    },
+    {
+      "time": "2026-04-22T23:16:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.7712605717067,
+      "obs_lat": 36.273560981290125,
+      "obs_alt_m": 9999.921408818387,
+      "obs_speed_ms": 239.99942501849245,
+      "obs_heading_deg": 97.08316767498918,
+      "track_quality": "LOW",
+      "snr_avg_db": 171.67897681292914
+    },
+    {
+      "time": "2026-04-22T23:16:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.79752114778947,
+      "obs_lat": 36.26957832048051,
+      "obs_alt_m": 10000.0232746237,
+      "obs_speed_ms": 240.00220023817823,
+      "obs_heading_deg": 97.09613407023792,
+      "track_quality": "LOW",
+      "snr_avg_db": 172.38739157958685
+    },
+    {
+      "time": "2026-04-22T23:16:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.82376889010929,
+      "obs_lat": 36.265605561524644,
+      "obs_alt_m": 10000.009993861575,
+      "obs_speed_ms": 239.9925748595163,
+      "obs_heading_deg": 97.13041522037763,
+      "track_quality": "LOW",
+      "snr_avg_db": 183.02421416415106
+    },
+    {
+      "time": "2026-04-22T23:16:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.85001983381702,
+      "obs_lat": 36.26161429840274,
+      "obs_alt_m": 10000.059028221858,
+      "obs_speed_ms": 240.0032872308514,
+      "obs_heading_deg": 97.17356802510396,
+      "track_quality": "LOW",
+      "snr_avg_db": 183.891631201841
+    },
+    {
+      "time": "2026-04-22T23:17:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.86108962005915,
+      "obs_lat": 36.243576000777566,
+      "obs_alt_m": 10000.027248729966,
+      "obs_speed_ms": 240.00989945117658,
+      "obs_heading_deg": 161.79933944011287,
+      "track_quality": "LOW",
+      "snr_avg_db": 174.39042537678756
+    },
+    {
+      "time": "2026-04-22T23:17:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.86943121679937,
+      "obs_lat": 36.22302795605038,
+      "obs_alt_m": 10000.03216234821,
+      "obs_speed_ms": 239.99928832383569,
+      "obs_heading_deg": 161.7731503244952,
+      "track_quality": "LOW",
+      "snr_avg_db": 174.93317595132737
+    },
+    {
+      "time": "2026-04-22T23:17:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.87776987841728,
+      "obs_lat": 36.202479956829464,
+      "obs_alt_m": 9999.989766487948,
+      "obs_speed_ms": 240.0021329879928,
+      "obs_heading_deg": 161.7888584044115,
+      "track_quality": "LOW",
+      "snr_avg_db": 175.26891044116584
+    },
+    {
+      "time": "2026-04-22T23:17:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.8861073566414,
+      "obs_lat": 36.18193764450798,
+      "obs_alt_m": 9999.930819037078,
+      "obs_speed_ms": 239.99958584803176,
+      "obs_heading_deg": 161.6965482852478,
+      "track_quality": "LOW",
+      "snr_avg_db": 175.69532232457428
+    },
+    {
+      "time": "2026-04-22T23:17:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.89444075016867,
+      "obs_lat": 36.16138965638093,
+      "obs_alt_m": 10000.012747636723,
+      "obs_speed_ms": 240.0071594227748,
+      "obs_heading_deg": 161.77947921171557,
+      "track_quality": "LOW",
+      "snr_avg_db": 176.10979108187004
+    },
+    {
+      "time": "2026-04-22T23:17:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.90276910577202,
+      "obs_lat": 36.14084617604791,
+      "obs_alt_m": 10000.023804424012,
+      "obs_speed_ms": 239.99437057911692,
+      "obs_heading_deg": 161.84383706071856,
+      "track_quality": "LOW",
+      "snr_avg_db": 176.5095213234108
+    },
+    {
+      "time": "2026-04-22T23:18:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.91110180471895,
+      "obs_lat": 36.12029734391389,
+      "obs_alt_m": 9999.951446613897,
+      "obs_speed_ms": 240.00427614612371,
+      "obs_heading_deg": 161.86136014472206,
+      "track_quality": "LOW",
+      "snr_avg_db": 176.89141464065597
+    },
+    {
+      "time": "2026-04-22T23:18:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.91940926004385,
+      "obs_lat": 36.099750065286614,
+      "obs_alt_m": 9999.916943297249,
+      "obs_speed_ms": 239.99350340664589,
+      "obs_heading_deg": 161.7288073411325,
+      "track_quality": "LOW",
+      "snr_avg_db": 177.2521556052521
+    },
+    {
+      "time": "2026-04-22T23:18:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.92773599538899,
+      "obs_lat": 36.079199451838925,
+      "obs_alt_m": 10000.053285716707,
+      "obs_speed_ms": 239.99977816540525,
+      "obs_heading_deg": 161.8182691997245,
+      "track_quality": "LOW",
+      "snr_avg_db": 177.58831649617488
+    },
+    {
+      "time": "2026-04-22T23:18:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.93604292748476,
+      "obs_lat": 36.05864955722992,
+      "obs_alt_m": 9999.97623099804,
+      "obs_speed_ms": 240.0097285515984,
+      "obs_heading_deg": 161.78820772277558,
+      "track_quality": "LOW",
+      "snr_avg_db": 177.8963514404252
+    },
+    {
+      "time": "2026-04-22T23:18:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.94435262162189,
+      "obs_lat": 36.03809853244211,
+      "obs_alt_m": 9999.99038215093,
+      "obs_speed_ms": 239.99114735635723,
+      "obs_heading_deg": 161.7095851953557,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.17266966098583
+    },
+    {
+      "time": "2026-04-22T23:18:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.9526492032175,
+      "obs_lat": 36.01754140809123,
+      "obs_alt_m": 9999.98647677103,
+      "obs_speed_ms": 239.99548658973129,
+      "obs_heading_deg": 161.6775985027183,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.4138541927375
+    },
+    {
+      "time": "2026-04-22T23:19:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.96095610443331,
+      "obs_lat": 35.99700512954297,
+      "obs_alt_m": 9999.99896094723,
+      "obs_speed_ms": 239.99735902937562,
+      "obs_heading_deg": 161.75468727605391,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.61667015557808
+    },
+    {
+      "time": "2026-04-22T23:19:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.96924209362814,
+      "obs_lat": 35.97644489979989,
+      "obs_alt_m": 10000.059516122403,
+      "obs_speed_ms": 239.99923120599357,
+      "obs_heading_deg": 161.7427443542642,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.7781998532919
+    },
+    {
+      "time": "2026-04-22T23:19:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.97753571276976,
+      "obs_lat": 35.95588574358623,
+      "obs_alt_m": 9999.99126578825,
+      "obs_speed_ms": 240.00778144780745,
+      "obs_heading_deg": 161.7726455422532,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.8960517295541
+    },
+    {
+      "time": "2026-04-22T23:19:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.98582093551,
+      "obs_lat": 35.93533507980226,
+      "obs_alt_m": 9999.954049784757,
+      "obs_speed_ms": 240.00202072827415,
+      "obs_heading_deg": 161.76282569401,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.96843020085984
+    },
+    {
+      "time": "2026-04-22T23:19:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 119.99410269966339,
+      "obs_lat": 35.91479066859922,
+      "obs_alt_m": 9999.99236623135,
+      "obs_speed_ms": 240.00133010086725,
+      "obs_heading_deg": 161.97874244250778,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.99416797400974
+    },
+    {
+      "time": "2026-04-22T23:19:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.00238662520277,
+      "obs_lat": 35.89422678136824,
+      "obs_alt_m": 10000.10568113517,
+      "obs_speed_ms": 240.00687824340926,
+      "obs_heading_deg": 161.75004101567336,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.9728169399632
+    },
+    {
+      "time": "2026-04-22T23:20:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.01066685125792,
+      "obs_lat": 35.873666570380166,
+      "obs_alt_m": 9999.93495597808,
+      "obs_speed_ms": 239.98809623818784,
+      "obs_heading_deg": 161.79340031190148,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.90476337670225
+    },
+    {
+      "time": "2026-04-22T23:20:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.01892879071929,
+      "obs_lat": 35.853112448190295,
+      "obs_alt_m": 9999.990480394166,
+      "obs_speed_ms": 239.997556560538,
+      "obs_heading_deg": 161.76188625134284,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.79111729025476
+    },
+    {
+      "time": "2026-04-22T23:20:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.02719416397683,
+      "obs_lat": 35.83255318699642,
+      "obs_alt_m": 10000.058998490438,
+      "obs_speed_ms": 240.00175589107428,
+      "obs_heading_deg": 161.81009376534945,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.63360302867957
+    },
+    {
+      "time": "2026-04-22T23:20:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.03544424003195,
+      "obs_lat": 35.8119993709189,
+      "obs_alt_m": 10000.055594979345,
+      "obs_speed_ms": 240.00902405963424,
+      "obs_heading_deg": 161.84160448135336,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.43462472926043
+    },
+    {
+      "time": "2026-04-22T23:20:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.04370447814756,
+      "obs_lat": 35.79145263442573,
+      "obs_alt_m": 9999.974275618699,
+      "obs_speed_ms": 240.00177507162445,
+      "obs_heading_deg": 161.78289549541938,
+      "track_quality": "LOW",
+      "snr_avg_db": 178.19705819926492
+    },
+    {
+      "time": "2026-04-22T23:20:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.05195782131288,
+      "obs_lat": 35.77088778174921,
+      "obs_alt_m": 10000.009451830603,
+      "obs_speed_ms": 240.00491149651188,
+      "obs_heading_deg": 161.804275263049,
+      "track_quality": "LOW",
+      "snr_avg_db": 177.92409011492356
+    },
+    {
+      "time": "2026-04-22T23:21:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.06020545541364,
+      "obs_lat": 35.750332259421775,
+      "obs_alt_m": 10000.03323533063,
+      "obs_speed_ms": 240.01073635966375,
+      "obs_heading_deg": 161.7535057184778,
+      "track_quality": "LOW",
+      "snr_avg_db": 177.61915891582322
+    },
+    {
+      "time": "2026-04-22T23:21:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.06844661893012,
+      "obs_lat": 35.729761545308556,
+      "obs_alt_m": 9999.986085966611,
+      "obs_speed_ms": 240.0051491448902,
+      "obs_heading_deg": 161.66097068461568,
+      "track_quality": "LOW",
+      "snr_avg_db": 177.28581752457615
+    },
+    {
+      "time": "2026-04-22T23:21:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.0766812494253,
+      "obs_lat": 35.709205215721475,
+      "obs_alt_m": 9999.95171977987,
+      "obs_speed_ms": 239.99729832085023,
+      "obs_heading_deg": 161.84306752816377,
+      "track_quality": "LOW",
+      "snr_avg_db": 176.9276161772399
+    },
+    {
+      "time": "2026-04-22T23:21:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.08492625838002,
+      "obs_lat": 35.68864124975971,
+      "obs_alt_m": 10000.010107457241,
+      "obs_speed_ms": 239.99984435623415,
+      "obs_heading_deg": 161.8470166803805,
+      "track_quality": "LOW",
+      "snr_avg_db": 176.54804576143664
+    },
+    {
+      "time": "2026-04-22T23:21:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.09315198433326,
+      "obs_lat": 35.668073404589734,
+      "obs_alt_m": 9999.949227687714,
+      "obs_speed_ms": 240.00088048684918,
+      "obs_heading_deg": 161.75389184632633,
+      "track_quality": "LOW",
+      "snr_avg_db": 176.15036592569956
+    },
+    {
+      "time": "2026-04-22T23:21:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.10137924820772,
+      "obs_lat": 35.6475156714614,
+      "obs_alt_m": 10000.049941997384,
+      "obs_speed_ms": 240.00235980802321,
+      "obs_heading_deg": 161.82687406209524,
+      "track_quality": "LOW",
+      "snr_avg_db": 175.73769831866343
+    },
+    {
+      "time": "2026-04-22T23:22:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.10960352818789,
+      "obs_lat": 35.62695347894209,
+      "obs_alt_m": 9999.91507359095,
+      "obs_speed_ms": 239.99609829302062,
+      "obs_heading_deg": 161.79129319993865,
+      "track_quality": "LOW",
+      "snr_avg_db": 175.31292886265334
+    },
+    {
+      "time": "2026-04-22T23:22:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.1178195202232,
+      "obs_lat": 35.606391837677265,
+      "obs_alt_m": 9999.93451278257,
+      "obs_speed_ms": 239.99969069139908,
+      "obs_heading_deg": 161.69861953032722,
+      "track_quality": "LOW",
+      "snr_avg_db": 174.87862945733957
+    },
+    {
+      "time": "2026-04-22T23:22:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.1260199201994,
+      "obs_lat": 35.58582966358027,
+      "obs_alt_m": 9999.86648028211,
+      "obs_speed_ms": 239.9969521508341,
+      "obs_heading_deg": 161.84474079214542,
+      "track_quality": "LOW",
+      "snr_avg_db": 174.4371631706693
+    },
+    {
+      "time": "2026-04-22T23:22:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.13424595206742,
+      "obs_lat": 35.565254528071996,
+      "obs_alt_m": 10000.025165790252,
+      "obs_speed_ms": 240.002255267119,
+      "obs_heading_deg": 161.75046452419625,
+      "track_quality": "LOW",
+      "snr_avg_db": 173.9905644987241
+    },
+    {
+      "time": "2026-04-22T23:22:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.14245553577781,
+      "obs_lat": 35.54468827439123,
+      "obs_alt_m": 10000.029420265259,
+      "obs_speed_ms": 240.00517552818556,
+      "obs_heading_deg": 161.89481611009955,
+      "track_quality": "LOW",
+      "snr_avg_db": 173.54068732467056
+    },
+    {
+      "time": "2026-04-22T23:22:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.15064864343185,
+      "obs_lat": 35.52412782149724,
+      "obs_alt_m": 9999.94708533682,
+      "obs_speed_ms": 239.99185098383788,
+      "obs_heading_deg": 161.87862285662465,
+      "track_quality": "LOW",
+      "snr_avg_db": 173.08912481240043
+    },
+    {
+      "time": "2026-04-22T23:23:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.15884199275553,
+      "obs_lat": 35.50356587427568,
+      "obs_alt_m": 10000.095079618877,
+      "obs_speed_ms": 240.00438339161326,
+      "obs_heading_deg": 161.81517129125854,
+      "track_quality": "LOW",
+      "snr_avg_db": 172.6372291493965
+    },
+    {
+      "time": "2026-04-22T23:23:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.16703931707846,
+      "obs_lat": 35.48299547361478,
+      "obs_alt_m": 9999.925243369888,
+      "obs_speed_ms": 239.99646325869335,
+      "obs_heading_deg": 161.8034800222022,
+      "track_quality": "LOW",
+      "snr_avg_db": 172.1862016331565
+    },
+    {
+      "time": "2026-04-22T23:23:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.17522062706558,
+      "obs_lat": 35.462422723992226,
+      "obs_alt_m": 9999.95021590832,
+      "obs_speed_ms": 240.00042530116474,
+      "obs_heading_deg": 161.79318548433034,
+      "track_quality": "LOW",
+      "snr_avg_db": 171.737059733492
+    },
+    {
+      "time": "2026-04-22T23:23:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.183410846276,
+      "obs_lat": 35.441855436881596,
+      "obs_alt_m": 10000.104843745723,
+      "obs_speed_ms": 240.00240695309776,
+      "obs_heading_deg": 161.8123026514526,
+      "track_quality": "LOW",
+      "snr_avg_db": 171.29061582106505
+    },
+    {
+      "time": "2026-04-22T23:23:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.19158904929895,
+      "obs_lat": 35.421289079652254,
+      "obs_alt_m": 9999.970532831838,
+      "obs_speed_ms": 240.0075030034782,
+      "obs_heading_deg": 161.95705739045,
+      "track_quality": "LOW",
+      "snr_avg_db": 170.8475863446355
+    },
+    {
+      "time": "2026-04-22T23:23:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.19975940453946,
+      "obs_lat": 35.40072166543922,
+      "obs_alt_m": 9999.99736117264,
+      "obs_speed_ms": 240.00488399144317,
+      "obs_heading_deg": 161.83194288203578,
+      "track_quality": "LOW",
+      "snr_avg_db": 170.40858033498162
+    },
+    {
+      "time": "2026-04-22T23:24:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.20793519247857,
+      "obs_lat": 35.38014713271169,
+      "obs_alt_m": 9999.98010639132,
+      "obs_speed_ms": 239.99354381553016,
+      "obs_heading_deg": 161.90338578386863,
+      "track_quality": "LOW",
+      "snr_avg_db": 169.97405200421127
+    },
+    {
+      "time": "2026-04-22T23:24:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.21609942397903,
+      "obs_lat": 35.35957153245112,
+      "obs_alt_m": 9999.981333078704,
+      "obs_speed_ms": 240.00158465496182,
+      "obs_heading_deg": 161.67045491647892,
+      "track_quality": "LOW",
+      "snr_avg_db": 169.5444109481878
+    },
+    {
+      "time": "2026-04-22T23:24:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.22427315490222,
+      "obs_lat": 35.339002489750044,
+      "obs_alt_m": 9999.873105599596,
+      "obs_speed_ms": 240.0086572533893,
+      "obs_heading_deg": 161.67910347593966,
+      "track_quality": "LOW",
+      "snr_avg_db": 169.1199356865934
+    },
+    {
+      "time": "2026-04-22T23:24:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.23242298756946,
+      "obs_lat": 35.31843375940957,
+      "obs_alt_m": 10000.061710857153,
+      "obs_speed_ms": 239.9967596963135,
+      "obs_heading_deg": 161.72321547690868,
+      "track_quality": "LOW",
+      "snr_avg_db": 168.7008749625518
+    },
+    {
+      "time": "2026-04-22T23:24:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.24057816080501,
+      "obs_lat": 35.297850617593156,
+      "obs_alt_m": 9999.893692021586,
+      "obs_speed_ms": 240.000395771998,
+      "obs_heading_deg": 161.95373494109796,
+      "track_quality": "LOW",
+      "snr_avg_db": 168.28742114261019
+    },
+    {
+      "time": "2026-04-22T23:24:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.24873749608989,
+      "obs_lat": 35.277272219451014,
+      "obs_alt_m": 9999.933522177093,
+      "obs_speed_ms": 239.9988431946126,
+      "obs_heading_deg": 161.65674566386002,
+      "track_quality": "LOW",
+      "snr_avg_db": 167.87968662940602
+    },
+    {
+      "time": "2026-04-22T23:25:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.2568691559919,
+      "obs_lat": 35.25670130575235,
+      "obs_alt_m": 10000.068343690482,
+      "obs_speed_ms": 240.00198756209699,
+      "obs_heading_deg": 161.81657682364448,
+      "track_quality": "LOW",
+      "snr_avg_db": 167.47777961846595
+    },
+    {
+      "time": "2026-04-22T23:25:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.26502184320849,
+      "obs_lat": 35.23613211554224,
+      "obs_alt_m": 9999.95148022989,
+      "obs_speed_ms": 240.00545753859092,
+      "obs_heading_deg": 161.77621092290653,
+      "track_quality": "LOW",
+      "snr_avg_db": 167.08173027293958
+    },
+    {
+      "time": "2026-04-22T23:25:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.27316161009857,
+      "obs_lat": 35.2155555173908,
+      "obs_alt_m": 10000.010536744707,
+      "obs_speed_ms": 240.0008821389186,
+      "obs_heading_deg": 161.7320820025536,
+      "track_quality": "LOW",
+      "snr_avg_db": 166.6915600013626
+    },
+    {
+      "time": "2026-04-22T23:25:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.28129939592313,
+      "obs_lat": 35.19498011187739,
+      "obs_alt_m": 10000.128494237186,
+      "obs_speed_ms": 239.99884939254912,
+      "obs_heading_deg": 161.8081263728695,
+      "track_quality": "LOW",
+      "snr_avg_db": 166.3072820361571
+    },
+    {
+      "time": "2026-04-22T23:25:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.28942381852778,
+      "obs_lat": 35.17438938971299,
+      "obs_alt_m": 9999.998960122311,
+      "obs_speed_ms": 240.00482124267177,
+      "obs_heading_deg": 161.82426372960228,
+      "track_quality": "LOW",
+      "snr_avg_db": 165.92885572160878
+    },
+    {
+      "time": "2026-04-22T23:25:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.29755591555531,
+      "obs_lat": 35.15382282376577,
+      "obs_alt_m": 10000.016985029095,
+      "obs_speed_ms": 240.0156392799899,
+      "obs_heading_deg": 161.83487934998308,
+      "track_quality": "LOW",
+      "snr_avg_db": 165.5562358998564
+    },
+    {
+      "time": "2026-04-22T23:26:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.30567717896895,
+      "obs_lat": 35.13324138661488,
+      "obs_alt_m": 9999.999170461047,
+      "obs_speed_ms": 239.99915774704138,
+      "obs_heading_deg": 161.7090468461354,
+      "track_quality": "LOW",
+      "snr_avg_db": 165.1893822501053
+    },
+    {
+      "time": "2026-04-22T23:26:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.31379557640244,
+      "obs_lat": 35.11266970637556,
+      "obs_alt_m": 10000.084218631959,
+      "obs_speed_ms": 239.99916215588507,
+      "obs_heading_deg": 161.93871991710884,
+      "track_quality": "LOW",
+      "snr_avg_db": 164.82820873846003
+    },
+    {
+      "time": "2026-04-22T23:26:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.32190985517052,
+      "obs_lat": 35.09208683185772,
+      "obs_alt_m": 10000.028985936458,
+      "obs_speed_ms": 239.98651997929207,
+      "obs_heading_deg": 161.83696398947865,
+      "track_quality": "LOW",
+      "snr_avg_db": 164.47265547871513
+    },
+    {
+      "time": "2026-04-22T23:26:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.33002378204039,
+      "obs_lat": 35.071509148733014,
+      "obs_alt_m": 10000.002766856482,
+      "obs_speed_ms": 239.9915593693319,
+      "obs_heading_deg": 161.78977117939965,
+      "track_quality": "LOW",
+      "snr_avg_db": 164.122615862863
+    },
+    {
+      "time": "2026-04-22T23:26:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.33812845922432,
+      "obs_lat": 35.05093694718473,
+      "obs_alt_m": 10000.047228215322,
+      "obs_speed_ms": 239.99837523776498,
+      "obs_heading_deg": 161.7614394897523,
+      "track_quality": "LOW",
+      "snr_avg_db": 163.7779991095946
+    },
+    {
+      "time": "2026-04-22T23:26:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.34623009673831,
+      "obs_lat": 35.03034672227588,
+      "obs_alt_m": 10000.019428875627,
+      "obs_speed_ms": 239.99289567304132,
+      "obs_heading_deg": 161.8251209963702,
+      "track_quality": "LOW",
+      "snr_avg_db": 163.43872519760959
+    },
+    {
+      "time": "2026-04-22T23:27:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.3543237371916,
+      "obs_lat": 35.00977434464847,
+      "obs_alt_m": 9999.996718676795,
+      "obs_speed_ms": 239.99605030557885,
+      "obs_heading_deg": 161.71981286748075,
+      "track_quality": "LOW",
+      "snr_avg_db": 163.10467696644886
+    },
+    {
+      "time": "2026-04-22T23:27:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.362417646793,
+      "obs_lat": 34.9891883005921,
+      "obs_alt_m": 10000.00672346093,
+      "obs_speed_ms": 239.99638092005023,
+      "obs_heading_deg": 161.82785241783645,
+      "track_quality": "LOW",
+      "snr_avg_db": 162.77576805176184
+    },
+    {
+      "time": "2026-04-22T23:27:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.37050832916809,
+      "obs_lat": 34.968597636506416,
+      "obs_alt_m": 9999.979113925629,
+      "obs_speed_ms": 240.00112135157198,
+      "obs_heading_deg": 161.77896814068555,
+      "track_quality": "LOW",
+      "snr_avg_db": 162.45187804931328
+    },
+    {
+      "time": "2026-04-22T23:27:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.37859123472845,
+      "obs_lat": 34.94802231971982,
+      "obs_alt_m": 10000.129671825604,
+      "obs_speed_ms": 239.98742905453574,
+      "obs_heading_deg": 161.68979633804008,
+      "track_quality": "LOW",
+      "snr_avg_db": 162.1329022759466
+    },
+    {
+      "time": "2026-04-22T23:27:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.38666994725685,
+      "obs_lat": 34.92742833769138,
+      "obs_alt_m": 10000.079317608526,
+      "obs_speed_ms": 239.99919676951265,
+      "obs_heading_deg": 161.79996363243288,
+      "track_quality": "LOW",
+      "snr_avg_db": 161.8187510910173
+    },
+    {
+      "time": "2026-04-22T23:27:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.39476363150989,
+      "obs_lat": 34.90684338258386,
+      "obs_alt_m": 9999.987939262819,
+      "obs_speed_ms": 239.99759865948016,
+      "obs_heading_deg": 161.84240159262845,
+      "track_quality": "LOW",
+      "snr_avg_db": 161.50930407613004
+    },
+    {
+      "time": "2026-04-22T23:28:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.40281936986091,
+      "obs_lat": 34.88626031790687,
+      "obs_alt_m": 9999.913205125546,
+      "obs_speed_ms": 240.00930089778535,
+      "obs_heading_deg": 161.76270511376876,
+      "track_quality": "LOW",
+      "snr_avg_db": 161.20445728670717
+    },
+    {
+      "time": "2026-04-22T23:28:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.41088758168405,
+      "obs_lat": 34.86566421005098,
+      "obs_alt_m": 10000.027078827594,
+      "obs_speed_ms": 239.98813283809963,
+      "obs_heading_deg": 161.82272601814597,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.9041224926061
+    },
+    {
+      "time": "2026-04-22T23:28:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.41897678334729,
+      "obs_lat": 34.8450735459128,
+      "obs_alt_m": 9999.990656587466,
+      "obs_speed_ms": 239.9984290460993,
+      "obs_heading_deg": 161.91527752765245,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.60818256041512
+    },
+    {
+      "time": "2026-04-22T23:28:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.42701892761112,
+      "obs_lat": 34.8244997445674,
+      "obs_alt_m": 9999.900865983345,
+      "obs_speed_ms": 240.0060770456514,
+      "obs_heading_deg": 161.68060426253012,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.31655150972406
+    },
+    {
+      "time": "2026-04-22T23:28:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.4350696335967,
+      "obs_lat": 34.80391057318935,
+      "obs_alt_m": 10000.023229386703,
+      "obs_speed_ms": 239.988685736835,
+      "obs_heading_deg": 161.81706691573964,
+      "track_quality": "LOW",
+      "snr_avg_db": 160.0291171893525
+    },
+    {
+      "time": "2026-04-22T23:28:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.44312915495838,
+      "obs_lat": 34.78332319001268,
+      "obs_alt_m": 10000.064809439787,
+      "obs_speed_ms": 239.99349284116704,
+      "obs_heading_deg": 161.83770232022306,
+      "track_quality": "LOW",
+      "snr_avg_db": 159.74579529412614
+    },
+    {
+      "time": "2026-04-22T23:29:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.45119112653744,
+      "obs_lat": 34.76273669182526,
+      "obs_alt_m": 10000.007363889645,
+      "obs_speed_ms": 240.00358996148626,
+      "obs_heading_deg": 161.7504222083378,
+      "track_quality": "LOW",
+      "snr_avg_db": 159.46647786901843
+    },
+    {
+      "time": "2026-04-22T23:29:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.45922833727667,
+      "obs_lat": 34.74214189284023,
+      "obs_alt_m": 10000.095465264845,
+      "obs_speed_ms": 239.99932816340475,
+      "obs_heading_deg": 161.75954342322242,
+      "track_quality": "LOW",
+      "snr_avg_db": 159.19107308732498
+    },
+    {
+      "time": "2026-04-22T23:29:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.46728418716867,
+      "obs_lat": 34.721565000896284,
+      "obs_alt_m": 9999.972536635032,
+      "obs_speed_ms": 240.00470454000106,
+      "obs_heading_deg": 161.85577255314976,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.91950168915193
+    },
+    {
+      "time": "2026-04-22T23:29:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.47530701365845,
+      "obs_lat": 34.70096552081327,
+      "obs_alt_m": 10000.036640608712,
+      "obs_speed_ms": 240.012479272375,
+      "obs_heading_deg": 161.72901561433096,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.6516628149398
+    },
+    {
+      "time": "2026-04-22T23:29:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.48334429397877,
+      "obs_lat": 34.68037607969076,
+      "obs_alt_m": 10000.036961426296,
+      "obs_speed_ms": 240.00833954231763,
+      "obs_heading_deg": 161.8892827196434,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.38747113499085
+    },
+    {
+      "time": "2026-04-22T23:29:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.4913776930819,
+      "obs_lat": 34.659778487085056,
+      "obs_alt_m": 10000.143736033677,
+      "obs_speed_ms": 240.00310342656314,
+      "obs_heading_deg": 161.7647174986516,
+      "track_quality": "LOW",
+      "snr_avg_db": 158.12685292376315
+    },
+    {
+      "time": "2026-04-22T23:30:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.49940569827251,
+      "obs_lat": 34.639187364935744,
+      "obs_alt_m": 10000.00848043098,
+      "obs_speed_ms": 240.00816283597314,
+      "obs_heading_deg": 161.7397622842901,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.86971453783116
+    },
+    {
+      "time": "2026-04-22T23:30:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.50742480883414,
+      "obs_lat": 34.61859791046649,
+      "obs_alt_m": 9999.896474776619,
+      "obs_speed_ms": 239.99934734417158,
+      "obs_heading_deg": 161.79505780013156,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.61598903553784
+    },
+    {
+      "time": "2026-04-22T23:30:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.51544146648253,
+      "obs_lat": 34.598002411813276,
+      "obs_alt_m": 10000.048480570907,
+      "obs_speed_ms": 240.00491339531396,
+      "obs_heading_deg": 161.7654910319145,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.3655844736789
+    },
+    {
+      "time": "2026-04-22T23:30:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.523455004616,
+      "obs_lat": 34.57740800527109,
+      "obs_alt_m": 9999.929095297774,
+      "obs_speed_ms": 240.0011716712841,
+      "obs_heading_deg": 161.8045893589427,
+      "track_quality": "LOW",
+      "snr_avg_db": 157.11843773916513
+    },
+    {
+      "time": "2026-04-22T23:30:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.53147161175447,
+      "obs_lat": 34.55680880240116,
+      "obs_alt_m": 9999.992693960452,
+      "obs_speed_ms": 239.99939057442595,
+      "obs_heading_deg": 161.7635404069672,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.87445212420118
+    },
+    {
+      "time": "2026-04-22T23:30:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.53947317394787,
+      "obs_lat": 34.5362199263822,
+      "obs_alt_m": 10000.01434047743,
+      "obs_speed_ms": 240.00707468013331,
+      "obs_heading_deg": 161.69129899554724,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.63359007354708
+    },
+    {
+      "time": "2026-04-22T23:31:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.54747209278804,
+      "obs_lat": 34.51562231949742,
+      "obs_alt_m": 10000.016671962341,
+      "obs_speed_ms": 240.01384073168,
+      "obs_heading_deg": 161.70790742418046,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.3957480444959
+    },
+    {
+      "time": "2026-04-22T23:31:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.55546568384933,
+      "obs_lat": 34.49500453054612,
+      "obs_alt_m": 9999.973490379569,
+      "obs_speed_ms": 239.98585541742685,
+      "obs_heading_deg": 161.77819663743958,
+      "track_quality": "LOW",
+      "snr_avg_db": 156.1608914510206
+    },
+    {
+      "time": "2026-04-22T23:31:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.56346804486493,
+      "obs_lat": 34.47443096854701,
+      "obs_alt_m": 10000.104844600857,
+      "obs_speed_ms": 239.99527043015652,
+      "obs_heading_deg": 161.83160307659824,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.92892152557425
+    },
+    {
+      "time": "2026-04-22T23:31:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.57145029979895,
+      "obs_lat": 34.45382424994793,
+      "obs_alt_m": 9999.945718581706,
+      "obs_speed_ms": 239.99851055138566,
+      "obs_heading_deg": 161.6677158543587,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.6997959527796
+    },
+    {
+      "time": "2026-04-22T23:31:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.57944889332221,
+      "obs_lat": 34.4332364812755,
+      "obs_alt_m": 10000.013837671946,
+      "obs_speed_ms": 240.0075646991687,
+      "obs_heading_deg": 161.88358810325764,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.47344050544103
+    },
+    {
+      "time": "2026-04-22T23:31:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.5874189956985,
+      "obs_lat": 34.41263363018673,
+      "obs_alt_m": 9999.896455818602,
+      "obs_speed_ms": 240.00140223502305,
+      "obs_heading_deg": 161.76915065644516,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.2498076670558
+    },
+    {
+      "time": "2026-04-22T23:32:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.59540378849347,
+      "obs_lat": 34.39203297535081,
+      "obs_alt_m": 10000.061925080048,
+      "obs_speed_ms": 239.99580280665486,
+      "obs_heading_deg": 161.7067397651046,
+      "track_quality": "LOW",
+      "snr_avg_db": 155.02882566347148
+    },
+    {
+      "time": "2026-04-22T23:32:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.60338765211759,
+      "obs_lat": 34.37142802743146,
+      "obs_alt_m": 9999.976015976166,
+      "obs_speed_ms": 239.99635207539416,
+      "obs_heading_deg": 161.7940001816037,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.8104501411936
+    },
+    {
+      "time": "2026-04-22T23:32:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.61135026662978,
+      "obs_lat": 34.35083057310846,
+      "obs_alt_m": 9999.985930104833,
+      "obs_speed_ms": 240.0000816186352,
+      "obs_heading_deg": 161.71513856110712,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.59461280154002
+    },
+    {
+      "time": "2026-04-22T23:32:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.61931409696008,
+      "obs_lat": 34.3302266789995,
+      "obs_alt_m": 9999.964543436716,
+      "obs_speed_ms": 240.00748653319516,
+      "obs_heading_deg": 161.73907997146048,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.3812624927705
+    },
+    {
+      "time": "2026-04-22T23:32:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.62727043129945,
+      "obs_lat": 34.309619074767134,
+      "obs_alt_m": 9999.992966214144,
+      "obs_speed_ms": 240.00987357196388,
+      "obs_heading_deg": 161.88581874253953,
+      "track_quality": "LOW",
+      "snr_avg_db": 154.17035386824267
+    },
+    {
+      "time": "2026-04-22T23:32:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.63523806874265,
+      "obs_lat": 34.28902807529485,
+      "obs_alt_m": 10000.094051365395,
+      "obs_speed_ms": 239.99912286829007,
+      "obs_heading_deg": 161.7967042902763,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.96182753669305
+    },
+    {
+      "time": "2026-04-22T23:33:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.64319269143301,
+      "obs_lat": 34.26842091772252,
+      "obs_alt_m": 10000.065503140213,
+      "obs_speed_ms": 240.00094961988066,
+      "obs_heading_deg": 161.70543046256785,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.75564350154818
+    },
+    {
+      "time": "2026-04-22T23:33:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.65113941489514,
+      "obs_lat": 34.24780151758629,
+      "obs_alt_m": 9999.994486482672,
+      "obs_speed_ms": 239.99425527824684,
+      "obs_heading_deg": 161.76484615111852,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.55174268828378
+    },
+    {
+      "time": "2026-04-22T23:33:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.6590963266696,
+      "obs_lat": 34.22720333715336,
+      "obs_alt_m": 10000.065240671942,
+      "obs_speed_ms": 240.00123005065734,
+      "obs_heading_deg": 161.8396043763136,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.35008117641013
+    },
+    {
+      "time": "2026-04-22T23:33:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.6670269357377,
+      "obs_lat": 34.20660916390213,
+      "obs_alt_m": 10000.001527084685,
+      "obs_speed_ms": 239.99169164579854,
+      "obs_heading_deg": 161.79562853484012,
+      "track_quality": "LOW",
+      "snr_avg_db": 153.15062126100725
+    },
+    {
+      "time": "2026-04-22T23:33:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.67496279808444,
+      "obs_lat": 34.18599304788222,
+      "obs_alt_m": 10000.01985517408,
+      "obs_speed_ms": 240.00238627618583,
+      "obs_heading_deg": 161.75978044739048,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.95330807595056
+    },
+    {
+      "time": "2026-04-22T23:33:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.68290888140115,
+      "obs_lat": 34.165389049543165,
+      "obs_alt_m": 10000.025940915786,
+      "obs_speed_ms": 239.99036602562384,
+      "obs_heading_deg": 161.8508962915581,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.75810896227824
+    },
+    {
+      "time": "2026-04-22T23:34:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.69084320963809,
+      "obs_lat": 34.14478900222218,
+      "obs_alt_m": 10000.01655821918,
+      "obs_speed_ms": 240.00589138827922,
+      "obs_heading_deg": 161.73391842486174,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.5649745044047
+    },
+    {
+      "time": "2026-04-22T23:34:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.69876917883343,
+      "obs_lat": 34.12417778781456,
+      "obs_alt_m": 9999.991248886061,
+      "obs_speed_ms": 239.99108830571006,
+      "obs_heading_deg": 161.76194363669686,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.37386848291987
+    },
+    {
+      "time": "2026-04-22T23:34:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.70669122068814,
+      "obs_lat": 34.10358003631241,
+      "obs_alt_m": 9999.999809165516,
+      "obs_speed_ms": 240.00498315725608,
+      "obs_heading_deg": 161.81235478370127,
+      "track_quality": "LOW",
+      "snr_avg_db": 152.18474678233596
+    },
+    {
+      "time": "2026-04-22T23:34:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.7146014062147,
+      "obs_lat": 34.08296103317593,
+      "obs_alt_m": 10000.038772326467,
+      "obs_speed_ms": 240.00634656276551,
+      "obs_heading_deg": 161.74390180503983,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.99756952744286
+    },
+    {
+      "time": "2026-04-22T23:34:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.7225256851949,
+      "obs_lat": 34.06234209866174,
+      "obs_alt_m": 9999.972177477537,
+      "obs_speed_ms": 240.00246291071718,
+      "obs_heading_deg": 161.78441651074434,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.81230624896853
+    },
+    {
+      "time": "2026-04-22T23:34:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.73044312099697,
+      "obs_lat": 34.041747185395124,
+      "obs_alt_m": 10000.18337238034,
+      "obs_speed_ms": 239.9884936578632,
+      "obs_heading_deg": 161.80293568061404,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.62891482895483
+    },
+    {
+      "time": "2026-04-22T23:35:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.73834842015327,
+      "obs_lat": 34.0211308532589,
+      "obs_alt_m": 9999.916871644897,
+      "obs_speed_ms": 239.997707458586,
+      "obs_heading_deg": 161.69932827400385,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.44736514564053
+    },
+    {
+      "time": "2026-04-22T23:35:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.74625715366861,
+      "obs_lat": 34.00051823881644,
+      "obs_alt_m": 10000.063153110965,
+      "obs_speed_ms": 239.99944634695748,
+      "obs_heading_deg": 161.7633562439426,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.26761573882055
+    },
+    {
+      "time": "2026-04-22T23:35:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.75415624147568,
+      "obs_lat": 33.97991726725256,
+      "obs_alt_m": 9999.984982322614,
+      "obs_speed_ms": 239.99870959891877,
+      "obs_heading_deg": 161.91078963062944,
+      "track_quality": "LOW",
+      "snr_avg_db": 151.08963300405054
+    },
+    {
+      "time": "2026-04-22T23:35:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.76205726304077,
+      "obs_lat": 33.95929455920707,
+      "obs_alt_m": 9999.963031885334,
+      "obs_speed_ms": 240.0000905015364,
+      "obs_heading_deg": 161.7253942039644,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.91339071917184
+    },
+    {
+      "time": "2026-04-22T23:35:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.76994469052289,
+      "obs_lat": 33.93868031958638,
+      "obs_alt_m": 10000.002806263763,
+      "obs_speed_ms": 239.99484513727916,
+      "obs_heading_deg": 161.9128484713115,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.73885965397096
+    },
+    {
+      "time": "2026-04-22T23:35:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.77784581385764,
+      "obs_lat": 33.91806310533795,
+      "obs_alt_m": 10000.082446012726,
+      "obs_speed_ms": 239.99661230035125,
+      "obs_heading_deg": 161.8061288812429,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.56599003541538
+    },
+    {
+      "time": "2026-04-22T23:36:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.78572458998973,
+      "obs_lat": 33.897452889186404,
+      "obs_alt_m": 10000.061933981486,
+      "obs_speed_ms": 239.988485083011,
+      "obs_heading_deg": 161.80639449577694,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.39477643463755
+    },
+    {
+      "time": "2026-04-22T23:36:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.79359538340525,
+      "obs_lat": 33.876848257204315,
+      "obs_alt_m": 9999.908474109017,
+      "obs_speed_ms": 239.9906698743237,
+      "obs_heading_deg": 161.8054712078049,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.22516599675004
+    },
+    {
+      "time": "2026-04-22T23:36:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.80148148744254,
+      "obs_lat": 33.85623147516548,
+      "obs_alt_m": 10000.030088782558,
+      "obs_speed_ms": 239.99234817206272,
+      "obs_heading_deg": 161.77310616421772,
+      "track_quality": "LOW",
+      "snr_avg_db": 150.05714389093174
+    },
+    {
+      "time": "2026-04-22T23:36:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.8093487631637,
+      "obs_lat": 33.83561326097138,
+      "obs_alt_m": 9999.992053701604,
+      "obs_speed_ms": 239.99984398848196,
+      "obs_heading_deg": 161.68126092726868,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.89068477921114
+    },
+    {
+      "time": "2026-04-22T23:36:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.81722110130225,
+      "obs_lat": 33.81500409596154,
+      "obs_alt_m": 10000.111160041015,
+      "obs_speed_ms": 239.99735822319482,
+      "obs_heading_deg": 161.78343722891512,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.72575083147245
+    },
+    {
+      "time": "2026-04-22T23:36:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.82510056100601,
+      "obs_lat": 33.79437898757893,
+      "obs_alt_m": 10000.047747693008,
+      "obs_speed_ms": 239.9992567559086,
+      "obs_heading_deg": 161.76697697497488,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.5623168734959
+    },
+    {
+      "time": "2026-04-22T23:37:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.83296080131595,
+      "obs_lat": 33.77375903291412,
+      "obs_alt_m": 9999.878755208481,
+      "obs_speed_ms": 239.99800128317204,
+      "obs_heading_deg": 161.7776794087767,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.40036421128303
+    },
+    {
+      "time": "2026-04-22T23:37:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.84082753136002,
+      "obs_lat": 33.753138533694184,
+      "obs_alt_m": 10000.088272907933,
+      "obs_speed_ms": 239.99761475430077,
+      "obs_heading_deg": 161.89812857076683,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.23985867033116
+    },
+    {
+      "time": "2026-04-22T23:37:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.84868369568872,
+      "obs_lat": 33.73251778476837,
+      "obs_alt_m": 9999.966279490294,
+      "obs_speed_ms": 240.00380334888223,
+      "obs_heading_deg": 161.82192032544,
+      "track_quality": "LOW",
+      "snr_avg_db": 149.0807769911199
+    },
+    {
+      "time": "2026-04-22T23:37:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.85651925125313,
+      "obs_lat": 33.71191644521496,
+      "obs_alt_m": 9999.961331981545,
+      "obs_speed_ms": 240.00491967656762,
+      "obs_heading_deg": 161.65458396242212,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.92310213592748
+    },
+    {
+      "time": "2026-04-22T23:37:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.864378243335,
+      "obs_lat": 33.691287751405,
+      "obs_alt_m": 9999.94529274904,
+      "obs_speed_ms": 239.98843555534654,
+      "obs_heading_deg": 161.78166826972083,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.76681038560372
+    },
+    {
+      "time": "2026-04-22T23:37:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.87223333545116,
+      "obs_lat": 33.67066076556634,
+      "obs_alt_m": 10000.078108334552,
+      "obs_speed_ms": 239.99805444720232,
+      "obs_heading_deg": 161.79716585354583,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.6118716545334
+    },
+    {
+      "time": "2026-04-22T23:38:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.88005780350855,
+      "obs_lat": 33.65005724651711,
+      "obs_alt_m": 10000.024239681386,
+      "obs_speed_ms": 239.99430332904748,
+      "obs_heading_deg": 161.7497389537549,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.4582621079143
+    },
+    {
+      "time": "2026-04-22T23:38:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.88789354050998,
+      "obs_lat": 33.62943640915053,
+      "obs_alt_m": 10000.045025197265,
+      "obs_speed_ms": 239.9943591058685,
+      "obs_heading_deg": 161.94225431869185,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.30596811607606
+    },
+    {
+      "time": "2026-04-22T23:38:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.89573600601042,
+      "obs_lat": 33.60881469222461,
+      "obs_alt_m": 10000.066834649753,
+      "obs_speed_ms": 239.99114735799475,
+      "obs_heading_deg": 161.8045256214485,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.15496138388787
+    },
+    {
+      "time": "2026-04-22T23:38:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.90356685916753,
+      "obs_lat": 33.58817073086375,
+      "obs_alt_m": 10000.117741054002,
+      "obs_speed_ms": 240.00219721288255,
+      "obs_heading_deg": 161.80708459325498,
+      "track_quality": "LOW",
+      "snr_avg_db": 148.0052263238995
+    },
+    {
+      "time": "2026-04-22T23:38:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.91139124448807,
+      "obs_lat": 33.56756003528912,
+      "obs_alt_m": 9999.952504488167,
+      "obs_speed_ms": 239.9926421686618,
+      "obs_heading_deg": 161.7618574788975,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.8567371784088
+    },
+    {
+      "time": "2026-04-22T23:38:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.91920987313448,
+      "obs_lat": 33.54693806138953,
+      "obs_alt_m": 10000.014859216433,
+      "obs_speed_ms": 239.99585084318875,
+      "obs_heading_deg": 161.88570763187818,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.70948062086273
+    },
+    {
+      "time": "2026-04-22T23:39:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.9270165573249,
+      "obs_lat": 33.52630299231497,
+      "obs_alt_m": 9999.915015992416,
+      "obs_speed_ms": 239.9925201672205,
+      "obs_heading_deg": 161.7798994049151,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.56342399930685
+    },
+    {
+      "time": "2026-04-22T23:39:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.93484454469375,
+      "obs_lat": 33.505691453176695,
+      "obs_alt_m": 10000.067836592485,
+      "obs_speed_ms": 239.9988288296229,
+      "obs_heading_deg": 161.7659091016665,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.418566462478
+    },
+    {
+      "time": "2026-04-22T23:39:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.9426578228239,
+      "obs_lat": 33.48505978895407,
+      "obs_alt_m": 10000.011688362947,
+      "obs_speed_ms": 239.99690169376558,
+      "obs_heading_deg": 161.8647185251808,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.2748777075265
+    },
+    {
+      "time": "2026-04-22T23:39:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.95046103489646,
+      "obs_lat": 33.464437769518426,
+      "obs_alt_m": 10000.149106324923,
+      "obs_speed_ms": 239.98563632928023,
+      "obs_heading_deg": 161.83334064265216,
+      "track_quality": "LOW",
+      "snr_avg_db": 147.13233958588597
+    },
+    {
+      "time": "2026-04-22T23:39:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.95825718005864,
+      "obs_lat": 33.443818392018635,
+      "obs_alt_m": 10000.015543022748,
+      "obs_speed_ms": 240.00375603502545,
+      "obs_heading_deg": 161.72446691137213,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.99093925974657
+    },
+    {
+      "time": "2026-04-22T23:39:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.9660682540017,
+      "obs_lat": 33.423191392871914,
+      "obs_alt_m": 9999.971865792577,
+      "obs_speed_ms": 239.99968868856314,
+      "obs_heading_deg": 161.82533232233575,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.85065437857202
+    },
+    {
+      "time": "2026-04-22T23:40:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.9738578813445,
+      "obs_lat": 33.402553870271575,
+      "obs_alt_m": 10000.013987431801,
+      "obs_speed_ms": 240.01118952988105,
+      "obs_heading_deg": 161.88172891171894,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.71146797946489
+    },
+    {
+      "time": "2026-04-22T23:40:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.98165822958799,
+      "obs_lat": 33.381918477182225,
+      "obs_alt_m": 9999.98310810059,
+      "obs_speed_ms": 239.99744057415697,
+      "obs_heading_deg": 161.8147366740147,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.57336961779413
+    },
+    {
+      "time": "2026-04-22T23:40:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.98943402368839,
+      "obs_lat": 33.361295781623106,
+      "obs_alt_m": 9999.99394178744,
+      "obs_speed_ms": 239.99691200286617,
+      "obs_heading_deg": 161.6845626444045,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.43634153570937
+    },
+    {
+      "time": "2026-04-22T23:40:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 120.99722977184516,
+      "obs_lat": 33.340667716664676,
+      "obs_alt_m": 9999.855723372544,
+      "obs_speed_ms": 239.99928119126005,
+      "obs_heading_deg": 161.8362156246876,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.3003630516949
+    },
+    {
+      "time": "2026-04-22T23:40:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.00500961388268,
+      "obs_lat": 33.32003772512469,
+      "obs_alt_m": 9999.946458650527,
+      "obs_speed_ms": 239.99898175645578,
+      "obs_heading_deg": 161.82278961502482,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.16541726381897
+    },
+    {
+      "time": "2026-04-22T23:40:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.01278188881334,
+      "obs_lat": 33.299413418505914,
+      "obs_alt_m": 9999.912884916299,
+      "obs_speed_ms": 240.0127066852847,
+      "obs_heading_deg": 161.75414696230288,
+      "track_quality": "LOW",
+      "snr_avg_db": 146.0314963052246
+    },
+    {
+      "time": "2026-04-22T23:41:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.02056856998736,
+      "obs_lat": 33.27878026411489,
+      "obs_alt_m": 10000.086837194722,
+      "obs_speed_ms": 239.99174926129697,
+      "obs_heading_deg": 161.703806723234,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.89857925600202
+    },
+    {
+      "time": "2026-04-22T23:41:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.0283204800747,
+      "obs_lat": 33.25815101500507,
+      "obs_alt_m": 9999.956444751164,
+      "obs_speed_ms": 240.00689914109486,
+      "obs_heading_deg": 161.9019431961906,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.7666574168681
+    },
+    {
+      "time": "2026-04-22T23:41:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.03609114747172,
+      "obs_lat": 33.23751635926173,
+      "obs_alt_m": 10000.103104445592,
+      "obs_speed_ms": 240.00173460419896,
+      "obs_heading_deg": 161.74069870907496,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.63570923161365
+    },
+    {
+      "time": "2026-04-22T23:41:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.04386266712062,
+      "obs_lat": 33.21688863141274,
+      "obs_alt_m": 9999.962829640857,
+      "obs_speed_ms": 240.00020988799608,
+      "obs_heading_deg": 161.7447382992578,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.50572787963213
+    },
+    {
+      "time": "2026-04-22T23:41:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.05161359946798,
+      "obs_lat": 33.1962473945155,
+      "obs_alt_m": 10000.106172037104,
+      "obs_speed_ms": 240.00568749272156,
+      "obs_heading_deg": 161.8480751801501,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.37669249546008
+    },
+    {
+      "time": "2026-04-22T23:41:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.05937918341249,
+      "obs_lat": 33.17560621769931,
+      "obs_alt_m": 10000.063011333987,
+      "obs_speed_ms": 239.98673213582907,
+      "obs_heading_deg": 161.775560251875,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.24859105451512
+    },
+    {
+      "time": "2026-04-22T23:42:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.06712742619047,
+      "obs_lat": 33.15498712513137,
+      "obs_alt_m": 9999.98026024867,
+      "obs_speed_ms": 240.00233656048826,
+      "obs_heading_deg": 161.78576878246315,
+      "track_quality": "LOW",
+      "snr_avg_db": 145.12141609115784
+    },
+    {
+      "time": "2026-04-22T23:42:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.0748742176448,
+      "obs_lat": 33.13434460393446,
+      "obs_alt_m": 10000.106680844046,
+      "obs_speed_ms": 240.00338550224959,
+      "obs_heading_deg": 161.83832248560424,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.9951533092683
+    },
+    {
+      "time": "2026-04-22T23:42:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.0826223229549,
+      "obs_lat": 33.11371354354582,
+      "obs_alt_m": 9999.839350386299,
+      "obs_speed_ms": 240.00756809732573,
+      "obs_heading_deg": 161.75405288896414,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.86978579481107
+    },
+    {
+      "time": "2026-04-22T23:42:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.09036162615489,
+      "obs_lat": 33.0930816678773,
+      "obs_alt_m": 10000.041156414998,
+      "obs_speed_ms": 240.00288252858005,
+      "obs_heading_deg": 161.71293952158362,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.74530122730263
+    },
+    {
+      "time": "2026-04-22T23:42:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.09810681861852,
+      "obs_lat": 33.07244398241607,
+      "obs_alt_m": 10000.001187644757,
+      "obs_speed_ms": 239.98514550147664,
+      "obs_heading_deg": 161.77359456254334,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.621691688316
+    },
+    {
+      "time": "2026-04-22T23:42:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.10582751588242,
+      "obs_lat": 33.051804703379,
+      "obs_alt_m": 10000.044590983538,
+      "obs_speed_ms": 240.0072345473258,
+      "obs_heading_deg": 161.8100992732951,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.49894111852223
+    },
+    {
+      "time": "2026-04-22T23:43:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.11356401846037,
+      "obs_lat": 33.03116319962038,
+      "obs_alt_m": 10000.00502979889,
+      "obs_speed_ms": 240.00956246790614,
+      "obs_heading_deg": 161.96578444766612,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.37703661013376
+    },
+    {
+      "time": "2026-04-22T23:43:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.12129099591826,
+      "obs_lat": 33.010533331880026,
+      "obs_alt_m": 9999.951248119012,
+      "obs_speed_ms": 239.9942297832821,
+      "obs_heading_deg": 161.80465987704207,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.25597346970872
+    },
+    {
+      "time": "2026-04-22T23:43:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.12901645610408,
+      "obs_lat": 32.98988067463393,
+      "obs_alt_m": 10000.054226340768,
+      "obs_speed_ms": 239.99725430237336,
+      "obs_heading_deg": 161.8089000084949,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.13574043584993
+    },
+    {
+      "time": "2026-04-22T23:43:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.13673455242125,
+      "obs_lat": 32.96924643402004,
+      "obs_alt_m": 9999.970369927361,
+      "obs_speed_ms": 239.99789291704374,
+      "obs_heading_deg": 161.8050181542633,
+      "track_quality": "LOW",
+      "snr_avg_db": 144.016319888879
+    },
+    {
+      "time": "2026-04-22T23:43:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.1444563973157,
+      "obs_lat": 32.94861361420157,
+      "obs_alt_m": 10000.075900383777,
+      "obs_speed_ms": 240.0023849114336,
+      "obs_heading_deg": 161.77634425929756,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.89770241791894
+    },
+    {
+      "time": "2026-04-22T23:43:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.15216713855767,
+      "obs_lat": 32.92796856332077,
+      "obs_alt_m": 10000.04785226034,
+      "obs_speed_ms": 240.00349382625967,
+      "obs_heading_deg": 161.7989963829234,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.77988143337734
+    },
+    {
+      "time": "2026-04-22T23:44:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.15987429508004,
+      "obs_lat": 32.90732443108297,
+      "obs_alt_m": 10000.014977931636,
+      "obs_speed_ms": 240.01098771807605,
+      "obs_heading_deg": 161.66769204699676,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.66284781405147
+    },
+    {
+      "time": "2026-04-22T23:44:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.16756485046076,
+      "obs_lat": 32.8866866112869,
+      "obs_alt_m": 10000.115796551489,
+      "obs_speed_ms": 239.98861441361183,
+      "obs_heading_deg": 161.69386059723405,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.54658620413906
+    },
+    {
+      "time": "2026-04-22T23:44:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.17527952439987,
+      "obs_lat": 32.866040074205564,
+      "obs_alt_m": 9999.910191350884,
+      "obs_speed_ms": 239.99291959750275,
+      "obs_heading_deg": 161.83396403947737,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.4310854097526
+    },
+    {
+      "time": "2026-04-22T23:44:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.18298193526991,
+      "obs_lat": 32.84538973065897,
+      "obs_alt_m": 10000.07550922289,
+      "obs_speed_ms": 240.00553617393584,
+      "obs_heading_deg": 161.69602756935942,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.31634204706654
+    },
+    {
+      "time": "2026-04-22T23:44:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.19065894160987,
+      "obs_lat": 32.824751757639156,
+      "obs_alt_m": 9999.978124736901,
+      "obs_speed_ms": 239.99951698452392,
+      "obs_heading_deg": 161.75225108159898,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.2023401636991
+    },
+    {
+      "time": "2026-04-22T23:44:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.19835893802801,
+      "obs_lat": 32.80413199146466,
+      "obs_alt_m": 9999.984755449805,
+      "obs_speed_ms": 240.00753566855272,
+      "obs_heading_deg": 161.88481204447947,
+      "track_quality": "LOW",
+      "snr_avg_db": 143.08907665936675
+    },
+    {
+      "time": "2026-04-22T23:45:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.20605470566785,
+      "obs_lat": 32.78347449633024,
+      "obs_alt_m": 10000.04340044965,
+      "obs_speed_ms": 240.00401345650718,
+      "obs_heading_deg": 161.7606994894777,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.97653601181656
+    },
+    {
+      "time": "2026-04-22T23:45:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.21373417618314,
+      "obs_lat": 32.76283782725237,
+      "obs_alt_m": 10000.093903062092,
+      "obs_speed_ms": 240.00277560596965,
+      "obs_heading_deg": 161.6493864505603,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.8647104550705
+    },
+    {
+      "time": "2026-04-22T23:45:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.2214199895791,
+      "obs_lat": 32.742193310506906,
+      "obs_alt_m": 9999.996033323476,
+      "obs_speed_ms": 240.00339958085397,
+      "obs_heading_deg": 161.7970029550273,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.75359602482666
+    },
+    {
+      "time": "2026-04-22T23:45:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.22909687674287,
+      "obs_lat": 32.72153498438695,
+      "obs_alt_m": 10000.019692321011,
+      "obs_speed_ms": 239.998154279582,
+      "obs_heading_deg": 161.88958298677483,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.64318267854043
+    },
+    {
+      "time": "2026-04-22T23:45:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.23676726292963,
+      "obs_lat": 32.70089533093957,
+      "obs_alt_m": 9999.945242242004,
+      "obs_speed_ms": 240.00198552118582,
+      "obs_heading_deg": 161.7957421822014,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.53345695055202
+    },
+    {
+      "time": "2026-04-22T23:45:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.24442700448223,
+      "obs_lat": 32.680244539192124,
+      "obs_alt_m": 9999.890990341915,
+      "obs_speed_ms": 240.00462661068462,
+      "obs_heading_deg": 161.80879750392558,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.42441169523892
+    },
+    {
+      "time": "2026-04-22T23:46:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.25209873579459,
+      "obs_lat": 32.65960284870071,
+      "obs_alt_m": 9999.939714880895,
+      "obs_speed_ms": 240.01176425933426,
+      "obs_heading_deg": 161.77305061041994,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.3160434466311
+    },
+    {
+      "time": "2026-04-22T23:46:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.25976428174225,
+      "obs_lat": 32.63895534852839,
+      "obs_alt_m": 10000.022559439865,
+      "obs_speed_ms": 239.99795517075336,
+      "obs_heading_deg": 161.84956616090736,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.20833804773582
+    },
+    {
+      "time": "2026-04-22T23:46:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.26742297395016,
+      "obs_lat": 32.61830997968058,
+      "obs_alt_m": 9999.94024480339,
+      "obs_speed_ms": 239.99950273201506,
+      "obs_heading_deg": 161.698403028626,
+      "track_quality": "LOW",
+      "snr_avg_db": 142.1012934956068
+    },
+    {
+      "time": "2026-04-22T23:46:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.27508355999035,
+      "obs_lat": 32.59765408254271,
+      "obs_alt_m": 10000.011810482503,
+      "obs_speed_ms": 240.006787241012,
+      "obs_heading_deg": 161.86108083821992,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.994900674099
+    },
+    {
+      "time": "2026-04-22T23:46:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.28273160861788,
+      "obs_lat": 32.57699847105747,
+      "obs_alt_m": 9999.912710010794,
+      "obs_speed_ms": 239.9894636079022,
+      "obs_heading_deg": 161.83823866135296,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.88914251922202
+    },
+    {
+      "time": "2026-04-22T23:46:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.29038302140117,
+      "obs_lat": 32.55636051728798,
+      "obs_alt_m": 10000.014834473508,
+      "obs_speed_ms": 239.9909193986111,
+      "obs_heading_deg": 161.72105278689688,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.78402325967383
+    },
+    {
+      "time": "2026-04-22T23:47:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.29803647909728,
+      "obs_lat": 32.53570127787333,
+      "obs_alt_m": 9999.963053608191,
+      "obs_speed_ms": 239.9988706270197,
+      "obs_heading_deg": 161.77526054529255,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.67953177998876
+    },
+    {
+      "time": "2026-04-22T23:47:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.30566106713329,
+      "obs_lat": 32.51506957011895,
+      "obs_alt_m": 10000.017175953288,
+      "obs_speed_ms": 239.99176029024537,
+      "obs_heading_deg": 161.88710304031997,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.5756585618808
+    },
+    {
+      "time": "2026-04-22T23:47:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.31330810107264,
+      "obs_lat": 32.49439743115227,
+      "obs_alt_m": 9999.975290054841,
+      "obs_speed_ms": 239.99699128413243,
+      "obs_heading_deg": 161.7892303093415,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.4724009918804
+    },
+    {
+      "time": "2026-04-22T23:47:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.32094313161095,
+      "obs_lat": 32.47375727095257,
+      "obs_alt_m": 10000.02788623177,
+      "obs_speed_ms": 239.9952798960693,
+      "obs_heading_deg": 161.87210471775802,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.3697462462393
+    },
+    {
+      "time": "2026-04-22T23:47:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.32856289543176,
+      "obs_lat": 32.45310459675723,
+      "obs_alt_m": 9999.96635095743,
+      "obs_speed_ms": 240.00711386256992,
+      "obs_heading_deg": 161.82774829643284,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.26769309584736
+    },
+    {
+      "time": "2026-04-22T23:47:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.33619643929585,
+      "obs_lat": 32.43245080386912,
+      "obs_alt_m": 10000.0048472358,
+      "obs_speed_ms": 239.99792851820985,
+      "obs_heading_deg": 161.86033285203817,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.16622901774616
+    },
+    {
+      "time": "2026-04-22T23:48:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.34383266451471,
+      "obs_lat": 32.41178835464665,
+      "obs_alt_m": 10000.066961722756,
+      "obs_speed_ms": 240.00096721474824,
+      "obs_heading_deg": 161.7633583129651,
+      "track_quality": "LOW",
+      "snr_avg_db": 141.06534851541466
+    },
+    {
+      "time": "2026-04-22T23:48:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.35144894092839,
+      "obs_lat": 32.39114654640936,
+      "obs_alt_m": 9999.804478520537,
+      "obs_speed_ms": 240.00073420818458,
+      "obs_heading_deg": 161.8062277137318,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.96504825386484
+    },
+    {
+      "time": "2026-04-22T23:48:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.35906213497462,
+      "obs_lat": 32.370500498473874,
+      "obs_alt_m": 9999.891905528188,
+      "obs_speed_ms": 239.99610919865344,
+      "obs_heading_deg": 161.6750424919325,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.86532170333015
+    },
+    {
+      "time": "2026-04-22T23:48:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.36667485518663,
+      "obs_lat": 32.349832183869644,
+      "obs_alt_m": 9999.971218740031,
+      "obs_speed_ms": 239.98797482648322,
+      "obs_heading_deg": 161.83036597908293,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.7661548874791
+    },
+    {
+      "time": "2026-04-22T23:48:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.37429782840424,
+      "obs_lat": 32.32917282221945,
+      "obs_alt_m": 10000.044272604157,
+      "obs_speed_ms": 239.9967282069362,
+      "obs_heading_deg": 161.8317090463483,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.66755462983764
+    },
+    {
+      "time": "2026-04-22T23:48:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.38188855945627,
+      "obs_lat": 32.30852260648388,
+      "obs_alt_m": 10000.0501681112,
+      "obs_speed_ms": 240.0082213804415,
+      "obs_heading_deg": 161.75542295884142,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.56950485770125
+    },
+    {
+      "time": "2026-04-22T23:49:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.38950024417213,
+      "obs_lat": 32.287857167613325,
+      "obs_alt_m": 10000.048877640811,
+      "obs_speed_ms": 239.99886020618567,
+      "obs_heading_deg": 161.79538312634892,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.47199953359984
+    },
+    {
+      "time": "2026-04-22T23:49:10+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.39710323764014,
+      "obs_lat": 32.26721198368063,
+      "obs_alt_m": 9999.965216276189,
+      "obs_speed_ms": 239.99897692828185,
+      "obs_heading_deg": 161.83604436516748,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.37503812273889
+    },
+    {
+      "time": "2026-04-22T23:49:20+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.4046999092697,
+      "obs_lat": 32.246557120440755,
+      "obs_alt_m": 10000.077437714872,
+      "obs_speed_ms": 239.99740244597538,
+      "obs_heading_deg": 161.75654730934616,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.278609318808
+    },
+    {
+      "time": "2026-04-22T23:49:30+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.41228957571221,
+      "obs_lat": 32.22590161920652,
+      "obs_alt_m": 10000.029125224337,
+      "obs_speed_ms": 240.0030939323996,
+      "obs_heading_deg": 161.75716988270827,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.18271272042017
+    },
+    {
+      "time": "2026-04-22T23:49:40+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.41987007598176,
+      "obs_lat": 32.20521702706323,
+      "obs_alt_m": 10000.137140163097,
+      "obs_speed_ms": 240.00166140937003,
+      "obs_heading_deg": 161.81919514530023,
+      "track_quality": "LOW",
+      "snr_avg_db": 140.08733726457558
+    },
+    {
+      "time": "2026-04-22T23:49:50+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.4274624013112,
+      "obs_lat": 32.18458115068544,
+      "obs_alt_m": 9922.27356242534,
+      "obs_speed_ms": 239.99370957425282,
+      "obs_heading_deg": 161.83155205551506,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.99254941484054
+    },
+    {
+      "time": "2026-04-22T23:50:00+00:00",
+      "track_id": "0013_01",
+      "target_id": "0013",
+      "source_radars": [
+        "RADAR_01"
+      ],
+      "obs_lon": 121.43503976456348,
+      "obs_lat": 32.163919346702265,
+      "obs_alt_m": 9822.241024741052,
+      "obs_speed_ms": 240.00223909515546,
+      "obs_heading_deg": 161.74624586868057,
+      "track_quality": "LOW",
+      "snr_avg_db": 139.8982882360059
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M4 多维态势可视化界面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/cesium@1.95.0/Build/Cesium/Cesium.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/cesium@1.95.0/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧地图区域 -->
+        <div class="map-container">
+            <div id="cesiumContainer"></div>
+        </div>
+        
+        <!-- 右侧控制面板 -->
+        <div class="control-panel">
+            <div class="panel-section">
+                <h3>数据加载控制</h3>
+                <div class="file-input-group">
+                    <label for="m1File">选择 M1 JSON:</label>
+                    <input type="file" id="m1File" accept=".json">
+                </div>
+                <div class="file-input-group">
+                    <label for="m2File">选择 M2 JSON:</label>
+                    <input type="file" id="m2File" accept=".json">
+                </div>
+                <button id="renderBtn" class="btn-primary">一键渲染态势</button>
+                <button id="clearBtn" class="btn-secondary">清除航迹</button>
+            </div>
+            
+            <div class="panel-section">
+                <h3>底图图层开关</h3>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="adizLayer" checked>
+                        ADIZ 识别区
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="territorialSeaLayer" checked>
+                        领海线
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="provinceLayer">
+                        省界边界
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="cityLayer">
+                        主要城市
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="airportLayer" checked>
+                        主要机场
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="radarLayer" checked>
+                        雷达部署
+                    </label>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <h3>轨迹图层开关</h3>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="m1TrackLayer" checked>
+                        显示 M1 真值
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="m2TrackLayer" checked>
+                        显示 M2 观测
+                    </label>
+                </div>
+            </div>
+            
+            <div class="panel-section">
+                <h3>要素信息框</h3>
+                <div id="infoBox" class="info-box">
+                    <p>悬停图标显示名称</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
