@@ -9,6 +9,8 @@ from m1_trajectory_generator.parser import IntentParser
 from m1_trajectory_generator.knowledge_base import KnowledgeBase
 from m1_trajectory_generator.trajectory_generator import TrajectoryGenerator
 from m1_trajectory_generator.models import FlightPhase
+from m1_trajectory_generator.ads_b_generator import ADSBGenerator, is_civil_aircraft
+from m1_trajectory_generator.models import TrackPoint, ADSBMessage
 
 
 class TestIntentParser(unittest.TestCase):
@@ -220,6 +222,128 @@ class TestIntegration(unittest.TestCase):
         self.assertGreater(first_point.speed_ms, 0)
         
         self.assertIn(last_point.phase, [FlightPhase.DESCENDING, FlightPhase.LANDING])
+
+
+class TestADSBGenerator(unittest.TestCase):
+    def test_civil_aircraft_detection(self):
+        self.assertTrue(is_civil_aircraft("民航客机"))
+        self.assertTrue(is_civil_aircraft("波音737"))
+        self.assertTrue(is_civil_aircraft("空客A320"))
+        self.assertTrue(is_civil_aircraft("波音777"))
+    
+    def test_military_aircraft_detection(self):
+        self.assertFalse(is_civil_aircraft("歼-20"))
+        self.assertFalse(is_civil_aircraft("F-22"))
+        self.assertFalse(is_civil_aircraft("轰-6"))
+        self.assertFalse(is_civil_aircraft("P-8A"))
+        self.assertFalse(is_civil_aircraft("U-2"))
+        self.assertFalse(is_civil_aircraft("运-20"))
+        self.assertFalse(is_civil_aircraft("KF-21"))
+    
+    def test_icao24_generation(self):
+        icao1 = ADSBGenerator('0001', '民航客机').icao24
+        icao2 = ADSBGenerator('0001', '民航客机').icao24
+        icao3 = ADSBGenerator('0002', '民航客机').icao24
+        
+        self.assertEqual(len(icao1), 6)
+        self.assertEqual(icao1, icao2)
+        self.assertNotEqual(icao1, icao3)
+        self.assertTrue(all(c in '0123456789ABCDEF' for c in icao1))
+    
+    def test_callsign_generation(self):
+        gen = ADSBGenerator('0001', '民航客机')
+        self.assertTrue(len(gen.callsign) <= 8)
+        self.assertTrue(len(gen.callsign) >= 3)
+    
+    def test_civil_adsb_message_generation(self):
+        gen = ADSBGenerator('0001', '民航客机')
+        tp = TrackPoint(
+            time=datetime(2026, 4, 20, 9, 20, 30),
+            lon=116.594, lat=39.509,
+            alt_m=10000.0, speed_ms=240.0,
+            heading_deg=180.0, vertical_rate_ms=5.0,
+            rcs_dbsm=5.0, phase=FlightPhase.CRUISING
+        )
+        msg = gen.generate_message(tp)
+        
+        self.assertIsNotNone(msg)
+        self.assertIsInstance(msg, ADSBMessage)
+        self.assertEqual(msg.icao24, gen.icao24)
+        self.assertEqual(msg.callsign, gen.callsign)
+        self.assertAlmostEqual(msg.altitude_ft, 10000.0 * 3.28084, places=1)
+        self.assertAlmostEqual(msg.ground_speed_kt, 240.0 * 1.94384, places=1)
+        self.assertAlmostEqual(msg.track, 180.0, places=1)
+        self.assertAlmostEqual(msg.vertical_rate_fpm, 5.0 * 196.85, places=1)
+        self.assertFalse(msg.on_ground)
+        self.assertEqual(msg.squawk, "2000")
+    
+    def test_military_no_adsb(self):
+        gen = ADSBGenerator('0002', '歼-20')
+        self.assertFalse(gen.is_civil)
+        
+        tp = TrackPoint(
+            time=datetime(2026, 4, 20, 9, 20, 30),
+            lon=116.594, lat=39.509,
+            alt_m=10000.0, speed_ms=280.0,
+            heading_deg=180.0, vertical_rate_ms=5.0,
+            rcs_dbsm=-10.0, phase=FlightPhase.CRUISING
+        )
+        msg = gen.generate_message(tp)
+        self.assertIsNone(msg)
+    
+    def test_ground_phase_adsb(self):
+        gen = ADSBGenerator('0001', '民航客机')
+        tp_ground = TrackPoint(
+            time=datetime(2026, 4, 20, 9, 20, 30),
+            lon=116.594, lat=39.509,
+            alt_m=25.0, speed_ms=50.0,
+            heading_deg=180.0, vertical_rate_ms=0.0,
+            rcs_dbsm=13.0, phase=FlightPhase.GROUND_TAKEOFF
+        )
+        msg = gen.generate_message(tp_ground)
+        self.assertTrue(msg.on_ground)
+        
+        tp_landing = TrackPoint(
+            time=datetime(2026, 4, 20, 12, 40, 0),
+            lon=121.33, lat=31.19,
+            alt_m=30.0, speed_ms=70.0,
+            heading_deg=360.0, vertical_rate_ms=-2.0,
+            rcs_dbsm=13.0, phase=FlightPhase.LANDING
+        )
+        msg2 = gen.generate_message(tp_landing)
+        self.assertTrue(msg2.on_ground)
+    
+    def test_civil_trajectory_has_adsb(self):
+        kb = KnowledgeBase()
+        gen = TrajectoryGenerator(kb)
+        intent_text = "0001 民航客机 于 2026-04-20 09:20:30 从 北京大兴国际机场 起飞，降落 上海虹桥国际机场 12:40:00。"
+        trajectory = gen.generate(intent_text)
+        
+        self.assertIsNotNone(trajectory)
+        self.assertTrue(trajectory.has_adsb)
+        self.assertEqual(len(trajectory.adsb_messages), len(trajectory.track_points))
+        
+        output_dict = trajectory.to_dict()
+        self.assertTrue(output_dict['has_adsb'])
+        first_tp = output_dict['track_points'][0]
+        self.assertIn('adsb', first_tp)
+        self.assertIn('icao24', first_tp['adsb'])
+        self.assertIn('callsign', first_tp['adsb'])
+    
+    def test_military_trajectory_no_adsb(self):
+        kb = KnowledgeBase()
+        gen = TrajectoryGenerator(kb)
+        intent_text = "0002 歼击机 于 2026-04-20 10:00:00 从 北京大兴国际机场 起飞，降落 上海虹桥国际机场 12:00:00。"
+        trajectory = gen.generate(intent_text)
+        
+        self.assertIsNotNone(trajectory)
+        self.assertFalse(trajectory.has_adsb)
+        self.assertEqual(len(trajectory.adsb_messages), 0)
+        
+        output_dict = trajectory.to_dict()
+        self.assertFalse(output_dict['has_adsb'])
+        first_tp = output_dict['track_points'][0]
+        self.assertNotIn('adsb', first_tp)
 
 
 if __name__ == '__main__':

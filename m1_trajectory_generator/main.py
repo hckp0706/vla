@@ -2,13 +2,14 @@ import argparse
 import json
 import logging
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .trajectory_generator import TrajectoryGenerator
 from .knowledge_base import KnowledgeBase
 from .parser import IntentParser
 from .models import MissionType
 from .config import Config
+from .route_planner import RoutePlanner
 
 logging.basicConfig(
     level=getattr(logging, Config.LOG_LEVEL),
@@ -97,6 +98,26 @@ def main():
         default=None,
         help='大模型API密钥（覆盖配置文件）'
     )
+    parser.add_argument(
+        '--batch-civil',
+        type=int,
+        nargs='?',
+        const=10,
+        metavar='COUNT',
+        help='批量生成民航轨迹（默认10条），基于路由缓存随机选择机场对'
+    )
+    parser.add_argument(
+        '--build-route-cache',
+        action='store_true',
+        help='预计算所有机场对之间的航路并缓存'
+    )
+    parser.add_argument(
+        '--plan-route',
+        type=str,
+        nargs=2,
+        metavar=('START', 'END'),
+        help='规划两个机场之间的航路（如: --plan-route ZBAA ZSPD）'
+    )
     
     args = parser.parse_args()
     
@@ -110,6 +131,82 @@ def main():
         logger.info("使用命令行指定的API密钥")
     
     kb = KnowledgeBase()
+    
+    if args.build_route_cache:
+        print("开始预计算所有机场对航路...")
+        planner = RoutePlanner()
+        cache = planner.build_route_cache()
+        print(f"预计算完成：{len(cache)}条航路")
+        return
+
+    if args.batch_civil is not None:
+        count = args.batch_civil
+        print(f"开始批量生成 {count} 条民航轨迹...")
+        generator = TrajectoryGenerator(kb)
+        planner = generator.route_planner
+        cache = generator._route_cache
+
+        if not cache:
+            print("航路缓存为空，请先运行 --build-route-cache")
+            return
+
+        import random
+        route_keys = list(cache.keys())
+        if len(route_keys) < count:
+            count = len(route_keys)
+        selected = random.sample(route_keys, count)
+
+        success = 0
+        failed = 0
+        for idx, key in enumerate(selected):
+            data = cache[key]
+            start_icao = data['airport_start']
+            end_icao = data['airport_end']
+
+            route_result = planner.get_cached_route(start_icao, end_icao, cache)
+            if not route_result:
+                failed += 1
+                continue
+
+            base_time = datetime(2026, 5, 8, 6, 0, 0)
+            offset_min = random.randint(0, 720)
+            depart_time = base_time + timedelta(minutes=offset_min)
+
+            target_id = f"{idx+1:04d}"
+
+            try:
+                trajectory = generator.generate_from_route(
+                    route_result, target_id=target_id, depart_time=depart_time)
+                if trajectory:
+                    output_file = get_output_filename(trajectory, args.output)
+                    trajectory.save_to_file(output_file)
+                    print(f"  [{idx+1}/{count}] {start_icao}→{end_icao}: {len(trajectory.track_points)}点, 保存成功")
+                    success += 1
+                else:
+                    print(f"  [{idx+1}/{count}] {start_icao}→{end_icao}: 生成失败")
+                    failed += 1
+            except Exception as e:
+                print(f"  [{idx+1}/{count}] {start_icao}→{end_icao}: 异常 - {e}")
+                failed += 1
+
+        print(f"\n批量生成完成: 成功{success}, 失败{failed}")
+        return
+
+    if args.plan_route:
+        start, end = args.plan_route
+        planner = RoutePlanner()
+        result = planner.plan_route(start, end)
+        if result:
+            print(f"\n航路规划结果: {result.airport_start} -> {result.airport_end}")
+            print(f"  总距离: {result.total_distance_km:.0f} km")
+            print(f"  转弯点: {result.turn_count}")
+            print(f"  航路点序列:")
+            for i, name in enumerate(result.waypoint_names):
+                lat, lon = result.waypoint_coords[i]
+                print(f"    {i+1}. {name} ({lat:.4f}N, {lon:.4f}E)")
+        else:
+            print(f"航路规划失败: {start} -> {end}")
+        return
     
     if args.list_airports:
         print("可用机场列表:")

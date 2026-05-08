@@ -24,17 +24,22 @@ logger = logging.getLogger(__name__)
 class EAIPAirport:
     """EAIP机场数据类"""
     def __init__(self, icao_code: str, name_cn: str, latitude: float, longitude: float, 
-                 elevation: float = None, iata_code: str = None):
+                 elevation: float = None, iata_code: str = None, runway_direction: tuple = None):
         self.icao_code = icao_code
         self.name_cn = name_cn
         self.iata_code = iata_code
         self.latitude = latitude
         self.longitude = longitude
         self.elevation = elevation
+        self.runway_direction = runway_direction if runway_direction else (0, 180)
 
     def has_coordinates(self) -> bool:
         """检查是否有坐标信息"""
         return self.latitude is not None and self.longitude is not None
+    
+    def has_runway_info(self) -> bool:
+        """检查是否有跑道信息"""
+        return self.runway_direction is not None and self.runway_direction != (0, 180)
 
 class EAIPWaypoint:
     """EAIP航路点数据类"""
@@ -78,20 +83,30 @@ class EAIPLoader:
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
+            runway_count = 0
             for item in data:
                 if item.get('latitude') is not None and item.get('longitude') is not None:
+                    # 解析跑道方向数据
+                    runway_dir = item.get('runway_direction')
+                    if runway_dir and isinstance(runway_dir, list) and len(runway_dir) >= 2:
+                        runway_dir = (runway_dir[0], runway_dir[1])
+                        runway_count += 1
+                    else:
+                        runway_dir = None
+                    
                     airport = EAIPAirport(
                         icao_code=item['icao_code'],
                         name_cn=item['name_cn'],
                         latitude=item['latitude'],
                         longitude=item['longitude'],
                         elevation=item.get('elevation'),
-                        iata_code=item.get('iata_code')
+                        iata_code=item.get('iata_code'),
+                        runway_direction=runway_dir
                     )
                     self.airports[item['icao_code']] = airport
                     self.airports_by_name[item['name_cn']] = airport
             
-            logger.info(f"已加载 {len(self.airports)} 个EAIP机场数据（含坐标）")
+            logger.info(f"已加载 {len(self.airports)} 个EAIP机场数据（含坐标），其中 {runway_count} 个有机场跑道信息")
         except Exception as e:
             logger.error(f"加载EAIP机场数据失败: {e}")
     

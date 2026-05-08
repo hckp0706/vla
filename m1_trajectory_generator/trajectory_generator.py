@@ -21,7 +21,7 @@ from typing import Optional, List, Tuple
 from geographiclib.geodesic import Geodesic
 
 from .models import (
-    FlightIntent, TrackPoint, TrajectoryOutput, 
+    FlightIntent, TrackPoint, TrajectoryOutput, ADSBMessage,
     Waypoint, AircraftPerformance, FlightPhase, MissionType, MissionProfile
 )
 from .knowledge_base import KnowledgeBase
@@ -30,6 +30,8 @@ from .llm_client import LLMClient
 from .waypoint_validator import WaypointValidator
 from .config import Config
 from .eaip_loader import EAIPLoader
+from .ads_b_generator import ADSBGenerator, is_civil_aircraft
+from .route_planner import RoutePlanner, RouteResult
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +59,7 @@ class TrajectoryGenerator:
     def __init__(self, knowledge_base: Optional[KnowledgeBase] = None):
         """
         初始化轨迹生成器
-        
+
         参数：
             knowledge_base: 知识库对象，如果为None则创建新实例
         """
@@ -70,10 +72,21 @@ class TrajectoryGenerator:
         # 初始化EAIP数据加载器
         self.eaip_loader = EAIPLoader()
         logger.info(f"EAIP数据加载完成：{len(self.eaip_loader.airports)}个机场, {len(self.eaip_loader.waypoints)}个航路点")
-        
+
+        # 初始化航路规划器（A*寻路引擎）
+        self.route_planner = RoutePlanner()
+        logger.info(f"航路规划器初始化完成：{len(self.route_planner.route_network)}个网络节点, {len(self.route_planner.airports)}个机场")
+
+        # 加载航路缓存（预计算航路）
+        self._route_cache = self.route_planner.load_route_cache()
+
         # 加载航路网络
         self.route_network = self._load_route_network()
         logger.info(f"航路网络加载完成：{len(self.route_network)}个节点")
+
+        # 当前航班的起降机场跑道方向（在生成轨迹时设置）
+        self.start_airport_runway = None
+        self.end_airport_runway = None
     
     def generate(self, intent_text: str) -> Optional[TrajectoryOutput]:
         """
@@ -85,7 +98,6 @@ class TrajectoryGenerator:
         返回：
             TrajectoryOutput对象，生成失败返回None
         """
-        # 解析并验证简令
         intent, is_valid, errors, warnings = self.parser.parse_and_validate(intent_text)
         
         if not is_valid:
@@ -97,53 +109,209 @@ class TrajectoryGenerator:
             logger.warning(f"简令解析警告: {warning}")
         
         return self._generate_trajectory(intent)
+
+    def generate_from_route(self, route_result, target_id: str = None,
+                            platform_type: str = '民航客机',
+                            depart_time: datetime = None) -> Optional[TrajectoryOutput]:
+        """
+        直接从RouteResult生成轨迹，跳过意图解析。
+
+        参数：
+            route_result: RoutePlanner.plan_route()的返回结果
+            target_id: 目标批号
+            platform_type: 机型名称
+            depart_time: 起飞时间
+
+        返回：
+            TrajectoryOutput对象
+        """
+        if target_id is None:
+            target_id = f"{route_result.airport_start}{route_result.airport_end}"
+
+        aircraft = self.kb.get_aircraft_performance(platform_type)
+        if not aircraft:
+            aircraft = self.kb.get_aircraft_performance('民航客机')
+
+        mission_profile = self.kb.get_mission_profile(MissionType.NORMAL_FLIGHT)
+
+        waypoints = []
+        for i, name in enumerate(route_result.waypoint_names):
+            lat, lon = route_result.waypoint_coords[i]
+            alt = 0.0
+            apt_data = self.route_planner.airports.get(name.upper())
+            if apt_data:
+                alt = apt_data.get('elev', 0.0) or 0.0
+            wp_data = self.route_planner.route_network.get(name)
+            if wp_data:
+                alt = 0.0
+            waypoints.append(Waypoint(name=name, lon=lon, lat=lat, alt_m=alt))
+
+        self.start_airport_runway = self._get_airport_runway(route_result.airport_start)
+        self.end_airport_runway = self._get_airport_runway(route_result.airport_end)
+
+        total_distance_m = self._calculate_total_distance(waypoints)
+        cruise_alt = self._get_mission_altitude(aircraft, mission_profile)
+        cruise_speed = self._get_mission_speed(aircraft, mission_profile)
+
+        if depart_time is None:
+            depart_time = datetime(2026, 5, 8, 8, 0, 0)
+
+        total_time_sec = total_distance_m / cruise_speed
+
+        track_points = self._generate_track_points(
+            waypoints=waypoints,
+            start_time=depart_time,
+            total_time_sec=total_time_sec,
+            speed_ms=cruise_speed,
+            aircraft=aircraft,
+            mission_profile=mission_profile,
+            cruise_alt=cruise_alt
+        )
+
+        adsb_gen = ADSBGenerator(target_id, platform_type)
+        adsb_messages = adsb_gen.generate_messages(track_points) if adsb_gen.is_civil else []
+
+        return TrajectoryOutput(
+            target_id=target_id,
+            platform_type=platform_type,
+            mission_type=MissionType.NORMAL_FLIGHT.value,
+            track_points=track_points,
+            adsb_messages=adsb_messages,
+            has_adsb=adsb_gen.is_civil
+        )
     
     def _generate_trajectory(self, intent: FlightIntent) -> Optional[TrajectoryOutput]:
         """
         根据解析后的飞行意图生成轨迹
-        
+
+        统一流程：
+        1. 查缓存 → 拿到RouteResult（含坐标）
+        2. 缓存未命中 → RoutePlanner A*实时寻路
+        3. A*失败 → 旧EAIP/LMM降级（只拿名称，需解析坐标）
+        4. 统一用Waypoint列表生成轨迹
+
         参数：
             intent: FlightIntent对象
-        
+
         返回：
             TrajectoryOutput对象
         """
-        # 获取机型性能参数
         aircraft = self.kb.get_aircraft_performance(intent.platform_type)
         if not aircraft:
             logger.error(f"未知机型: {intent.platform_type}")
             return None
-        
-        # 获取任务配置
+
         mission_profile = None
         if intent.mission_type:
             mission_profile = self.kb.get_mission_profile(intent.mission_type)
             if mission_profile:
                 logger.info(f"飞行任务: {mission_profile.description}")
-        
-        # 获取航路
-        route = self._get_route(intent)
-        if not route:
+
+        route_result = self._resolve_route(intent)
+
+        if route_result is None:
             logger.error(f"无法获取航路: {intent.loc_start} -> {intent.loc_end or intent.loc_mid}")
             return None
-        
-        # 解析航路点坐标
-        waypoints = self._resolve_waypoints(route)
-        if not waypoints:
-            logger.error("无法解析航路点坐标")
-            return None
-        
-        # 计算总距离
+
+        if isinstance(route_result, RouteResult):
+            waypoints = self._waypoints_from_route_result(route_result)
+            self.start_airport_runway = self._get_airport_runway(route_result.airport_start)
+            self.end_airport_runway = self._get_airport_runway(route_result.airport_end)
+            logger.info(f"使用缓存/A*航路: {route_result.airport_start}->{route_result.airport_end}, "
+                        f"{len(route_result.waypoint_names)}个点, {route_result.total_distance_km:.0f}km")
+        else:
+            waypoints = self._resolve_waypoints(route_result)
+            if not waypoints:
+                logger.error("无法解析航路点坐标")
+                return None
+
+        return self._build_trajectory_from_waypoints(waypoints, intent, aircraft, mission_profile)
+
+    def _resolve_route(self, intent: FlightIntent):
+        """
+        解析航路，返回RouteResult或名称列表。
+
+        优先级：缓存 → A*实时寻路 → 旧EAIP → LLM → 本地预设
+
+        参数：
+            intent: 飞行意图对象
+
+        返回：
+            RouteResult对象（缓存/A*命中）或 List[str]（降级路径）或 None
+        """
+        start_icao = self._resolve_airport_icao(intent.loc_start)
+        end_icao = self._resolve_airport_icao(intent.loc_end) if intent.loc_end else None
+
+        if start_icao and end_icao:
+            if self._route_cache:
+                cached = self.route_planner.get_cached_route(start_icao, end_icao, self._route_cache)
+                if cached:
+                    logger.info(f"航路缓存命中: {start_icao}->{end_icao}")
+                    return cached
+
+            result = self.route_planner.plan_route(start_icao, end_icao)
+            if result:
+                logger.info(f"A*实时寻路成功: {start_icao}->{end_icao}")
+                return result
+
+        eaip_route = self._generate_route_with_eaip(intent)
+        if eaip_route:
+            return eaip_route
+
+        llm_route = self._generate_route_with_llm(intent)
+        if llm_route:
+            return llm_route
+
+        logger.info("所有航路规划方法失败，使用本地预设航路")
+        if intent.loc_end and intent.loc_mid:
+            route1 = self.kb.get_route(intent.loc_start, intent.loc_mid, intent.platform_type)
+            route2 = self.kb.get_route(intent.loc_mid, intent.loc_end, intent.platform_type)
+            if route1 and route2:
+                return route1 + route2[1:]
+            return [intent.loc_start, intent.loc_mid, intent.loc_end]
+        elif intent.loc_end:
+            return self.kb.get_route(intent.loc_start, intent.loc_end, intent.platform_type)
+        elif intent.loc_mid:
+            route1 = self.kb.get_route(intent.loc_start, intent.loc_mid, intent.platform_type)
+            if route1:
+                return route1
+            return [intent.loc_start, intent.loc_mid]
+
+        return None
+
+    def _waypoints_from_route_result(self, route_result) -> List[Waypoint]:
+        """从RouteResult直接提取Waypoint列表，无需重新解析坐标"""
+        waypoints = []
+        for i, name in enumerate(route_result.waypoint_names):
+            lat, lon = route_result.waypoint_coords[i]
+            alt = 0.0
+            apt_data = self.route_planner.airports.get(name.upper())
+            if apt_data:
+                alt = apt_data.get('elev', 0.0) or 0.0
+            waypoints.append(Waypoint(name=name, lon=lon, lat=lat, alt_m=alt))
+        return waypoints
+
+    def _resolve_airport_icao(self, location: str) -> Optional[str]:
+        """从位置名称解析出ICAO代码"""
+        apt = self.route_planner.search_airport(location)
+        if apt:
+            return apt['icao']
+        eaip_apt = self.eaip_loader.search_airport(location)
+        if eaip_apt:
+            return eaip_apt.icao_code
+        return None
+
+    def _build_trajectory_from_waypoints(self, waypoints: List[Waypoint], intent: FlightIntent,
+                                          aircraft: AircraftPerformance,
+                                          mission_profile: Optional[MissionProfile]) -> Optional[TrajectoryOutput]:
+        """从已解析的Waypoint列表构建完整轨迹输出"""
         total_distance_m = self._calculate_total_distance(waypoints)
         
-        # 根据任务类型调整巡航高度和速度
         cruise_alt = self._get_mission_altitude(aircraft, mission_profile)
         cruise_speed = self._get_mission_speed(aircraft, mission_profile)
         
-        # 直接使用计算出的巡航速度，不再依赖到达时间
         required_speed = cruise_speed
         
-        # 速度校验：检查是否超出机型性能限制
         if required_speed > aircraft.max_speed_ms:
             logger.warning(f"巡航速度 {required_speed:.1f} m/s 超过机型最大速度 {aircraft.max_speed_ms:.1f} m/s，将按最大速度飞行")
             required_speed = aircraft.max_speed_ms
@@ -151,10 +319,8 @@ class TrajectoryGenerator:
             logger.warning(f"巡航速度 {required_speed:.1f} m/s 低于机型最小速度 {aircraft.min_speed_ms:.1f} m/s，将按最小速度飞行")
             required_speed = aircraft.min_speed_ms
         
-        # 计算总飞行时间
         total_time_sec = total_distance_m / required_speed
         
-        # 生成轨迹点
         track_points = self._generate_track_points(
             waypoints=waypoints,
             start_time=intent.takeoff_time,
@@ -165,14 +331,18 @@ class TrajectoryGenerator:
             cruise_alt=cruise_alt
         )
         
-        # 构建输出对象
         mission_type_str = intent.mission_type.value if intent.mission_type else None
+        
+        adsb_gen = ADSBGenerator(intent.target_id, intent.platform_type)
+        adsb_messages = adsb_gen.generate_messages(track_points) if adsb_gen.is_civil else []
         
         return TrajectoryOutput(
             target_id=intent.target_id,
             platform_type=intent.platform_type,
             mission_type=mission_type_str,
-            track_points=track_points
+            track_points=track_points,
+            adsb_messages=adsb_messages,
+            has_adsb=adsb_gen.is_civil
         )
     
     def _get_mission_altitude(self, aircraft: AircraftPerformance, mission: Optional[MissionProfile]) -> float:
@@ -205,85 +375,40 @@ class TrajectoryGenerator:
         if mission:
             return min(mission.typical_speed_ms, aircraft.cruise_speed_ms * mission.speed_factor)
         return aircraft.cruise_speed_ms
-    
-    def _get_route(self, intent: FlightIntent) -> Optional[List[str]]:
-        """
-        获取航路点名称列表
-        
-        降级策略：EAIP数据 → 大模型 → 本地预设航路
-        
-        参数：
-            intent: 飞行意图对象
-        
-        返回：
-            航路点名称列表
-        """
-        # 优先使用EAIP数据规划航线
-        eaip_route = self._generate_route_with_eaip(intent)
-        if eaip_route:
-            logger.info(f"使用EAIP数据生成的航路点，共{len(eaip_route)}个")
-            return eaip_route
-        
-        # EAIP数据不可用时，使用大模型生成航路点
-        llm_waypoints = self._generate_route_with_llm(intent)
-        if llm_waypoints:
-            logger.info(f"使用大模型生成的航路点，共{len(llm_waypoints)}个")
-            return llm_waypoints
-        
-        # 降级到本地预设航路
-        logger.info("EAIP和大模型均失败，使用本地预设航路")
-        if intent.loc_end and intent.loc_mid:
-            route1 = self.kb.get_route(intent.loc_start, intent.loc_mid, intent.platform_type)
-            route2 = self.kb.get_route(intent.loc_mid, intent.loc_end, intent.platform_type)
-            if route1 and route2:
-                return route1 + route2[1:]
-            return [intent.loc_start, intent.loc_mid, intent.loc_end]
-        elif intent.loc_end:
-            return self.kb.get_route(intent.loc_start, intent.loc_end, intent.platform_type)
-        elif intent.loc_mid:
-            route1 = self.kb.get_route(intent.loc_start, intent.loc_mid, intent.platform_type)
-            if route1:
-                return route1
-            return [intent.loc_start, intent.loc_mid]
-        else:
-            return None
-    
+
     def _generate_route_with_eaip(self, intent: FlightIntent) -> Optional[List[str]]:
         """
-        使用EAIP数据生成航路点
-        
+        使用旧EAIP方法生成航路点名称列表（降级方案）
+
+        缓存和A*寻路已在_resolve_route中处理，此方法仅作为降级补充。
+
         参数：
             intent: 飞行意图对象
-        
+
         返回：
             航路点名称列表，失败返回None
         """
         if not self.eaip_loader.has_airport_data():
             logger.info("EAIP机场数据不可用")
             return None
-        
+
         start_airport = self.eaip_loader.search_airport(intent.loc_start)
         end_airport = self.eaip_loader.search_airport(intent.loc_end) if intent.loc_end else None
-        
-        if not start_airport:
-            logger.info(f"EAIP中未找到起点: {intent.loc_start}")
+
+        if not start_airport or not end_airport:
+            logger.info(f"EAIP中未找到起终点: {intent.loc_start} -> {intent.loc_end}")
             return None
-        
-        if end_airport:
-            logger.info(f"EAIP匹配到航线: {start_airport.name_cn} -> {end_airport.name_cn}")
-            return self._plan_route_with_eaip_waypoints(start_airport, end_airport)
-        
-        logger.info(f"EAIP中未找到终点: {intent.loc_end}")
-        return None
+
+        return self._plan_route_with_eaip_waypoints_legacy(start_airport, end_airport)
     
-    def _plan_route_with_eaip_waypoints(self, start: 'EAIPAirport', end: 'EAIPAirport') -> List[str]:
+    def _plan_route_with_eaip_waypoints_legacy(self, start: 'EAIPAirport', end: 'EAIPAirport') -> List[str]:
         """
-        使用EAIP航路点规划航线
-        
+        旧版EAIP航路点规划（降级方案）
+
         参数：
             start: 起点机场
             end: 终点机场
-        
+
         返回：
             航路点名称列表（包含起终点）
         """
@@ -823,13 +948,54 @@ class TrajectoryGenerator:
             Waypoint对象列表
         """
         waypoints = []
-        for name in route:
+        self.start_airport_runway = None
+        self.end_airport_runway = None
+        
+        for i, name in enumerate(route):
             wp = self._get_waypoint_from_eaip_or_kb(name)
             if wp:
                 waypoints.append(wp)
+                
+                # 获取起飞机场的跑道方向
+                if i == 0:
+                    self.start_airport_runway = self._get_airport_runway(name)
+                
+                # 获取降落机场的跑道方向
+                if i == len(route) - 1:
+                    self.end_airport_runway = self._get_airport_runway(name)
             else:
                 logger.warning(f"无法解析航路点: {name}")
+        
         return waypoints if waypoints else None
+    
+    def _get_airport_runway(self, name: str) -> Optional[Tuple[float, float]]:
+        """
+        获取机场的跑道方向
+
+        参数：
+            name: 机场名称
+
+        返回：
+            跑道方向元组（主方向，反方向），失败返回None
+        """
+        airport = self.eaip_loader.search_airport(name)
+        if airport and airport.runway_direction and airport.runway_direction != (0, 180):
+            return airport.runway_direction
+
+        apt_data = self.route_planner.airports.get(name.upper())
+        if apt_data and apt_data.get('runway_dirs'):
+            dirs = apt_data['runway_dirs']
+            if len(dirs) >= 2:
+                return (float(dirs[0]), float(dirs[1]))
+            elif len(dirs) == 1:
+                d = float(dirs[0])
+                return (d, (d + 180) % 360)
+
+        geo_location = self.kb.get_geo_location(name)
+        if geo_location and geo_location.runway_direction != (0, 180):
+            return geo_location.runway_direction
+
+        return None
     
     def _get_waypoint_from_eaip_or_kb(self, name: str) -> Optional[Waypoint]:
         """
@@ -849,7 +1015,25 @@ class TrajectoryGenerator:
                 lat=eaip_wp.latitude,
                 alt_m=0.0
             )
-        
+
+        eaip_apt = self.eaip_loader.search_airport(name)
+        if eaip_apt and eaip_apt.latitude is not None:
+            return Waypoint(
+                name=eaip_apt.icao_code,
+                lon=eaip_apt.longitude,
+                lat=eaip_apt.latitude,
+                alt_m=eaip_apt.elevation if eaip_apt.elevation else 0.0
+            )
+
+        apt_data = self.route_planner.airports.get(name.upper())
+        if apt_data:
+            return Waypoint(
+                name=apt_data['icao'],
+                lon=apt_data['lon'],
+                lat=apt_data['lat'],
+                alt_m=apt_data.get('elev', 0.0) or 0.0
+            )
+
         return self.kb.get_waypoint(name)
     
     def _calculate_total_distance(self, waypoints: List[Waypoint]) -> float:
@@ -1023,13 +1207,8 @@ class TrajectoryGenerator:
             # 计算当前进度
             progress = elapsed_sec / total_time_sec if total_time_sec > 0 else 0
             current_distance = progress * total_distance
-            
-            # 计算当前位置和航向
-            lat, lon, heading = self._get_position_at_distance(
-                waypoints, segment_distances, current_distance
-            )
-            
-            # 计算高度和飞行阶段
+
+            # 先计算高度和飞行阶段（需要在使用phase之前）
             alt, vertical_rate, phase = self._calculate_altitude_profile(
                 current_distance=current_distance,
                 total_distance=total_distance,
@@ -1040,6 +1219,45 @@ class TrajectoryGenerator:
                 descent_distance=descent_distance,
                 aircraft=aircraft
             )
+
+            # 计算当前位置和航向
+            lat, lon, heading = self._get_position_at_distance(
+                waypoints, segment_distances, current_distance
+            )
+
+            # 在起飞阶段使用跑道方向作为初始航向
+            if phase in [FlightPhase.GROUND_TAKEOFF, FlightPhase.CLIMBING] and progress < 0.05:
+                if self.start_airport_runway:
+                    # 根据飞行方向选择合适的跑道方向
+                    # 比较跑道方向与计算得到的航向，选择更接近的方向
+                    runway_dir1, runway_dir2 = self.start_airport_runway
+                    diff1 = abs(heading - runway_dir1)
+                    diff2 = abs(heading - runway_dir2)
+                    # 处理跨越0度/360度的情况
+                    if diff1 > 180:
+                        diff1 = 360 - diff1
+                    if diff2 > 180:
+                        diff2 = 360 - diff2
+                    if diff1 < diff2 and diff1 < 90:
+                        heading = runway_dir1
+                    elif diff2 < 90:
+                        heading = runway_dir2
+
+            # 在降落阶段使用跑道方向作为最终航向
+            if phase == FlightPhase.LANDING and progress > 0.95:
+                if self.end_airport_runway:
+                    runway_dir1, runway_dir2 = self.end_airport_runway
+                    diff1 = abs(heading - runway_dir1)
+                    diff2 = abs(heading - runway_dir2)
+                    # 处理跨越0度/360度的情况
+                    if diff1 > 180:
+                        diff1 = 360 - diff1
+                    if diff2 > 180:
+                        diff2 = 360 - diff2
+                    if diff1 < diff2 and diff1 < 90:
+                        heading = runway_dir1
+                    elif diff2 < 90:
+                        heading = runway_dir2
             
             # 地形跟随模式：限制巡航阶段的高度
             if mission_profile and mission_profile.terrain_following:

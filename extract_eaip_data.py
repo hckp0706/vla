@@ -34,7 +34,8 @@ def extract_airport_data(pdf_path):
         'longitude': None,
         'elevation': None,
         'magnetic_variation': None,
-        'runways': []
+        'runways': [],
+        'runway_direction': None
     }
     
     # 从文件名提取ICAO代码
@@ -45,56 +46,170 @@ def extract_airport_data(pdf_path):
     
     try:
         with pdfplumber.open(pdf_path) as pdf:
-            # 读取第一页内容
-            if len(pdf.pages) > 0:
-                page = pdf.pages[0]
+            # 读取所有页面内容
+            full_text = ""
+            for page in pdf.pages[:3]:  # 读取前3页
                 text = page.extract_text()
-                
                 if text:
-                    # 提取机场名称和代码
-                    # 格式：ZBAA/PEK-北京/首都BEIJING/Capital
-                    name_pattern = r'([A-Z]{4})/([A-Z]{3})-\s*([\u4e00-\u9fa5]+)/([\u4e00-\u9fa5]*)\s*([A-Za-z\s]+)/([A-Za-z\s]+)'
-                    match = re.search(name_pattern, text)
-                    if match:
-                        airport_data['icao_code'] = match.group(1)
-                        airport_data['iata_code'] = match.group(2)
-                        airport_data['city_cn'] = match.group(3)
-                        airport_data['name_cn'] = match.group(4) if match.group(4) else match.group(3) + '机场'
-                        airport_data['city_en'] = match.group(5).strip()
-                        airport_data['name_en'] = match.group(6).strip()
+                    full_text += text + "\n"
+            
+            if full_text:
+                # 提取机场名称和代码
+                # 格式：ZBAA/PEK-北京/首都BEIJING/Capital
+                name_pattern = r'([A-Z]{4})/([A-Z]{3})-\s*([\u4e00-\u9fa5]+)/([\u4e00-\u9fa5]*)\s*([A-Za-z\s]+)/([A-Za-z\s]+)'
+                match = re.search(name_pattern, full_text)
+                if match:
+                    airport_data['icao_code'] = match.group(1)
+                    airport_data['iata_code'] = match.group(2)
+                    airport_data['city_cn'] = match.group(3)
+                    airport_data['name_cn'] = match.group(4) if match.group(4) else match.group(3) + '机场'
+                    airport_data['city_en'] = match.group(5).strip()
+                    airport_data['name_en'] = match.group(6).strip()
+                
+                # 提取坐标（格式：N40°04.4′ E116°35.9′）
+                coord_pattern = r'([NS])(\d{1,3})°(\d{1,2})\.(\d+)′\s+([EW])(\d{1,3})°(\d{1,2})\.(\d+)′'
+                match = re.search(coord_pattern, full_text)
+                if match:
+                    # 解析纬度
+                    lat_dir = match.group(1)
+                    lat_deg = float(match.group(2))
+                    lat_min = float(f"{match.group(3)}.{match.group(4)}")
+                    latitude = lat_deg + lat_min/60
+                    if lat_dir == 'S':
+                        latitude = -latitude
+                    airport_data['latitude'] = latitude
                     
-                    # 提取坐标（格式：N40°04.4′ E116°35.9′）
-                    coord_pattern = r'([NS])(\d{1,3})°(\d{1,2})\.(\d+)′\s+([EW])(\d{1,3})°(\d{1,2})\.(\d+)′'
-                    match = re.search(coord_pattern, text)
-                    if match:
-                        # 解析纬度
-                        lat_dir = match.group(1)
-                        lat_deg = float(match.group(2))
-                        lat_min = float(f"{match.group(3)}.{match.group(4)}")
-                        latitude = lat_deg + lat_min/60
-                        if lat_dir == 'S':
-                            latitude = -latitude
-                        airport_data['latitude'] = latitude
-                        
-                        # 解析经度
-                        lon_dir = match.group(5)
-                        lon_deg = float(match.group(6))
-                        lon_min = float(f"{match.group(7)}.{match.group(8)}")
-                        longitude = lon_deg + lon_min/60
-                        if lon_dir == 'W':
-                            longitude = -longitude
-                        airport_data['longitude'] = longitude
-                    
-                    # 提取标高（格式：35.3 m/31.8℃）
-                    elev_pattern = r'ELEV.*?(\d+\.\d+)\s*m'
-                    match = re.search(elev_pattern, text)
-                    if match:
-                        airport_data['elevation'] = float(match.group(1))
-    
+                    # 解析经度
+                    lon_dir = match.group(5)
+                    lon_deg = float(match.group(6))
+                    lon_min = float(f"{match.group(7)}.{match.group(8)}")
+                    longitude = lon_deg + lon_min/60
+                    if lon_dir == 'W':
+                        longitude = -longitude
+                    airport_data['longitude'] = longitude
+                
+                # 提取标高（格式：35.3 m/31.8℃）
+                elev_pattern = r'ELEV.*?(\d+\.\d+)\s*m'
+                match = re.search(elev_pattern, full_text)
+                if match:
+                    airport_data['elevation'] = float(match.group(1))
+                
+                # 提取跑道信息
+                airport_data['runways'] = extract_runway_info(full_text)
+                
+                # 从跑道信息中提取主跑道方向
+                if airport_data['runways']:
+                    airport_data['runway_direction'] = airport_data['runways'][0].get('direction', (0, 180))
+
     except Exception as e:
         print(f"Error processing {pdf_path}: {str(e)}")
     
     return airport_data
+
+def extract_runway_info(text):
+    """
+    从文本中提取跑道信息
+    
+    跑道信息格式：
+    - 跑道编号格式：01/19（表示跑道方向010度和190度）
+    - 跑道长度格式：3800 m x 60 m
+    - 跑道表面：CONC（混凝土）、ASP（沥青）等
+    
+    参数：
+        text: 机场PDF提取的文本
+    
+    返回：
+        跑道信息列表
+    """
+    runways = []
+    
+    # 匹配跑道信息的模式
+    # 模式1：跑道编号 + 长度信息
+    runway_patterns = [
+        # 模式：RWY 01/19 3800 x 60 CONC
+        r'RWY\s+(\d{2})/(\d{2})\s+(\d+)\s*x\s*(\d+)\s*([A-Z]+)',
+        # 模式：01/19 跑道 3800米
+        r'(\d{2})/(\d{2})\s*跑道\s*(\d+)\s*米',
+        # 模式：RUNWAY 01L/19R 3800 x 60
+        r'RUNWAY\s+(\d{2}[LR]?)/(\d{2}[LR]?)\s+(\d+)\s*x\s*(\d+)',
+        # 模式：01 190° 3800m
+        r'(\d{2})\s+(\d{3})°\s+(\d+)m',
+    ]
+    
+    for pattern in runway_patterns:
+        matches = re.findall(pattern, text)
+        for match in matches:
+            try:
+                # 解析跑道方向
+                if len(match) >= 2:
+                    # 提取跑道编号并转换为方向角度
+                    runway_num1 = match[0].strip('LR')
+                    runway_num2 = match[1].strip('LR') if len(match) > 1 else None
+                    
+                    dir1 = int(runway_num1) * 10
+                    dir2 = int(runway_num2) * 10 if runway_num2 else (dir1 + 180) % 360
+                    
+                    runway_info = {
+                        'designation': f"{runway_num1}/{runway_num2}" if runway_num2 else runway_num1,
+                        'direction': (dir1, dir2),
+                        'length_m': int(match[2]) if len(match) > 2 else None,
+                        'width_m': int(match[3]) if len(match) > 3 else None,
+                        'surface': match[4] if len(match) > 4 else None
+                    }
+                    
+                    # 避免重复添加
+                    if runway_info not in runways:
+                        runways.append(runway_info)
+            except (ValueError, IndexError):
+                continue
+    
+    # 如果没有找到跑道信息，尝试从AD 2.2章节提取
+    if not runways:
+        ad22_section = extract_ad22_section(text)
+        if ad22_section:
+            runways = parse_ad22_runways(ad22_section)
+    
+    return runways
+
+def extract_ad22_section(text):
+    """
+    提取AD 2.2章节内容（跑道信息章节）
+    """
+    # 查找AD 2.2章节
+    ad22_pattern = r'AD\s*2\.2[\s\S]*?(?=AD\s*2\.3|$)'
+    match = re.search(ad22_pattern, text)
+    if match:
+        return match.group(0)
+    return None
+
+def parse_ad22_runways(ad22_text):
+    """
+    解析AD 2.2章节中的跑道信息
+    """
+    runways = []
+    
+    # 匹配表格格式的跑道数据
+    # 格式示例：01/19    3800    60    CONC    ..........
+    table_pattern = r'(\d{2}/\d{2})\s+(\d+)\s+(\d+)\s+([A-Z]+)'
+    matches = re.findall(table_pattern, ad22_text)
+    
+    for match in matches:
+        runway_num1, runway_num2 = match[0].split('/')
+        dir1 = int(runway_num1) * 10
+        dir2 = int(runway_num2) * 10
+        
+        runway_info = {
+            'designation': match[0],
+            'direction': (dir1, dir2),
+            'length_m': int(match[1]),
+            'width_m': int(match[2]),
+            'surface': match[3]
+        }
+        
+        if runway_info not in runways:
+            runways.append(runway_info)
+    
+    return runways
 
 def extract_route_data(pdf_path):
     """

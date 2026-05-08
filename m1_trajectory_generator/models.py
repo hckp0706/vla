@@ -149,6 +149,59 @@ class TrackPoint:
 
 
 @dataclass
+class ADSBMessage:
+    """
+    ADS-B报文数据结构
+    
+    存储飞机在某一时刻广播的ADS-B Out报文信息，遵循1090ES标准
+    仅民航飞机才会发送ADS-B报文，军机（尤其是敌方军机）不会发送
+    
+    属性说明：
+        icao24: ICAO 24位地址，十六进制字符串，如"7806E2"，全球唯一标识一架飞机
+        callsign: 航班呼号/注册号，如"CCA1234"、"B-1234"，最多8个字符
+        altitude_ft: 气压高度，单位：英尺，基于1013.25hPa标准大气压
+        ground_speed_kt: 地速，单位：节（海里/小时）
+        track: 地面航迹角，单位：度，0-360，真北为0
+        vertical_rate_fpm: 垂直速率，单位：英尺/分钟，正为爬升，负为下降
+        lat: 纬度，单位：度
+        lon: 经度，单位：度
+        on_ground: 是否在地面
+        squawk: 应答机编码（Squawk码），4位八进制数字，如"1200"（目视飞行）、"2000"（IFR）
+        emitter_category: 飞机类别代码，1=A型重机、2=B型中机、3=C型轻机等
+        message_type: 报文类型标识，如"adsb_icao"
+    """
+    icao24: str                          # ICAO 24位地址（hex）
+    callsign: str                        # 航班呼号/注册号
+    altitude_ft: float                   # 气压高度（英尺）
+    ground_speed_kt: float               # 地速（节）
+    track: float                         # 地面航迹角（度）
+    vertical_rate_fpm: float             # 垂直速率（英尺/分钟）
+    lat: float                           # 纬度（度）
+    lon: float                           # 经度（度）
+    on_ground: bool = False              # 是否在地面
+    squawk: str = "2000"                 # 应答机编码
+    emitter_category: int = 0            # 飞机类别代码
+    message_type: str = "adsb_icao"      # 报文类型标识
+
+    def to_dict(self) -> dict:
+        """转换为字典格式，用于JSON序列化"""
+        return {
+            'icao24': self.icao24,
+            'callsign': self.callsign,
+            'altitude_ft': round(self.altitude_ft, 0),
+            'ground_speed_kt': round(self.ground_speed_kt, 1),
+            'track': round(self.track, 1),
+            'vertical_rate_fpm': round(self.vertical_rate_fpm, 0),
+            'lat': round(self.lat, 6),
+            'lon': round(self.lon, 6),
+            'on_ground': self.on_ground,
+            'squawk': self.squawk,
+            'emitter_category': self.emitter_category,
+            'message_type': self.message_type
+        }
+
+
+@dataclass
 class TrajectoryOutput:
     """
     航迹输出数据结构
@@ -160,20 +213,31 @@ class TrajectoryOutput:
         platform_type: 机型
         mission_type: 飞行任务类型（字符串形式）
         track_points: 轨迹点列表，按时间顺序排列
+        adsb_messages: ADS-B报文列表，与track_points一一对应，仅民航飞机有此数据
+        has_adsb: 是否有ADS-B数据，民航为True，军机为False
     """
     target_id: str                    # 目标批号
     platform_type: str                # 机型
     mission_type: Optional[str] = None  # 飞行任务类型
     track_points: List[TrackPoint] = field(default_factory=list)  # 轨迹点列表
+    adsb_messages: List[ADSBMessage] = field(default_factory=list)  # ADS-B报文列表
+    has_adsb: bool = False            # 是否有ADS-B数据
 
     def to_dict(self) -> dict:
         """转换为字典格式，用于JSON序列化"""
-        return {
+        result = {
             'target_id': self.target_id,
             'platform_type': self.platform_type,
             'mission_type': self.mission_type,
-            'track_points': [p.to_dict() for p in self.track_points]
+            'has_adsb': self.has_adsb,
+            'track_points': []
         }
+        for i, tp in enumerate(self.track_points):
+            tp_dict = tp.to_dict()
+            if self.has_adsb and i < len(self.adsb_messages):
+                tp_dict['adsb'] = self.adsb_messages[i].to_dict()
+            result['track_points'].append(tp_dict)
+        return result
 
     def to_json(self, indent: int = 2) -> str:
         """转换为JSON字符串"""

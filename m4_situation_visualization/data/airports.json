@@ -1,0 +1,626 @@
+[
+  {
+    "icao": "ZBOW",
+    "name": "包头/东河",
+    "iata": "BAV",
+    "lat": 40.5583,
+    "lon": 110.0,
+    "elev": 1012.2,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZBAD",
+    "name": "北京大兴国际机场",
+    "iata": "",
+    "lat": 39.5422,
+    "lon": 116.4731,
+    "elev": 28.5,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZBAA",
+    "name": "北京/首都",
+    "iata": "PEK",
+    "lat": 40.0733,
+    "lon": 116.5983,
+    "elev": 35.3,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZSCG",
+    "name": "常德/桃花源",
+    "iata": "",
+    "lat": 28.9217,
+    "lon": 111.64,
+    "elev": 57,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZBDS",
+    "name": "鄂尔多斯伊金霍洛国际机场",
+    "iata": "",
+    "lat": 39.6833,
+    "lon": 109.75,
+    "elev": 1326.0,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZUUU",
+    "name": "成都/双流",
+    "iata": "CTU",
+    "lat": 30.58,
+    "lon": 103.9483,
+    "elev": 512.4,
+    "runway_dirs": [
+      20,
+      200
+    ]
+  },
+  {
+    "icao": "ZYTL",
+    "name": "大连周水子国际机场",
+    "iata": "",
+    "lat": 38.914,
+    "lon": 121.5335,
+    "elev": 19.8,
+    "runway_dirs": [
+      100,
+      280
+    ]
+  },
+  {
+    "icao": "ZBLA",
+    "name": "海拉尔/东山",
+    "iata": "",
+    "lat": 49.2,
+    "lon": 119.405,
+    "elev": 649,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZBMZ",
+    "name": "满洲里西郊国际机场",
+    "iata": "",
+    "lat": 49.5733,
+    "lon": 117.4167,
+    "elev": 622.0,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZLDH",
+    "name": "敦煌/莫高",
+    "iata": "",
+    "lat": 40.1617,
+    "lon": 94.795,
+    "elev": 1150,
+    "runway_dirs": [
+      80,
+      260
+    ]
+  },
+  {
+    "icao": "ZBSJ",
+    "name": "石家庄正定国际机场",
+    "iata": "",
+    "lat": 38.1678,
+    "lon": 114.6219,
+    "elev": 75.3,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZBTJ",
+    "name": "天津滨海国际机场",
+    "iata": "",
+    "lat": 39.1342,
+    "lon": 117.3369,
+    "elev": 2.8,
+    "runway_dirs": [
+      160,
+      340
+    ]
+  },
+  {
+    "icao": "ZBYN",
+    "name": "太原/武宿",
+    "iata": "TYN",
+    "lat": 37.7483,
+    "lon": 112.63,
+    "elev": 788.0,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZSFZ",
+    "name": "福州长乐国际机场",
+    "iata": "",
+    "lat": 25.9581,
+    "lon": 119.6863,
+    "elev": 45.8,
+    "runway_dirs": [
+      100,
+      280
+    ]
+  },
+  {
+    "icao": "ZGDY",
+    "name": "稻城/亚丁",
+    "iata": "",
+    "lat": 29.3231,
+    "lon": 100.0533,
+    "elev": 4412,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZGGG",
+    "name": "广州/白云",
+    "iata": "CAN",
+    "lat": 23.3933,
+    "lon": 113.3083,
+    "elev": 15.2,
+    "runway_dirs": [
+      20,
+      200
+    ]
+  },
+  {
+    "icao": "ZGHA",
+    "name": "张家界/荷花",
+    "iata": "",
+    "lat": 29.1033,
+    "lon": 110.4433,
+    "elev": 217,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZUGY",
+    "name": "贵阳/龙洞堡",
+    "iata": "KWE",
+    "lat": 26.5367,
+    "lon": 106.8,
+    "elev": 1138.9,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZGKL",
+    "name": "桂林两江国际机场",
+    "iata": "",
+    "lat": 25.21,
+    "lon": 110.2867,
+    "elev": 173.5,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZGNN",
+    "name": "南宁/吴圩",
+    "iata": "NNG",
+    "lat": 22.61,
+    "lon": 108.1733,
+    "elev": 128.1,
+    "runway_dirs": [
+      50,
+      230
+    ]
+  },
+  {
+    "icao": "ZYHB",
+    "name": "哈尔滨/太平",
+    "iata": "HRB",
+    "lat": 45.625,
+    "lon": 126.2517,
+    "elev": 152.9,
+    "runway_dirs": [
+      50,
+      230
+    ]
+  },
+  {
+    "icao": "ZJHK",
+    "name": "海口美兰国际机场",
+    "iata": "",
+    "lat": 19.9142,
+    "lon": 110.3593,
+    "elev": 15.7,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZGSZ",
+    "name": "深圳/宝安",
+    "iata": "SZX",
+    "lat": 22.6383,
+    "lon": 113.8117,
+    "elev": 4.1,
+    "runway_dirs": [
+      150,
+      330
+    ]
+  },
+  {
+    "icao": "ZSHC",
+    "name": "杭州/萧山",
+    "iata": "HGH",
+    "lat": 30.2283,
+    "lon": 120.4333,
+    "elev": 6.7,
+    "runway_dirs": [
+      70,
+      250
+    ]
+  },
+  {
+    "icao": "ZSOF",
+    "name": "合肥/新桥",
+    "iata": "HFE",
+    "lat": 31.9867,
+    "lon": 116.975,
+    "elev": 63.5,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZGZJ",
+    "name": "湛江/机场",
+    "iata": "",
+    "lat": 21.1933,
+    "lon": 110.355,
+    "elev": 18,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZHHH",
+    "name": "武汉天河国际机场",
+    "iata": "",
+    "lat": 30.6066,
+    "lon": 114.3516,
+    "elev": 23.3,
+    "runway_dirs": [
+      40,
+      220
+    ]
+  },
+  {
+    "icao": "ZSJN",
+    "name": "济南/遥墙",
+    "iata": "TNA",
+    "lat": 36.8583,
+    "lon": 117.215,
+    "elev": 23.1,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZYJM",
+    "name": "佳木斯/松江",
+    "iata": "JMU",
+    "lat": 46.8417,
+    "lon": 130.465,
+    "elev": 79.9,
+    "runway_dirs": [
+      50,
+      230
+    ]
+  },
+  {
+    "icao": "ZWSH",
+    "name": "喀什/徕宁",
+    "iata": "KHG",
+    "lat": 39.545,
+    "lon": 76.0217,
+    "elev": 1380.0,
+    "runway_dirs": [
+      80,
+      260
+    ]
+  },
+  {
+    "icao": "ZJSY",
+    "name": "三亚凤凰国际机场",
+    "iata": "",
+    "lat": 18.3042,
+    "lon": 109.5458,
+    "elev": 8.8,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZPPP",
+    "name": "昆明/长水",
+    "iata": "KMG",
+    "lat": 25.105,
+    "lon": 102.9417,
+    "elev": 2103.5,
+    "runway_dirs": [
+      30,
+      210
+    ]
+  },
+  {
+    "icao": "ZULS",
+    "name": "拉萨贡嘎国际机场",
+    "iata": "",
+    "lat": 29.2933,
+    "lon": 90.9567,
+    "elev": 4386.0,
+    "runway_dirs": [
+      90,
+      270
+    ]
+  },
+  {
+    "icao": "ZLLL",
+    "name": "兰州中川国际机场",
+    "iata": "",
+    "lat": 36.3078,
+    "lon": 103.5889,
+    "elev": 1947.0,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZLIC",
+    "name": "银川/河东",
+    "iata": "INC",
+    "lat": 38.32,
+    "lon": 106.3933,
+    "elev": 1141.3,
+    "runway_dirs": [
+      110,
+      290
+    ]
+  },
+  {
+    "icao": "ZPLJ",
+    "name": "西双版纳/嘎洒",
+    "iata": "",
+    "lat": 21.9769,
+    "lon": 100.7656,
+    "elev": 553,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZLSN",
+    "name": "榆林/榆阳",
+    "iata": "",
+    "lat": 38.3733,
+    "lon": 109.5917,
+    "elev": 1210,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSLG",
+    "name": "烟台/蓬莱",
+    "iata": "",
+    "lat": 37.6583,
+    "lon": 120.9933,
+    "elev": 17,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSLY",
+    "name": "潍坊/南苑",
+    "iata": "",
+    "lat": 36.6467,
+    "lon": 119.1183,
+    "elev": 22,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZLXY",
+    "name": "西安咸阳国际机场",
+    "iata": "",
+    "lat": 34.3364,
+    "lon": 108.7658,
+    "elev": 450.0,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZYMD",
+    "name": "牡丹江/海浪",
+    "iata": "",
+    "lat": 44.5239,
+    "lon": 129.5689,
+    "elev": 321,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSCN",
+    "name": "南昌/昌北",
+    "iata": "",
+    "lat": 28.915,
+    "lon": 115.9067,
+    "elev": 44,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSNJ",
+    "name": "南京/禄口",
+    "iata": "NKG",
+    "lat": 31.7433,
+    "lon": 118.8633,
+    "elev": 14.9,
+    "runway_dirs": [
+      60,
+      240
+    ]
+  },
+  {
+    "icao": "ZSNT",
+    "name": "南通/兴东",
+    "iata": "",
+    "lat": 31.9883,
+    "lon": 120.9717,
+    "elev": 6,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSAM",
+    "name": "厦门/高崎",
+    "iata": "XMN",
+    "lat": 24.545,
+    "lon": 118.1267,
+    "elev": 18.0,
+    "runway_dirs": [
+      50,
+      230
+    ]
+  },
+  {
+    "icao": "ZSNB",
+    "name": "宁波/栎社",
+    "iata": "NGB",
+    "lat": 29.8267,
+    "lon": 121.4633,
+    "elev": 3.7,
+    "runway_dirs": [
+      130,
+      310
+    ]
+  },
+  {
+    "icao": "ZSQD",
+    "name": "青岛胶东国际机场",
+    "iata": "",
+    "lat": 36.2614,
+    "lon": 119.8542,
+    "elev": 34.0,
+    "runway_dirs": [
+      170,
+      350
+    ]
+  },
+  {
+    "icao": "ZSSS",
+    "name": "上海虹桥国际机场",
+    "iata": "",
+    "lat": 31.1966,
+    "lon": 121.3352,
+    "elev": 3.6,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZSPD",
+    "name": "上海/浦东",
+    "iata": "PVG",
+    "lat": 31.145,
+    "lon": 121.7933,
+    "elev": 3.8,
+    "runway_dirs": [
+      160,
+      340
+    ]
+  },
+  {
+    "icao": "ZYTX",
+    "name": "沈阳桃仙国际机场",
+    "iata": "",
+    "lat": 41.5811,
+    "lon": 123.4895,
+    "elev": 58.3,
+    "runway_dirs": [
+      60,
+      240
+    ]
+  },
+  {
+    "icao": "ZSWZ",
+    "name": "衢州/机场",
+    "iata": "",
+    "lat": 28.9667,
+    "lon": 118.9,
+    "elev": 72,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSWX",
+    "name": "无锡/硕放",
+    "iata": "",
+    "lat": 31.4917,
+    "lon": 120.425,
+    "elev": 5,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZWWW",
+    "name": "乌鲁木齐天山国际机场",
+    "iata": "",
+    "lat": 43.9039,
+    "lon": 87.3911,
+    "elev": 645.6,
+    "runway_dirs": [
+      70,
+      250
+    ]
+  },
+  {
+    "icao": "ZSXZ",
+    "name": "徐州/观音",
+    "iata": "XUZ",
+    "lat": 34.0583,
+    "lon": 117.555,
+    "elev": 35.0,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZSYA",
+    "name": "西安/咸阳",
+    "iata": "",
+    "lat": 34.3364,
+    "lon": 108.7658,
+    "elev": 450,
+    "runway_dirs": []
+  },
+  {
+    "icao": "ZSZS",
+    "name": "舟山/普陀山",
+    "iata": "HSN",
+    "lat": 29.935,
+    "lon": 122.3633,
+    "elev": 1.8,
+    "runway_dirs": [
+      180,
+      360
+    ]
+  },
+  {
+    "icao": "ZUCK",
+    "name": "重庆/江北",
+    "iata": "",
+    "lat": 29.7183,
+    "lon": 106.6417,
+    "elev": 416,
+    "runway_dirs": [
+      20,
+      200
+    ]
+  }
+]

@@ -1,0 +1,265 @@
+{
+  "ssr_stations": [
+    {
+      "ssr_id": "SSR_01",
+      "location": [120.38, 36.07],
+      "height": 100,
+      "max_range_km": 460,
+      "modes": ["3A", "C", "S"],
+      "scan_period": 10,
+      "reply_probability": 0.97,
+      "fruit_rate": 0.05,
+      "co_located_radar": "RADAR_01"
+    },
+    {
+      "ssr_id": "SSR_02",
+      "location": [121.47, 31.23],
+      "height": 50,
+      "max_range_km": 460,
+      "modes": ["3A", "C", "S"],
+      "scan_period": 6,
+      "reply_probability": 0.97,
+      "fruit_rate": 0.05,
+      "co_located_radar": "RADAR_02"
+    },
+    {
+      "ssr_id": "SSR_03",
+      "location": [121.54, 29.86],
+      "height": 30,
+      "max_range_km": 460,
+      "modes": ["3A", "C"],
+      "scan_period": 4,
+      "reply_probability": 0.95,
+      "fruit_rate": 0.06,
+      "co_located_radar": "RADAR_03"
+    },
+    {
+      "ssr_id": "SSR_04",
+      "location": [118.78, 32.06],
+      "height": 80,
+      "max_range_km": 460,
+      "modes": ["3A", "C", "S"],
+      "scan_period": 8,
+      "reply_probability": 0.97,
+      "fruit_rate": 0.04,
+      "co_located_radar": "RADAR_04"
+    },
+    {
+      "ssr_id": "SSR_05",
+      "location": [117.27, 31.86],
+      "height": 50,
+      "max_range_km": 460,
+      "modes": ["3A", "C", "S"],
+      "scan_period": 6,
+      "reply_probability": 0.96,
+      "fruit_rate": 0.05,
+      "co_located_radar": "RADAR_05"
+    }
+  ],
+  "iff_stations": [
+    {
+      "iff_id": "IFF_01",
+      "location": [120.38, 36.07],
+      "height": 100,
+      "max_range_km": 460,
+      "modes": ["4", "5"],
+      "scan_period": 10,
+      "crypto_valid": true,
+      "co_located_radar": "RADAR_01"
+    },
+    {
+      "iff_id": "IFF_02",
+      "location": [121.47, 31.23],
+      "height": 50,
+      "max_range_km": 460,
+      "modes": ["4", "5"],
+      "scan_period": 6,
+      "crypto_valid": true,
+      "co_located_radar": "RADAR_02"
+    },
+    {
+      "iff_id": "IFF_04",
+      "location": [118.78, 32.06],
+      "height": 80,
+      "max_range_km": 460,
+      "modes": ["4", "5"],
+      "scan_period": 8,
+      "crypto_valid": true,
+      "co_located_radar": "RADAR_04"
+    },
+    {
+      "iff_id": "IFF_05",
+      "location": [117.27, 31.86],
+      "height": 50,
+      "max_range_km": 460,
+      "modes": ["4", "5"],
+      "scan_period": 6,
+      "crypto_valid": true,
+      "co_located_radar": "RADAR_05"
+    }
+  ],
+  "esm_stations": [
+    {
+      "esm_id": "ESM_01",
+      "location": [122.10, 30.01],
+      "height": 80,
+      "frequency_range_ghz": [0.5, 18.0],
+      "sensitivity_dbm": -95,
+      "df_accuracy_deg": 3.0,
+      "freq_accuracy_mhz": 2.0,
+      "pri_accuracy_us": 0.1,
+      "pw_accuracy_us": 0.05,
+      "scan_period": 5
+    },
+    {
+      "esm_id": "ESM_02",
+      "location": [121.47, 31.23],
+      "height": 50,
+      "frequency_range_ghz": [0.5, 18.0],
+      "sensitivity_dbm": -90,
+      "df_accuracy_deg": 4.0,
+      "freq_accuracy_mhz": 3.0,
+      "pri_accuracy_us": 0.15,
+      "pw_accuracy_us": 0.08,
+      "scan_period": 5
+    },
+    {
+      "esm_id": "ESM_03",
+      "location": [121.15, 28.28],
+      "height": 60,
+      "frequency_range_ghz": [0.5, 18.0],
+      "sensitivity_dbm": -92,
+      "df_accuracy_deg": 3.5,
+      "freq_accuracy_mhz": 2.5,
+      "pri_accuracy_us": 0.12,
+      "pw_accuracy_us": 0.06,
+      "scan_period": 5
+    }
+  ],
+  "elint_config": {
+    "elint_id": "ELINT_01",
+    "min_stations_for_fix": 2,
+    "matching_threshold": 0.7,
+    "analysis_period": 30
+  },
+  "comint_stations": [
+    {
+      "comint_id": "COMINT_01",
+      "location": [122.10, 30.01],
+      "height": 30,
+      "frequency_ranges_mhz": [[30, 88], [108, 174], [225, 400], [960, 1215]],
+      "sensitivity_dbm": -100,
+      "df_accuracy_deg": 5.0,
+      "scan_period": 10
+    },
+    {
+      "comint_id": "COMINT_02",
+      "location": [121.47, 31.23],
+      "height": 30,
+      "frequency_ranges_mhz": [[30, 88], [108, 174], [225, 400], [960, 1215]],
+      "sensitivity_dbm": -98,
+      "df_accuracy_deg": 5.0,
+      "scan_period": 10
+    }
+  ],
+  "target_identities": {
+    "0001": "FRIEND",
+    "0002": "FOE",
+    "0003": "UNKNOWN",
+    "0050": "FOE"
+  },
+  "airborne_emitters": {
+    "U-2": {
+      "radar": {
+        "emitter_id": "AIRBORNE_U2_ASARS2",
+        "frequency_ghz": 9.65,
+        "pri_us": 2000,
+        "pw_us": 5.0,
+        "power_dbm": 70.0,
+        "antenna_gain_db": 35.0,
+        "scan_period": 6.0,
+        "radar_type": "ASARS-2合成孔径雷达",
+        "modulation": "LFM",
+        "threat_level": 5,
+        "active_in_phases": ["CRUISING"]
+      },
+      "comm": {
+        "emitter_id": "AIRBORNE_U2_SATCOM",
+        "frequency_mhz": 300.0,
+        "power_dbm": 43.0,
+        "comm_type": "UHF",
+        "network_id": "NET_U2_RECON",
+        "active_in_phases": ["CRUISING", "CLIMBING", "DESCENDING"]
+      }
+    },
+    "歼-20": {
+      "radar": {
+        "emitter_id": "AIRBORNE_J20_AESA",
+        "frequency_ghz": 10.0,
+        "pri_us": 800,
+        "pw_us": 2.0,
+        "power_dbm": 75.0,
+        "antenna_gain_db": 38.0,
+        "scan_period": 3.0,
+        "radar_type": "AESA有源相控阵雷达",
+        "modulation": "LFM",
+        "threat_level": 5,
+        "active_in_phases": ["CRUISING"]
+      },
+      "comm": {
+        "emitter_id": "AIRBORNE_J20_DATA",
+        "frequency_mhz": 960.0,
+        "power_dbm": 40.0,
+        "comm_type": "UHF",
+        "network_id": "NET_J20_TACTICAL",
+        "active_in_phases": ["CRUISING"]
+      }
+    },
+    "F-22": {
+      "radar": {
+        "emitter_id": "AIRBORNE_F22_AN_APG77",
+        "frequency_ghz": 10.0,
+        "pri_us": 600,
+        "pw_us": 1.5,
+        "power_dbm": 73.0,
+        "antenna_gain_db": 37.0,
+        "scan_period": 3.0,
+        "radar_type": "AN/APG-77 AESA雷达",
+        "modulation": "LFM",
+        "threat_level": 5,
+        "active_in_phases": ["CRUISING"]
+      },
+      "comm": {
+        "emitter_id": "AIRBORNE_F22_IFDL",
+        "frequency_mhz": 1050.0,
+        "power_dbm": 38.0,
+        "comm_type": "UHF",
+        "network_id": "NET_F22_IFDL",
+        "active_in_phases": ["CRUISING"]
+      }
+    },
+    "P-8A": {
+      "radar": {
+        "emitter_id": "AIRBORNE_P8A_APY10",
+        "frequency_ghz": 9.5,
+        "pri_us": 3000,
+        "pw_us": 8.0,
+        "power_dbm": 72.0,
+        "antenna_gain_db": 34.0,
+        "scan_period": 8.0,
+        "radar_type": "AN/APY-10海上巡逻雷达",
+        "modulation": "LFM",
+        "threat_level": 4,
+        "active_in_phases": ["CRUISING"]
+      },
+      "comm": {
+        "emitter_id": "AIRBORNE_P8A_SATCOM",
+        "frequency_mhz": 350.0,
+        "power_dbm": 45.0,
+        "comm_type": "UHF",
+        "network_id": "NET_P8A_RECON",
+        "active_in_phases": ["CRUISING", "CLIMBING", "DESCENDING"]
+      }
+    }
+  }
+}

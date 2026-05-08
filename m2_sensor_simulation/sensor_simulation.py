@@ -3,13 +3,28 @@ import json
 import math
 import logging
 from datetime import datetime, timedelta
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Tuple
 from concurrent.futures import ThreadPoolExecutor
 import numpy as np
-from filterpy.kalman import KalmanFilter
+try:
+    from filterpy.kalman import KalmanFilter
+except ImportError:
+    KalmanFilter = None
 
 from .models import RadarConfig, TargetTruth, TrackPoint, NetworkTracks
 from .radar import Radar
+from .models_ext import (
+    SSRConfig, SSRReply, IFFConfig, IFFReply,
+    ESMConfig, EmitterParameters, PDWRecord,
+    ELINTConfig, ELINTReport, COMINTConfig, CommEmitter, COMINTReport,
+    FusedTrackPoint, FusedNetworkTracks
+)
+from .ssr import SSR
+from .iff import IFF
+from .esm import ESM
+from .elint import ELINT
+from .comint import COMINT
+from .fusion import FusionEngine
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,6 +50,8 @@ class SensorSimulation:
         self.radars = self._init_radar_network()
         self.track_pool: Dict[str, dict] = {}  # 系统级航迹池
         self.executor = ThreadPoolExecutor(max_workers=5)
+        self._current_platform_type = ""
+        self._current_target_id = ""
     
     def _init_radar_network(self) -> List[Radar]:
         """初始化雷达网络
@@ -541,4 +558,419 @@ class SensorSimulation:
             logger.info(f"保存航迹文件: {output_path}")
         
         logger.info(f"输出已保存到文件夹: {output_dir}")
+        return output_dir
+
+    def load_sensor_config(self) -> Dict:
+        config_file = os.path.join(os.path.dirname(__file__), 'sensor_config.json')
+        if os.path.exists(config_file):
+            with open(config_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        logger.warning(f"传感器配置文件不存在: {config_file}")
+        return {}
+
+    def _load_platform_type(self, truth_file: str) -> str:
+        try:
+            with open(truth_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return data.get('platform_type', '')
+        except Exception:
+            return ''
+
+    def _load_flight_phases(self, truth_file: str) -> Dict[str, str]:
+        phase_map = {}
+        try:
+            with open(truth_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            for point in data.get('track_points', []):
+                t = point.get('time', '')
+                phase = point.get('phase', '')
+                if t and phase:
+                    phase_map[t] = phase
+        except Exception:
+            pass
+        return phase_map
+
+    def _get_airborne_radar_template(self, sensor_config: Dict,
+                                      target_identities: Dict[str, str]) -> Optional[EmitterParameters]:
+        airborne_config = sensor_config.get("airborne_emitters", {})
+        if not airborne_config or not self._current_platform_type:
+            return None
+
+        target_id = self._current_target_id or ""
+        identity = target_identities.get(target_id, "UNKNOWN")
+        if identity != "FOE":
+            return None
+
+        platform_data = airborne_config.get(self._current_platform_type)
+        if not platform_data:
+            return None
+
+        radar_cfg = platform_data.get("radar")
+        if not radar_cfg:
+            return None
+
+        return EmitterParameters(
+            emitter_id=radar_cfg["emitter_id"],
+            location=[0, 0],
+            height=0,
+            frequency_ghz=radar_cfg["frequency_ghz"],
+            pri_us=radar_cfg["pri_us"],
+            pw_us=radar_cfg["pw_us"],
+            power_dbm=radar_cfg["power_dbm"],
+            antenna_gain_db=radar_cfg["antenna_gain_db"],
+            scan_period=radar_cfg["scan_period"],
+            radar_type=radar_cfg["radar_type"],
+            modulation=radar_cfg["modulation"],
+            threat_level=radar_cfg["threat_level"],
+            side="FOE",
+            active=True
+        )
+
+    def _get_airborne_comm_template(self, sensor_config: Dict,
+                                     target_identities: Dict[str, str]) -> Optional[CommEmitter]:
+        airborne_config = sensor_config.get("airborne_emitters", {})
+        if not airborne_config or not self._current_platform_type:
+            return None
+
+        target_id = self._current_target_id or ""
+        identity = target_identities.get(target_id, "UNKNOWN")
+        if identity != "FOE":
+            return None
+
+        platform_data = airborne_config.get(self._current_platform_type)
+        if not platform_data:
+            return None
+
+        comm_cfg = platform_data.get("comm")
+        if not comm_cfg:
+            return None
+
+        return CommEmitter(
+            emitter_id=comm_cfg["emitter_id"],
+            location=[0, 0],
+            height=0,
+            frequency_mhz=comm_cfg["frequency_mhz"],
+            power_dbm=comm_cfg["power_dbm"],
+            comm_type=comm_cfg["comm_type"],
+            network_id=comm_cfg["network_id"],
+            side="FOE",
+            active=True
+        )
+
+    def load_emitter_database(self) -> Tuple[List[EmitterParameters], List[CommEmitter]]:
+        db_file = os.path.join(os.path.dirname(__file__), 'emitter_database.json')
+        radar_emitters = []
+        comm_emitters = []
+        if os.path.exists(db_file):
+            with open(db_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            for rd in data.get('radar_emitters', []):
+                radar_emitters.append(EmitterParameters(
+                    emitter_id=rd['emitter_id'],
+                    location=rd['location'],
+                    height=rd['height'],
+                    frequency_ghz=rd['frequency_ghz'],
+                    pri_us=rd['pri_us'],
+                    pw_us=rd['pw_us'],
+                    power_dbm=rd['power_dbm'],
+                    antenna_gain_db=rd['antenna_gain_db'],
+                    scan_period=rd['scan_period'],
+                    radar_type=rd['radar_type'],
+                    modulation=rd['modulation'],
+                    threat_level=rd['threat_level'],
+                    side=rd['side'],
+                    active=rd.get('active', True)
+                ))
+            for cd in data.get('comm_emitters', []):
+                comm_emitters.append(CommEmitter(
+                    emitter_id=cd['emitter_id'],
+                    location=cd['location'],
+                    height=cd['height'],
+                    frequency_mhz=cd['frequency_mhz'],
+                    power_dbm=cd['power_dbm'],
+                    comm_type=cd['comm_type'],
+                    network_id=cd['network_id'],
+                    side=cd['side'],
+                    active=cd.get('active', True)
+                ))
+        else:
+            logger.warning(f"辐射源数据库不存在: {db_file}")
+        return radar_emitters, comm_emitters
+
+    def _load_adsb_map(self, truth_file: str) -> Dict[str, List[Dict]]:
+        adsb_map: Dict[str, List[Dict]] = {}
+        try:
+            with open(truth_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            has_adsb = data.get('has_adsb', False)
+            if not has_adsb:
+                return adsb_map
+            target_id = data.get('target_id', '')
+            track_points = data.get('track_points', [])
+            for point in track_points:
+                adsb = point.get('adsb')
+                if adsb:
+                    if target_id not in adsb_map:
+                        adsb_map[target_id] = []
+                    t = point.get('time', '')
+                    try:
+                        adsb_time = datetime.fromisoformat(t.replace('Z', '+00:00'))
+                    except (ValueError, AttributeError):
+                        adsb_time = None
+                    adsb_map[target_id].append({
+                        "time": adsb_time,
+                        "squawk": adsb.get("squawk", "2000"),
+                        "altitude_ft": adsb.get("altitude_ft", 0.0),
+                        "icao24": adsb.get("icao24", ""),
+                        "callsign": adsb.get("callsign", "")
+                    })
+        except Exception as e:
+            logger.warning(f"加载ADS-B数据失败: {e}")
+        return adsb_map
+
+    def run_comprehensive_simulation(self, truth_file: str,
+                                     sensors: List[str] = None) -> Dict:
+        logger.info(f"开始综合传感器仿真: {truth_file}")
+
+        targets = self.load_truth_data(truth_file)
+        if not targets:
+            logger.error("未加载到目标数据")
+            return {}
+
+        targets.sort(key=lambda t: t.time)
+        logger.info(f"加载了 {len(targets)} 个轨迹点")
+
+        if sensors is None:
+            sensors = ["radar", "ssr", "iff", "esm", "elint", "comint"]
+
+        sensor_config = self.load_sensor_config()
+        emitter_db, comm_db = self.load_emitter_database()
+        target_identities = sensor_config.get("target_identities", {})
+        adsb_map = self._load_adsb_map(truth_file)
+
+        self._current_platform_type = self._load_platform_type(truth_file)
+        self._current_target_id = targets[0].target_id if targets else ""
+
+        radar_result = self.run_simulation(truth_file)
+
+        radar_obs_by_time: Dict[datetime, List[dict]] = {}
+        for radar in self.radars:
+            sampled = self._sample_by_scan_period(targets, radar.config.scan_period)
+            for target in sampled:
+                obs = self._process_single_target(radar, target)
+                if obs:
+                    t = obs['time']
+                    if t not in radar_obs_by_time:
+                        radar_obs_by_time[t] = []
+                    radar_obs_by_time[t].append(obs)
+
+        all_ssr_replies: List[SSRReply] = []
+        all_iff_replies: List[IFFReply] = []
+        all_esm_pdws: List[PDWRecord] = []
+        all_elint_reports: List[ELINTReport] = []
+        all_comint_reports: List[COMINTReport] = []
+
+        if "ssr" in sensors and "ssr_stations" in sensor_config:
+            for sc in sensor_config["ssr_stations"]:
+                config = SSRConfig(
+                    ssr_id=sc["ssr_id"], location=sc["location"], height=sc["height"],
+                    max_range_km=sc["max_range_km"], modes=sc["modes"],
+                    scan_period=sc["scan_period"], reply_probability=sc["reply_probability"],
+                    fruit_rate=sc["fruit_rate"], co_located_radar=sc.get("co_located_radar")
+                )
+                ssr = SSR(config)
+                replies = ssr.process_targets(targets, adsb_map, target_identities)
+                all_ssr_replies.extend(replies)
+
+        if "iff" in sensors and "iff_stations" in sensor_config:
+            for ic in sensor_config["iff_stations"]:
+                config = IFFConfig(
+                    iff_id=ic["iff_id"], location=ic["location"], height=ic["height"],
+                    max_range_km=ic["max_range_km"], modes=ic["modes"],
+                    scan_period=ic["scan_period"], crypto_valid=ic["crypto_valid"],
+                    co_located_radar=ic.get("co_located_radar")
+                )
+                iff = IFF(config)
+                replies = iff.process_targets(targets, target_identities)
+                all_iff_replies.extend(replies)
+
+        if "esm" in sensors and "esm_stations" in sensor_config:
+            time_points = [t.time for t in targets]
+            for ec in sensor_config["esm_stations"]:
+                config = ESMConfig(
+                    esm_id=ec["esm_id"], location=ec["location"], height=ec["height"],
+                    frequency_range_ghz=ec["frequency_range_ghz"],
+                    sensitivity_dbm=ec["sensitivity_dbm"], df_accuracy_deg=ec["df_accuracy_deg"],
+                    freq_accuracy_mhz=ec["freq_accuracy_mhz"], pri_accuracy_us=ec["pri_accuracy_us"],
+                    pw_accuracy_us=ec["pw_accuracy_us"], scan_period=ec["scan_period"]
+                )
+                esm = ESM(config)
+                pdws = esm.process_emitters(emitter_db, time_points)
+                all_esm_pdws.extend(pdws)
+
+            airborne_radar_template = self._get_airborne_radar_template(
+                sensor_config, target_identities
+            )
+            if airborne_radar_template:
+                for ec in sensor_config["esm_stations"]:
+                    config = ESMConfig(
+                        esm_id=ec["esm_id"], location=ec["location"], height=ec["height"],
+                        frequency_range_ghz=ec["frequency_range_ghz"],
+                        sensitivity_dbm=ec["sensitivity_dbm"], df_accuracy_deg=ec["df_accuracy_deg"],
+                        freq_accuracy_mhz=ec["freq_accuracy_mhz"], pri_accuracy_us=ec["pri_accuracy_us"],
+                        pw_accuracy_us=ec["pw_accuracy_us"], scan_period=ec["scan_period"]
+                    )
+                    esm = ESM(config)
+                    pdws = esm.process_airborne_emitter(airborne_radar_template, targets)
+                    all_esm_pdws.extend(pdws)
+
+        if "elint" in sensors and "elint_config" in sensor_config:
+            ec = sensor_config["elint_config"]
+            config = ELINTConfig(
+                elint_id=ec["elint_id"], min_stations_for_fix=ec["min_stations_for_fix"],
+                matching_threshold=ec["matching_threshold"], analysis_period=ec["analysis_period"]
+            )
+            elint = ELINT(config, emitter_db)
+
+            pdw_by_emitter: Dict[str, List[PDWRecord]] = {}
+            for pdw in all_esm_pdws:
+                if pdw.emitter_id not in pdw_by_emitter:
+                    pdw_by_emitter[pdw.emitter_id] = []
+                pdw_by_emitter[pdw.emitter_id].append(pdw)
+
+            esm_locations: Dict[str, Tuple[float, float]] = {}
+            for ec_data in sensor_config.get("esm_stations", []):
+                esm_locations[ec_data["esm_id"]] = (ec_data["location"][0], ec_data["location"][1])
+
+            last_time = targets[-1].time if targets else datetime.now()
+            reports = elint.analyze(pdw_by_emitter, esm_locations, last_time)
+            all_elint_reports.extend(reports)
+
+        if "comint" in sensors and "comint_stations" in sensor_config:
+            time_points = [t.time for t in targets]
+            for cc in sensor_config["comint_stations"]:
+                config = COMINTConfig(
+                    comint_id=cc["comint_id"], location=cc["location"], height=cc["height"],
+                    frequency_ranges_mhz=cc["frequency_ranges_mhz"],
+                    sensitivity_dbm=cc["sensitivity_dbm"], df_accuracy_deg=cc["df_accuracy_deg"],
+                    scan_period=cc["scan_period"]
+                )
+                comint = COMINT(config)
+                reports = comint.process_emitters(comm_db, time_points)
+                all_comint_reports.extend(reports)
+
+            airborne_comm_template = self._get_airborne_comm_template(
+                sensor_config, target_identities
+            )
+            if airborne_comm_template:
+                for cc in sensor_config["comint_stations"]:
+                    config = COMINTConfig(
+                        comint_id=cc["comint_id"], location=cc["location"], height=cc["height"],
+                        frequency_ranges_mhz=cc["frequency_ranges_mhz"],
+                        sensitivity_dbm=cc["sensitivity_dbm"], df_accuracy_deg=cc["df_accuracy_deg"],
+                        scan_period=cc["scan_period"]
+                    )
+                    comint = COMINT(config)
+                    reports = comint.process_airborne_emitter(airborne_comm_template, targets)
+                    all_comint_reports.extend(reports)
+
+        ssr_by_time: Dict[datetime, List[SSRReply]] = {}
+        for r in all_ssr_replies:
+            t = r.time
+            if t not in ssr_by_time:
+                ssr_by_time[t] = []
+            ssr_by_time[t].append(r)
+
+        iff_by_time: Dict[datetime, List[IFFReply]] = {}
+        for r in all_iff_replies:
+            t = r.time
+            if t not in iff_by_time:
+                iff_by_time[t] = []
+            iff_by_time[t].append(r)
+
+        esm_by_time: Dict[datetime, List[PDWRecord]] = {}
+        for p in all_esm_pdws:
+            t = p.time
+            if t not in esm_by_time:
+                esm_by_time[t] = []
+            esm_by_time[t].append(p)
+
+        elint_by_time: Dict[datetime, List[ELINTReport]] = {}
+        for r in all_elint_reports:
+            t = r.time
+            if t not in elint_by_time:
+                elint_by_time[t] = []
+            elint_by_time[t].append(r)
+
+        comint_by_time: Dict[datetime, List[COMINTReport]] = {}
+        for r in all_comint_reports:
+            t = r.time
+            if t not in comint_by_time:
+                comint_by_time[t] = []
+            comint_by_time[t].append(r)
+
+        fusion_engine = FusionEngine()
+
+        sampled_targets = self._sample_by_scan_period(targets, 6.0)
+        logger.info(f"综合融合采样: {len(targets)} -> {len(sampled_targets)} 个时间点")
+
+        comprehensive_tracks = fusion_engine.fuse_comprehensive(
+            sampled_targets, radar_obs_by_time,
+            ssr_by_time, iff_by_time,
+            esm_by_time, elint_by_time, comint_by_time
+        )
+
+        result = dict(radar_result)
+        result['ssr_replies'] = all_ssr_replies
+        result['iff_replies'] = all_iff_replies
+        result['esm_pdws'] = all_esm_pdws
+        result['elint_reports'] = all_elint_reports
+        result['comint_reports'] = all_comint_reports
+        result['fused_comprehensive'] = comprehensive_tracks
+
+        logger.info(f"综合仿真完成: SSR={len(all_ssr_replies)}, IFF={len(all_iff_replies)}, "
+                     f"ESM={len(all_esm_pdws)}, ELINT={len(all_elint_reports)}, "
+                     f"COMINT={len(all_comint_reports)}, "
+                     f"综合融合航迹={len(comprehensive_tracks.network_tracks)}")
+
+        return result
+
+    def save_comprehensive_output(self, output: Dict, custom_output: str = None) -> str:
+        if not output:
+            logger.error("没有输出数据")
+            return ""
+
+        now = datetime.now().strftime('%Y%m%d_%H%M%S')
+        if custom_output:
+            output_dir = custom_output
+        else:
+            output_dir = os.path.join(OUTPUT_DIR, f"comprehensive_{now}")
+
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
+
+        for key, value in output.items():
+            if key in ('ssr_replies', 'iff_replies', 'esm_pdws', 'elint_reports', 'comint_reports'):
+                data_list = value
+                if not data_list:
+                    continue
+                output_path = os.path.join(output_dir, f"{key}.json")
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    json.dump([item.to_dict() for item in data_list], f, ensure_ascii=False, indent=2)
+                logger.info(f"保存文件: {output_path}")
+            elif key == 'fused_comprehensive':
+                output_path = os.path.join(output_dir, "fused_comprehensive.json")
+                value.save_to_file(output_path)
+                logger.info(f"保存综合融合航迹: {output_path}")
+            elif isinstance(value, NetworkTracks):
+                if key == 'fused':
+                    filename = "fused_tracks.json"
+                else:
+                    radar_num = key.split('_')[1]
+                    filename = f"radar_{radar_num}_tracks.json"
+                output_path = os.path.join(output_dir, filename)
+                value.save_to_file(output_path)
+                logger.info(f"保存航迹文件: {output_path}")
+
+        logger.info(f"综合仿真输出已保存到: {output_dir}")
         return output_dir
