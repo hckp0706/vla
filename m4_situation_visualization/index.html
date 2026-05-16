@@ -17,138 +17,186 @@
         
         <!-- 右侧控制面板 -->
         <div class="control-panel">
-            <div class="panel-section">
-                <h3>数据加载控制</h3>
-                <div class="file-input-group">
-                    <label for="m1File">选择 M1 JSON (可多选):</label>
-                    <input type="file" id="m1File" accept=".json" multiple>
-                </div>
-                <div class="file-input-group">
-                    <label for="m2File">选择 M2 JSON (可多选):</label>
-                    <input type="file" id="m2File" accept=".json" multiple>
-                </div>
-                <button id="renderBtn" class="btn-primary">一键渲染态势</button>
-                <button id="clearBtn" class="btn-secondary">清除航迹</button>
+            <!-- Tab导航 -->
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="tab-control">态势控制</button>
+                <button class="tab-btn" data-tab="tab-semantic">语义转化</button>
             </div>
-            
-            <div class="panel-section">
-                <h3>底图图层</h3>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerAirport" checked>
-                        ✈ 机场
-                    </label>
+
+            <!-- Tab1: 态势控制 -->
+            <div class="tab-content active" id="tab-control">
+                <div class="panel-section">
+                    <h3>数据加载控制</h3>
+                    <div class="file-input-group">
+                        <label for="m1File">选择 M1 JSON (可多选):</label>
+                        <input type="file" id="m1File" accept=".json" multiple>
+                    </div>
+                    <div class="file-input-group">
+                        <label for="m2File">选择 M2 JSON (可多选):</label>
+                        <input type="file" id="m2File" accept=".json" multiple>
+                    </div>
+                    <button id="renderBtn" class="btn-primary">一键渲染态势</button>
+                    <button id="clearBtn" class="btn-secondary">清除航迹</button>
                 </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerWaypoint" checked>
-                        📍 航路点
-                    </label>
+                
+                <div class="panel-section">
+                    <h3>底图图层</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerAirport" checked>
+                            ✈ 机场
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerWaypoint" checked>
+                            📍 航路点
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerRouteNetwork">
+                            🔗 航路网络
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerCivilRoute">
+                            🛫 民航航路
+                        </label>
+                    </div>
                 </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerRouteNetwork">
-                        🔗 航路网络
-                    </label>
+                
+                <div class="panel-section">
+                    <h3>传感器部署图层</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerRadar" checked>
+                            📡 雷达站
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerSsr" checked>
+                            📻 二次雷达站
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerIff" checked>
+                            🔑 敌我识别器
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerEsm" checked>
+                            👂 电子侦察站
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerComint" checked>
+                            📞 通信侦察站
+                        </label>
+                    </div>
                 </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerCivilRoute">
-                        🛫 民航航路
-                    </label>
+                
+                <div class="panel-section">
+                    <h3>轨迹图层开关</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerM1Track" checked>
+                            显示 M1 真值
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="layerM2Track" checked>
+                            显示 M2 融合航迹
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>M2敌我识别图例</h3>
+                    <div style="font-size: 12px; line-height: 1.8;">
+                        <p style="margin: 2px 0;"><span style="color: #4caf50; font-weight: bold;">●</span> FRIEND 友方</p>
+                        <p style="margin: 2px 0;"><span style="color: #f44336; font-weight: bold;">●</span> FOE 敌方</p>
+                        <p style="margin: 2px 0;"><span style="color: #ff9800; font-weight: bold;">●</span> UNKNOWN 未知</p>
+                        <p style="margin: 2px 0;"><span style="color: #2196f3; font-weight: bold;">●</span> NEUTRAL 中立</p>
+                    </div>
+                    <h3 style="margin-top:8px;">航路图例</h3>
+                    <div style="font-size: 12px; line-height: 1.8;">
+                        <p style="margin: 2px 0;"><span style="color: white;">●</span> ✈ 机场</p>
+                        <p style="margin: 2px 0;"><span style="color: gold;">●</span> 📍 航路点</p>
+                        <p style="margin: 2px 0;"><span style="color: #5B7FA5;">╌╌</span> 🔗 航路网络连线</p>
+                        <p style="margin: 2px 0;"><span style="color: #33CCFF;">━</span> 🛫 民航航路</p>
+                    </div>
+                    <h3 style="margin-top:8px;">传感器图例</h3>
+                    <div style="font-size: 12px; line-height: 1.8;">
+                        <p style="margin: 2px 0;"><span style="color: #4caf50;">●</span> 📡 雷达 (绿色)</p>
+                        <p style="margin: 2px 0;"><span style="color: #00bcd4;">●</span> 📻 二次雷达 (青色)</p>
+                        <p style="margin: 2px 0;"><span style="color: #9c27b0;">●</span> 🔑 敌我识别器 (紫色)</p>
+                        <p style="margin: 2px 0;"><span style="color: #ff9800;">●</span> 👂 电子侦察 (橙色)</p>
+                        <p style="margin: 2px 0;"><span style="color: #e91e63;">●</span> 📞 通信侦察 (粉色)</p>
+                    </div>
+                    <h3 style="margin-top:8px;">航迹线段说明</h3>
+                    <div style="font-size: 12px; line-height: 1.8;">
+                        <p style="margin: 2px 0;"><span style="font-weight:bold;">━━</span> 传感器覆盖段(实线)</p>
+                        <p style="margin: 2px 0;"><span style="color:#888;">╌╌</span> 推算航迹段(虚线)</p>
+                    </div>
+                    <h3 style="margin-top:8px;">点迹大小说明</h3>
+                    <div style="font-size: 12px; line-height: 1.8;">
+                        <p style="margin: 2px 0;">⬤ 大点 = 雷达观测位置</p>
+                        <p style="margin: 2px 0;">● 中点 = 其他传感器位置</p>
+                        <p style="margin: 2px 0;">· 小点 = 无传感器覆盖</p>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>要素信息框</h3>
+                    <div id="infoBox" class="info-box">
+                        <p>悬停图标显示名称</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="panel-section">
-                <h3>传感器部署图层</h3>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerRadar" checked>
-                        📡 雷达站
-                    </label>
+
+            <!-- Tab2: 语义转化 -->
+            <div class="tab-content" id="tab-semantic">
+                <div class="panel-section">
+                    <h3>选择 M2 航迹</h3>
+                    <div class="file-input-group">
+                        <label for="trackSelector">目标航迹:</label>
+                        <select id="trackSelector" class="track-selector">
+                            <option value="">-- 请先加载M2数据 --</option>
+                        </select>
+                    </div>
+                    <button id="convertBtn" class="btn-primary" disabled>执行语义转化</button>
+                    <div id="convertStatus" class="convert-status" style="display:none;"></div>
                 </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerSsr" checked>
-                        📻 二次雷达站
-                    </label>
+                
+                <div class="panel-section">
+                    <h3>态势战报概要</h3>
+                    <div id="situationSummary" class="summary-box">
+                        <p style="color:#888;">请先加载M2数据并执行语义转化</p>
+                    </div>
                 </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerIff" checked>
-                        🔑 敌我识别器
-                    </label>
-                </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerEsm" checked>
-                        👂 电子侦察站
-                    </label>
-                </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerComint" checked>
-                        📞 通信侦察站
-                    </label>
-                </div>
-            </div>
-            
-            <div class="panel-section">
-                <h3>轨迹图层开关</h3>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerM1Track" checked>
-                        显示 M1 真值
-                    </label>
-                </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="layerM2Track" checked>
-                        显示 M2 融合航迹
-                    </label>
-                </div>
-            </div>
-            
-            <div class="panel-section">
-                <h3>M2敌我识别图例</h3>
-                <div style="font-size: 12px; line-height: 1.8;">
-                    <p style="margin: 2px 0;"><span style="color: #4caf50; font-weight: bold;">●</span> FRIEND 友方</p>
-                    <p style="margin: 2px 0;"><span style="color: #f44336; font-weight: bold;">●</span> FOE 敌方</p>
-                    <p style="margin: 2px 0;"><span style="color: #ff9800; font-weight: bold;">●</span> UNKNOWN 未知</p>
-                    <p style="margin: 2px 0;"><span style="color: #2196f3; font-weight: bold;">●</span> NEUTRAL 中立</p>
-                </div>
-                <h3 style="margin-top:8px;">航路图例</h3>
-                <div style="font-size: 12px; line-height: 1.8;">
-                    <p style="margin: 2px 0;"><span style="color: white;">●</span> ✈ 机场</p>
-                    <p style="margin: 2px 0;"><span style="color: gold;">●</span> 📍 航路点</p>
-                    <p style="margin: 2px 0;"><span style="color: #5B7FA5;">╌╌</span> 🔗 航路网络连线</p>
-                    <p style="margin: 2px 0;"><span style="color: #33CCFF;">━</span> 🛫 民航航路</p>
-                </div>
-                <h3 style="margin-top:8px;">传感器图例</h3>
-                <div style="font-size: 12px; line-height: 1.8;">
-                    <p style="margin: 2px 0;"><span style="color: #4caf50;">●</span> 📡 雷达 (绿色)</p>
-                    <p style="margin: 2px 0;"><span style="color: #00bcd4;">●</span> 📻 二次雷达 (青色)</p>
-                    <p style="margin: 2px 0;"><span style="color: #9c27b0;">●</span> 🔑 敌我识别器 (紫色)</p>
-                    <p style="margin: 2px 0;"><span style="color: #ff9800;">●</span> 👂 电子侦察 (橙色)</p>
-                    <p style="margin: 2px 0;"><span style="color: #e91e63;">●</span> 📞 通信侦察 (粉色)</p>
-                </div>
-                <h3 style="margin-top:8px;">航迹线段说明</h3>
-                <div style="font-size: 12px; line-height: 1.8;">
-                    <p style="margin: 2px 0;"><span style="font-weight:bold;">━━</span> 传感器覆盖段(实线)</p>
-                    <p style="margin: 2px 0;"><span style="color:#888;">╌╌</span> 推算航迹段(虚线)</p>
-                </div>
-                <h3 style="margin-top:8px;">点迹大小说明</h3>
-                <div style="font-size: 12px; line-height: 1.8;">
-                    <p style="margin: 2px 0;">⬤ 大点 = 雷达观测位置</p>
-                    <p style="margin: 2px 0;">● 中点 = 其他传感器位置</p>
-                    <p style="margin: 2px 0;">· 小点 = 无传感器覆盖</p>
-                </div>
-            </div>
-            
-            <div class="panel-section">
-                <h3>要素信息框</h3>
-                <div id="infoBox" class="info-box">
-                    <p>悬停图标显示名称</p>
+
+                <div class="panel-section">
+                    <h3>自然语言战报</h3>
+                    <button id="saveResultBtn" class="btn-secondary" style="margin-bottom:10px;display:none;">💾 保存结果到文件</button>
+                    <div id="semanticResult" class="semantic-result">
+                        <p>请在「态势控制」页加载M2融合航迹数据，<br>然后回到此页选择目标航迹进行语义转化。</p>
+                        <p style="color:#888;">M6 工具将自动生成包含以下内容的结构化自然语言战报：</p>
+                        <ul style="color:#888;padding-left:20px;">
+                            <li>目标身份与基本参数</li>
+                            <li>分段飞行路径描述（按航向变化）</li>
+                            <li>途经城市空域时间</li>
+                            <li>高度/速度骤变告警</li>
+                            <li>飞行特征标签推断</li>
+                            <li>距离各雷达站最近距离</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

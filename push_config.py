@@ -4,28 +4,33 @@
 用法: 修改下方 COMMIT_MESSAGE 和 FILES 中的内容，然后运行 push_to_remote.py
 """
 
-COMMIT_MESSAGE = """chore: 新增代码推送脚本
+COMMIT_MESSAGE = """feat(M4+M6): M4新增语义转化Tab页，支持M6自然语言战报交互生成
 
 本次更新内容：
-1. 新增 push_config.py: 推送配置文件，包含文件清单、commit message、远程仓库信息
-2. 新增 push_to_remote.py: 推送脚本，支持同时推送到 GitHub 和 Gitee
-   - 支持 --github / --gitee 参数单独推送
-   - 支持 --dry-run 预览模式
-   - 自动检测本地分支名并映射到远程分支
+1. 新增 M4 Flask 服务器 (m4_situation_visualization/server.py)
+   - 提供静态文件服务，支持浏览器直接访问M4前端
+   - 暴露 /api/m6/convert 接口，将M2融合航迹转换为自然语言战报
+   - 暴露 /api/m6/save 接口，手动保存语义转化结果
+   - 自动将转化结果保存到 output/m6_semantic_tool/ 目录
+2. M4前端新增「语义转化」Tab页
+   - 在右侧控制面板新增Tab栏，支持「态势控制」和「语义转化」两页切换
+   - 语义转化页：航迹下拉选择器，按track_id分组显示已加载的M2目标
+   - 点击「执行语义转化」按钮，调用后端API生成自然语言战报
+   - 实时显示态势战报概要和完整自然语言描述
+   - 支持手动保存结果到文件
+3. 新增 M6 输出目录 (output/m6_semantic_tool/)
+   - 自动存储语义转化结果（JSON + TXT格式）
+4. 样式优化
+   - 控制面板宽度从280px增至300px
+   - 新增Tab按钮、航迹选择器、战报显示区、状态提示等组件样式
 """
 
 FILES = {
-    "m6_semantic_tool/__init__.py": None,
-    "m6_semantic_tool/__main__.py": None,
-    "m6_semantic_tool/converter.py": None,
-    "m6_semantic_tool/feature_extractor.py": None,
-    "m6_semantic_tool/flight_inferencer.py": None,
-    "m6_semantic_tool/geo_data.py": None,
-    "m6_semantic_tool/models.py": None,
-    "m6_semantic_tool/narrative_generator.py": None,
-    "m6_semantic_tool/requirements.txt": None,
-    "tests/test_m6.py": None,
-    "方案文档/项目总体说明文档.md": None,
+    "m4_situation_visualization/index.html": None,
+    "m4_situation_visualization/css/style.css": None,
+    "m4_situation_visualization/js/main.js": None,
+    "m4_situation_visualization/server.py": None,
+    "output/m6_semantic_tool/.gitkeep": None,
     "push_config.py": None,
     "push_to_remote.py": None,
 }

@@ -24,6 +24,9 @@ let layers = {
     m2Track: null
 };
 
+let m2TrackIdMap = {};
+let lastM6Result = null;
+
 const IDENTITY_COLORS = {
     FRIEND: Cesium.Color.LIME,
     FOE: Cesium.Color.RED,
@@ -1325,6 +1328,14 @@ function handleFileSelect(event, type) {
                     m2DataList.push(data);
                     const isComp = data.network_tracks.some(t => t.identity !== undefined);
                     console.log('M2数据加载成功，观测点数量:', data.network_tracks.length, '综合模式:', isComp);
+
+                    data.network_tracks.forEach(t => {
+                        if (!m2TrackIdMap[t.track_id]) {
+                            m2TrackIdMap[t.track_id] = [];
+                        }
+                        m2TrackIdMap[t.track_id].push(t);
+                    });
+                    populateTrackSelector();
                 } else {
                     alert('无法识别的文件格式，请选择M1或M2生成的JSON文件');
                     return;
@@ -1371,6 +1382,12 @@ function clearTracks() {
     
     m1DataList = [];
     m2DataList = [];
+    m2TrackIdMap = {};
+    lastM6Result = null;
+    populateTrackSelector();
+    document.getElementById('semanticResult').innerHTML = '<p>请在「态势控制」页加载M2融合航迹数据，<br>然后回到此页选择目标航迹进行语义转化。</p>';
+    document.getElementById('situationSummary').innerHTML = '<p style="color:#888;">请先加载M2数据并执行语义转化</p>';
+    document.getElementById('saveResultBtn').style.display = 'none';
     
     console.log('航迹已清除');
 }
@@ -1448,6 +1465,22 @@ function initEventListeners() {
     document.getElementById('layerComint').addEventListener('change', (e) => toggleLayer('comint', e.target.checked));
     document.getElementById('layerM1Track').addEventListener('change', (e) => toggleLayer('m1Track', e.target.checked));
     document.getElementById('layerM2Track').addEventListener('change', (e) => toggleLayer('m2Track', e.target.checked));
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+
+    document.getElementById('trackSelector').addEventListener('change', function() {
+        document.getElementById('convertBtn').disabled = !this.value;
+    });
+
+    document.getElementById('convertBtn').addEventListener('click', convertToNaturalLanguage);
+    document.getElementById('saveResultBtn').addEventListener('click', saveM6Result);
     
     const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
     handler.setInputAction(function(movement) {
@@ -1461,6 +1494,100 @@ function initEventListeners() {
             document.getElementById('infoBox').innerHTML = '<p>悬停图标显示名称</p>';
         }
     }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+}
+
+function populateTrackSelector() {
+    const selector = document.getElementById('trackSelector');
+    const trackIds = Object.keys(m2TrackIdMap).sort();
+    
+    selector.innerHTML = '';
+    if (trackIds.length === 0) {
+        selector.innerHTML = '<option value="">-- 请先加载M2数据 --</option>';
+        document.getElementById('convertBtn').disabled = true;
+        return;
+    }
+    
+    selector.innerHTML = '<option value="">-- 选择目标航迹 (共' + trackIds.length + '条) --</option>';
+    trackIds.forEach(trackId => {
+        const points = m2TrackIdMap[trackId];
+        const targetId = points[0].target_id || '';
+        const isComp = points[0].identity !== undefined;
+        const identityLabel = isComp ? ' [' + (IDENTITY_LABELS[points[0].identity] || points[0].identity) + ']' : '';
+        const prefix = isComp ? '🎯 ' : '✈ ';
+        selector.innerHTML += `<option value="${trackId}">${prefix}${trackId} (${targetId})${identityLabel} - ${points.length}点</option>`;
+    });
+    document.getElementById('convertBtn').disabled = !selector.value;
+}
+
+async function convertToNaturalLanguage() {
+    const trackId = document.getElementById('trackSelector').value;
+    if (!trackId) return;
+
+    const statusEl = document.getElementById('convertStatus');
+    const resultEl = document.getElementById('semanticResult');
+    const summaryEl = document.getElementById('situationSummary');
+    const saveBtn = document.getElementById('saveResultBtn');
+    const convertBtn = document.getElementById('convertBtn');
+
+    convertBtn.disabled = true;
+    statusEl.style.display = 'block';
+    statusEl.className = 'convert-status loading';
+    statusEl.textContent = '⏳ 正在执行M6语义转化...';
+    resultEl.textContent = '转化中...';
+
+    try {
+        const allTracks = [];
+        Object.values(m2TrackIdMap).forEach(tracks => {
+            allTracks.push(...tracks);
+        });
+
+        const resp = await fetch('/api/m6/convert', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                network_tracks: allTracks,
+                track_id: trackId
+            })
+        });
+
+        const data = await resp.json();
+
+        if (data.success) {
+            statusEl.className = 'convert-status success';
+            statusEl.textContent = '✅ 语义转化完成！结果已自动保存到 output/m6_semantic_tool/';
+            resultEl.textContent = data.text;
+            summaryEl.textContent = data.summary || '无态势概要';
+            saveBtn.style.display = 'block';
+            lastM6Result = data;
+        } else {
+            throw new Error(data.error || '未知错误');
+        }
+    } catch (err) {
+        statusEl.className = 'convert-status error';
+        statusEl.textContent = '❌ 转化失败: ' + err.message;
+        resultEl.textContent = '转化失败，请确保已启动服务器 (python m4_situation_visualization/server.py) 并加载M2数据。';
+        summaryEl.textContent = '';
+        saveBtn.style.display = 'none';
+    }
+
+    convertBtn.disabled = false;
+}
+
+async function saveM6Result() {
+    if (!lastM6Result) return;
+    try {
+        const resp = await fetch('/api/m6/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: lastM6Result.text, summary: lastM6Result.summary })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            alert('结果已保存到: ' + data.saved_txt);
+        }
+    } catch (err) {
+        alert('保存失败: ' + err.message);
+    }
 }
 
 // 页面加载完成后初始化
